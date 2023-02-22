@@ -1,0 +1,33 @@
+
+
+LIME:
+We note that interpretability must take into account the user’s limitations. Thus, a linear model [24], a gradient vector [2] or an additive model [6] may or may not be interpretable. For example, if hundreds or thousands of features significantly contribute to a prediction, it is not reasonable to expect any user to comprehend why the prediction was made, even if individual weights can be inspected.
+
+-----------------------------------
+
+EU har krav for forklarbarhet. 
+
+-----------------------------------
+
+What do we need to build explainable AI systems for the medical domain?:
+"Consequently, explainable-AI in the context of medicine must take into account that diverse data may contribute to a relevant result. This requires that medical professionals must have a possibility to understand how and why a machine decision has been made. Moreover, transparent algorithms could appropriately enhance trust of medical professionals in future AI systems."
+
+-----------------------------------
+
+Image Captioning through Image Transformer - Sen He:
+However, the structure between the semantic units in images (usually the detected regions from object detection model) and sentences (each single word) is different.
+
+-----------------------------------
+https://towardsdatascience.com/explainable-machine-learning-9d1ca0547ae0
+
+Each model agnostic method makes use of a brilliant idea to give some intuition/understanding/other info about f(x).
+Let’s consider some of the core ideas underlying various techniques:
+
+    SURROGATE MODELS constitute a very big class of explanation techniques. The basic concept is to approximate the function f(x) with another model, this time the new model should be explainable.
+    Some methods are global — try to approximate f(x) on all the ℝᵖ⁺¹ space — while the local ones require you to choose a small region of the space and give an approximation of just that part of the curve. Clearly, there is a lot of freedom on which interpretable model to choose and how to assess whether the approximation to the ML function is good.
+    An example of the Global ones is Trepan [5], which approximates f(x) using a Decision Tree.
+    For the Local methods, a very famous one is LIME (Local Interpretable Model agnostic Explanations).
+    
+    Another big class is based on the FEATURE IMPORTANCE: the idea is to give an importance value to each variable, depending on how much it influences the f(x). The important point here is how to find a rightful way to decompose the importance between variables (variables may be correlated as well as interact with each other).
+    One of the big ideas is to consider one variable at a time and exclude it from the model. We expect to lose prediction power if the variable was important, while a negligible variable won’t make big changes. Further refinements to this idea have been proposed over the year to take into account correlated variables and interactions.
+    PDP [3], ALE [2], ICE [4] plots are global methods exploiting this idea, while Shapley Values [8](and its famous approximation to make them computable, SHAP [7]) rely on it for local explanations.

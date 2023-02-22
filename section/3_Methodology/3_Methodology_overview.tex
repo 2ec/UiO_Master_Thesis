@@ -1,0 +1,25 @@
+\documentclass[UKenglish]{article}
+\input{usepackage}
+
+\raggedbottom %%reduces the gaps between the paragraphs
+\addbibresource{bibliography.bib}            %% ... or whatever
+
+\input{acronyms}
+\begin{document}
+\frontmatter{}
+\tableofcontents{}
+%\listoffigures{}
+%\listoftables{}
+
+
+\mainmatter{}
+% include - puts on new page
+% input - puts on same page
+\section{Methodology} % Three pages
+\input{section/3_Methodology/3_Methodology.tex}
+
+\backmatter{}
+
+\newpage
+\printbibliography
+\end{document}

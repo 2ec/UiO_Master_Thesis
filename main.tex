@@ -1,0 +1,52 @@
+\documentclass[UKenglish]{DUO/ifimaster}  %% ... or USenglish or norsk or nynorsk
+\input{usepackage}
+
+\raggedbottom %%reduces the gaps between the paragraphs
+
+\title{Thesis Title}        %% ... or whatever
+\subtitle{A subtitle of your thesis }         %% ... if any
+\author{Emil Christopher Gjøstøl Strømsvåg}                      %% ... or whoever 
+
+\addbibresource{bibliography.bib}            %% ... or whatever
+\input{acronyms}
+
+
+\begin{document}
+\duoforside[dept={Department of Informatics},   %% ... or your department
+  program={Informatics: Robotics and Intelligent Systems},  %% ... or your programme
+  long]                                        %% ... or long
+
+\frontmatter{}
+\chapter*{Abstract}                   %% ... or Sammendrag or Samandrag
+\input{section/Abstract}
+\tableofcontents{}
+\listoffigures{}
+\listoftables{}
+
+\chapter*{Preface}                    %% ... or Forord
+\input{section/Preface.tex}
+
+\mainmatter{}
+%\part{Introduction}                   %% ... or Innledning or Innleiing
+
+\chapter{Introduction}                  %% ... or Bakgrunn
+\input{section/1_Introduction/1_Introduction_all_content.tex}
+
+% \part{The project}                    %% ... or ??
+
+\chapter{Background}
+\input{section/2_background/2_background_all_content.tex}
+
+\chapter{Methodology}
+\input{section/3_Methodology/3_Methodology.tex}
+
+\chapter{Experiments and Results}
+\input{section/4_Experiments_and_results/4_Experiments_and_results.tex}
+
+\chapter{Conclusions}
+\input{section/5_Conclusions/5_conclusions_all_content.tex}
+
+
+\backmatter{}
+\printbibliography
+\end{document}

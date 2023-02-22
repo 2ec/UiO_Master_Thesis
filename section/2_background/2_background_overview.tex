@@ -1,0 +1,36 @@
+\documentclass[UKenglish]{DUO/ifimaster}
+\input{usepackage}
+
+\raggedbottom %%reduces the gaps between the paragraphs
+\addbibresource{bibliography.bib}            %% ... or whatever
+
+\input{acronyms}
+\begin{document}
+\frontmatter{}
+\tableofcontents{}
+%\listoffigures{}
+%\listoftables{}
+
+\begin{comment}
+In this chapter, you usually include all information needed as prior knowledge, brief introduction to existing technologies that are relevant (e.g., streaming technologies, AI/machine learning approaches, etc), what others have done, etc. All that builds a foundation for your own work. Whatever is important to know before starting to read about your ideas, your solutions, etc.
+
+INTRO: Often, one starts the chapter with a sentence or two explaining why you have this chapter. In this case, you point at your topic and say that this chapter contains needed background knowledge and related work.
+
+MIDDLE SECTIONS: This typically includes sections describing i) the problem area in more detail highlighting the challenges; ii) some basic needed knowledge about technology; iii) some related work, what have others done in context of your problem statement (not necessarily limited to only your case study). These sections should be discussed in the context of your thesis, your problem statement.
+
+SUMMARY: Often, we recommend ending this chapter (and all chapters after except the conclusion) with a summary-section. The aim is to give an overview of, and tea-spoon-feeding the reader with, what he/she should have learned reading this chapter. What can be concluded from this chapter? How does the information given here give
+ 
+arguments for your problem statement? Finally, lead to the next chapter (“... and we will therefore in the next chapter address these challenges, and describe our ideas/implementation/...”)
+\end{comment}
+
+\mainmatter{}
+% include - puts on new page
+% input - puts on same page
+\chapter{Background}
+\input{section/2_background/2_background_all_content.tex}
+
+\backmatter{}
+
+\newpage
+\printbibliography
+\end{document}

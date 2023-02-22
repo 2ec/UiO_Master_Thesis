@@ -1,0 +1,49 @@
+\documentclass[UKenglish]{article}
+\input{usepackage}
+\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge}
+
+\raggedbottom %%reduces the gaps between the paragraphs
+
+\addbibresource{bibliography.bib}
+
+% Abbreviations
+\setabbreviationstyle[acronym]{long-short}
+% \makeglossaries % Comment in when printing glossaries.
+\input{acronyms}
+
+\begin{document}
+    \title{Explaining images with locally faithful captions \\ \large Essay}     
+    \author{Emil Christopher Gjøstøl Strømsvåg}
+    \date{November 2022}
+    \maketitle
+
+%\frontmatter{}
+\newpage
+% Print Abbreviations
+% \printglossary[type=\acronymtype,title={List of Acronyms}]
+\tableofcontents{}
+\newpage
+%\listoffigures{}
+%\listoftables{}
+
+%\mainmatter{}
+
+\section{Abstract}
+\input{section/Abstract} % Max one page
+%\part{Introduction}
+
+\section{Problem and Application}
+%\chapter{Problem and Application} % Three pages
+\input{section/2_background/2_background_problem_and_application}
+
+\section{Related Work} % Max two pages
+\input{section/2_background/2_related_work}
+
+\section{Problem statement} % One page + figure?
+\input{section/1_Introduction/1_2_problem_statement}
+
+
+%\backmatter{}
+\newpage
+\printbibliography
+\end{document}

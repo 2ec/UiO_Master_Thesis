@@ -1,0 +1,26 @@
+\documentclass[UKenglish]{DUO/ifimaster}
+\input{usepackage}
+
+
+\raggedbottom %%reduces the gaps between the paragraphs
+\addbibresource{bibliography.bib}            %% ... or whatever
+
+% Abbreviations
+\setabbreviationstyle[acronym]{long-short}
+\input{acronyms}
+
+\begin{document}
+%\frontmatter{}
+\tableofcontents{}
+%\listoffigures{}
+%\listoftables{}
+
+%\mainmatter{}
+\chapter{Introduction}
+% include - puts on new page
+% input - puts on same page
+\input{section/1_Introduction/1_Introduction_all_content.tex}
+%\backmatter{}
+
+\printbibliography
+\end{document}

@@ -1,0 +1,32 @@
+\label{sec:1_5_ethical_considerations}
+
+\begin{comment}
+Ethical considerations in research are a set of principles that guide your research designs and practices. Scientists and researchers must always adhere to a certain code of conduct when collecting data from people. For example, the goals of human research often include understanding real-life phenomena, studying effective treatments, investigating behaviors, and improving lives in other ways. What you decide to research and how you conduct that research involve key ethical considerations such as:
+
+i) protect the rights of research participants (privacy); 
+ii) enhance research validity, 
+iii) maintain scientific integrity; etc. Thus include here a short description of an assessment of any relevant potential ethical considerations.
+\end{comment}
+
+\section{Ethical considerations}
+
+
+With more intuitive explanations provided by an \gls{xai} system, researchers and users have better insight into the inner workings and arguments of the underlying \gls{ai} method. This, in turn, will address one of the ethical concerns, which is dataset bias. \gls{ai} raises a number of ethical concerns, particularly when used in high-stakes domains such as healthcare, finance, and criminal justice. The concern is not specifically the error of the \gls{ai} model, but rather the bias of datasets, but since \gls{ai} is used to condense complex datasets into understandable predictions, it becomes an inherited ethical issue. 
+Datasets used in deep learning are often large and complex, and \gls{ai} models are used to extract knowledge from the dataset. Therefore, it can be difficult for researchers and users to identify biases used in training the \gls{ai} models, especially when they do not provide an explanation as to why this prediction is correct. 
+
+
+An ethical problem is that \gls{ai} systems can make predictions that are directed against certain groups of people, such as those from marginalized communities. This could occur if the training data used to develop the system is biased, or if the system's decision-making process is not transparent. \gls{xai} can therefore be an important tool to gain insights into our own biases and to help researchers and users avoid making decisions based on false premises. 
+
+\begin{comment}
+Another ethical issue with \gls{xai} is the possibility that the system will be used for surveillance or other privacy-intrusive purposes. For example, an \gls{xai} system used to monitor people in public spaces could raise concerns about civil liberties and privacy rights. In addition, \gls{xai} systems capable of understanding and interpreting visual or textual information could also be used to profile individuals based on their race, gender, age, or other personal characteristics.
+\end{comment}
+
+
+\gls{vqa} datasets and image caption tasks also raise ethical concerns about bias and fairness. The task of \gls{vqa} and image caption rely on training data to learn to generate natural language explanations for visual inputs. However, if the training data is biased in any way, the resulting system will also be biased. For example, if a \gls{vqa} dataset contains mostly white humans in images, the system may not work as well images with people of color. Similarly, if a dataset used for caption contains mostly images from affluent neighborhoods, the system may not work as well for images from low-income neighborhoods. 
+
+Another ethical issue related to \gls{vqa} and captions is the potential of the generated captions and explanations to perpetuate stereotypes or reinforce societal prejudice. For example, if a system is trained on images that portray people of a certain gender or race in a certain way, it can generate captions that perpetuate those stereotypes. In addition, when used in certain applications such as facial recognition, the system could reinforce societal prejudice and perpetuate discrimination.
+
+The work of Hirota et al.\cite{hirotaGenderRacialBias2022} analyzed gender and racial bias in five popular \gls{vqa} datasets and found unfavorable stereotypes in the samples. They are also exploring various possible solutions to address this issue. This includes not asking questions about race and sex when not required, and collecting a more standardized distribution related to race and sex. They also propose an alternative to the manual screening that some \gls{vqa} datasets use, not all of which can justify the cost of manual annotation. The proposed solution to this automatic screening, followed by ethical guidance for annotators, and lastly have a feedback platform for users. 
+
+
+In summary, \gls{xai}, \gls{vqa} datasets, and image captions raise important ethical concerns related to bias, fairness, and privacy. These concerns stem from reliance on training data, which may be biased or perpetuate stereotypes. In addition, the use of \gls{xai} in certain areas and applications, such as surveillance or facial recognition raise concerns about privacy and civil liberties. It is imperative for researchers and practitioners to consider these ethical concerns and work towards developing \gls{xai} systems that are transparent, fair, and respectful of privacy and civil liberties.

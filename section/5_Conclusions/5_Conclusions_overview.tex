@@ -1,0 +1,35 @@
+\begin{comment}
+Here you summarize and conclude the thesis, and it contains a lot of repetitions from previous chapters. Often, it has been structured in the following three sections, but sometimes they are also merged (especially the first two).
+\end{comment}
+
+\documentclass[UKenglish]{article}
+\input{usepackage}
+
+
+
+\raggedbottom %%reduces the gaps between the paragraphs
+
+\addbibresource{bibliography.bib}            %% ... or whatever
+
+\input{acronyms}
+\begin{document}
+\frontmatter{}
+\tableofcontents{}
+%\listoffigures{}
+%\listoftables{}
+
+\mainmatter{}
+% include - puts on new page
+% input - puts on same page
+\section{Summary}
+\input{section/5_Conclusions/5_1_summary.tex}
+\section{Main Contributions} 
+\input{section/5_Conclusions/5_2_main_contributions.tex}
+\section{Future Work} % Max two pages
+\input{section/5_Conclusions/5_3_future_work.tex}
+
+\backmatter{}
+
+\newpage
+\printbibliography
+\end{document}
