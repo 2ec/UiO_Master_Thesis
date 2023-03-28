@@ -16,7 +16,7 @@ Humanity has since taken the dream of artificial beings with consciousness from 
 AI has now become an integral part of people's everyday lives, fueling advances in science and technology, including social media, computational photography, voice assistants, and chatbots. Doctors can now use artificial intelligence to help interpret medical images, and artists create new art with help from AI.
 
 
-\subsection{History of AI}
+\subsection{A Short History of AI}
 % Alan Turing 
 The origins of modern AI can trace back to the 1940s and 1950s when pioneers such as Alan Turing and John McCarthy laid the foundations for today's AI research methods. 
 
@@ -31,7 +31,7 @@ The research field went through several ups and downs over the years. Mostly the
 \subsubsection{Symbolic Artificial Intelligence}
 Artificial intelligence can be divided into two main paradigms that take different approaches to achieving artificial models. The two paradigms are named symbolic and connectionism.
 
-Symbolic Artificial Intelligence refers to a collection of AI methods based on high-level symbolic representation of problems, logic, and search. It is also known as rule-based AI, classic AI, and good old-fashioned AI (GOFA). 
+Symbolic Artificial Intelligence refers to a collection of AI methods based on high-level symbolic representation of problems, logic, and search. It is also known as rule-based AI, classic AI, and good old-fashioned AI (GOFA) \cite{haugelandArtificialIntelligenceVery1989}. 
 
 During the period between the 1950s and the mid-1990s, symbolic representation was seen as dominant over the other main representation, connectionism, which will be discussed later. The reason for this was that symbolic representation was thought to be closer to the human way of learning symbolic representations instead of analyzing neuron activation in the brain and therefore had an advantage over connectionism.
 The goal was to provide machines/computer codes with human knowledge and action patterns by defining rules into programs. The main idea behind symbolism is to define high-level symbolic representation that creates the building blocks for the program's intelligence. Along with these pre-programmed rules, an expert system is used, which then looks at which rules are fulfilled and makes a decision based on this.
@@ -49,14 +49,14 @@ The perceptron is inspired by biology and mimics an artificial neuron. This perc
 
 Since 2012, models that can train on increasingly large datasets have improved significantly, in large part due to advances in computational power. Connectionism has given a new boost to AI as a field and tool, and they are constantly being renewed to solve new problems.
 
-The main benefit of connectionism is that the model can learn more complex relationships than symbolic AI since the weights in the neurons can be updated as new examples are trained. This allows the method to learn complex relationships from a dataset with large variations between examples.
+The main benefit of connectionism is that the model can learn more complex relationships than symbolic \gls{ai} since the weights in the neurons can be updated as new examples are trained. This allows the method to learn complex relationships from a dataset with large variations between examples.
 
 The main downside, however, is that it's often difficult for humans to gain insight into the formation of judgments, as the process learns by adjusting weights in each of the many neurons. New fields like \gls{xai} try to make models belonging to this doctrine more transparent and understandable.
 
 
 % Combining these two representations
 \subsubsection{Combination of Symbolic and Connectionist AI}
-With the rapidly growing market and the development of new AI tools, there is increasing pressure to make connectionist models more transparent by combining symbolic and connectionist AI, known as neuro-symbolic AI. This is because connectionist models utilize the properties of connectionist models to train on large datasets with significant variations, in addition to learning symbolic representations of the dataset, making it easier for humans to understand the basis for the model's decisions.
+With the rapidly growing market and the development of new \gls{ai} tools, there is increasing pressure to make connectionist models more transparent by combining symbolic and connectionist \gls{ai}, known as neuro-symbolic AI. This is because connectionist models utilize the properties of connectionist models to train on large datasets with significant variations, in addition to learning symbolic representations of the dataset, making it easier for humans to understand the basis for the model's decisions.
 
 This type of model can train on large datasets of images, while also learning from question-and-answer pairs to become familiar with linguistic symbols such as colors and shapes. The hope is that this will lead to a more general understanding from the model's perspective, by learning multimodally and being able to learn variations in the dataset using fewer examples.
 
@@ -65,21 +65,28 @@ The integration of models across modalities will be further explored in this the
 
     \subsection{Machine Learning}
 
-    The field of artificial intelligence includes a subgroup known as machine learning, although these two groups are often conflated in the media. It is reasonable to define machine learning as a subset of AI, although some argue that machine learning has diverged from AI, but with overlaps, as illustrated in Figure ??. This thesis treats ML as a sub-field of AI as shown in Figure \ref{fig:ai_ml_dnn}.
+    The field of artificial intelligence includes a subgroup known as machine learning, although these two groups are often conflated in the media. It is reasonable to define machine learning as a subset of AI, although some argue that machine learning has diverged from AI, but with overlaps, as illustrated in Figure \ref{fig:ai_ml_dnn_argue} \cite{raschkaChapterIntroductionMachine0000}. This thesis treats \gls{ml} as a sub-field of AI as shown in Figure \ref{fig:ai_ml_dnn}.
+
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=9cm]{images/ai_ml_dnn.png}
-        \caption{Overview of the structure between artificial intelligence, machine learning, and deep learning.}
+        \includegraphics[width=13cm]{images/ai_ml_dnn_argue.jpeg}
+        \caption[Overview of an alternative structure for \gls{ai}, \gls{ml}, and deep learning. This structure argues that AI is the quest for developing non-biological systems with human-like intelligence and can be achieved with methods that do not use machine learning or deep learning, like symbolic representations in a shallow architecture.]{Overview of an alternative structure for \gls{ai}, \gls{ml}, and deep learning. This structure argues that AI is the quest for developing non-biological systems with human-like intelligence and can be achieved with methods that do not use machine learning or deep learning, like symbolic representations in a shallow architecture. This representation is not de facto and will not be used in this thesis. Image credit: Raschka \cite{raschkaChapterIntroductionMachine0000}}
+        \label{fig:ai_ml_dnn_argue}
+    \end{figure} 
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=8cm]{images/ai_ml_dnn.png}
+        \caption{Overview of the structure between artificial intelligence, machine learning, and deep learning. This is the structure used in this thesis.}
         \label{fig:ai_ml_dnn}
     \end{figure} 
 
-    ML is often divided into three sub-fields, which will be discussed and explained in this sub-section, explaining how they work and the circumstances in which each sub-field can be used to advantage, as well as the challenges each branch faces are highlighted.
+    Machine learning is often divided into three sub-fields, which will be discussed and explained in this sub-section, explaining how they work and the circumstances in which each sub-field can be used to advantage, as well as the challenges each branch faces are highlighted.
 
         \subsubsection{Supervised Learning}
 
         The first category within machine learning is known as supervised learning. This method is conceptually similar to using flashcards for memorization.
-
         The participant draws a card and reads the question while keeping the answer hidden. Only after the question has been answered by the participant can the correct answer be revealed. This is the same approach used in supervised learning.
         
         
@@ -156,15 +163,62 @@ The integration of models across modalities will be further explored in this the
         \label{fig:imagenet_results_graph}
     \end{figure}
 
+
     
     \subsection{Convolutional Neural Networks}
 
+    % Intro to CNNs
+    Inspired by biology alongside regular neural networks, the computer vision method called \glspl{cnn} are designed to mimic the way the visual cortex in the brain processes visual information. \gls{cnn} builds on the idea and technique of neural networks and adds at least one convolutional layer. A convolutional layer allows information about neighboring entities to be obtained from the previous layer. The method has proven particularly effective in computer vision to process and analyze images and video because it can gather context from nearby areas around which the convolution is centered. This can help the method extract contextual and semantic relationships that would otherwise have been lost.
+
+    % Intro to convolution layer
+    The convolution layer works by scanning small filters across the input image, computing dot products between the filter and the image pixels at each location, and creating a feature map. A convolution layer can be thought of as a flashlight beam aimed at an image. Because of the beam of light, the viewer can see areas of the image that are in the perimeter of the area at which the center of the beam is directed. As the beam of light moves across the image, the viewer gets a fuller understanding of what is in the image. An illustration of a convolution is shown in Figure ?? shown.
+
+    % Short history and advantage.
+    The convolutional neural network was first proposed by ??? in ?? and has since had a huge importance in making machines interpret images and videos. A major advantage of a convolutional layer is that it can compress information while preserving information and the context around the retrieved information. A very common \gls{cnn} architecture is shown in Figure ??? to see. Also seen in the figure is that a typical \gls{cnn} has a fully connected neural network. The reason that a \gls{cnn} often uses fully connected layers, unlike a normal neural network, is because of the condensation of information with surrounding information, allowing for a network that can take advantage of using a lot of parameters without overfitting.  
+    
+    The convolution layers can be applied to an input image as a series of filters, producing a series of feature maps that emphasize different aspects of the image. These filters have weights that are learned and adjusted during training and are able to recognize different types of patterns of increasing complexity and abstraction from the input image. The training process is similar to regular neural networks and typically updates weights using backpropagation to minimize the loss function and improve the accuracy of the network on the training set. The first layers, closest to the input image, generally recognize low-level features such as edges, lines, corners, texture, and color. As the input information is processed by the convolutional layers, more complex features can be detected that build an abstraction on the information extracted from earlier layers. Convolution layers farther from the image can recognize more high-level features such as shapes, objects, and scenes. Overall, the convolutional layers allow the features of the input image to be analyzed hierarchically, with the early layers capturing low-level features and the later layers capturing high-level features.
+    
+    % More in depth achitecturea, with pooling layers.
+    \glspl{cnn} are typically designed with multiple layers, like deep neural networks, and the last layers are typically fully connected. The fully connected layers take the output of the convolution layers, which are a set of feature maps, and convert them into a single vector of class scores that represent the probability that the input image belongs to each of the possible classes. The main function of pooling layers in \glspl{cnn} is to reduce the spatial dimensions of the feature maps generated by convolutional layers while preserving the most salient features of the input image. Pooling layers operate on small regions (e.g. 2x2 or 3x3) of the feature maps generated by the previous convolution layers and reduce their size by applying a pooling function such as max pooling or average pooling, on each region. Max pooling selects the maximum value within each region as the representative value, while average pooling calculates the mean of the region. These operations effectively downsample the feature maps and help reduce the network's sensitivity to small spatial translations and variations in the input. Pooling layers can be inserted after one or more convolutional layers in a \gls{cnn}, and their hyperparameters, such as the size of the pooling area and the stride (i.e. the amount of movement of the pooling window) can be tuned to control the amount of downsampling and the size of the resulting feature maps.
+    
+    Additionally, pooling layers can help prevent network overfitting by reducing the number of parameters and the computation time required for training. The role of pooling layers in \glspl{cnn} is not only limited to downsampling, but they can also help to capture translation invariance, i.e. the property that the learned features are invariant to small translations in the input. This is because the Max or Average operation selects the most prominent feature in a given region, regardless of its exact position within that region. This property allows the network to collect more general relationships in the input data, providing a more general understanding of the network. The overall benefits of pooling layers lie in reducing the spatial dimensions of feature maps while preserving their salient features, resulting in more efficient and robust image analysis.
+    
+    % Summary
+    Overall, the different layers of a \gls{cnn} work together to extract and classify features in images and videos. This makes \glspl{cnn} particularly effective for tasks such as image classification, object detection, and semantic segmentation, where detecting and locating different features of an image is critical for accurate performance. \glspl{cnn} have proven extremely effective in image classification tasks, outperforming other types of neural networks and traditional machine learning algorithms. They have been used in a variety of applications, including object recognition, facial recognition, and medical image analysis. With the development of larger and more complex networks and the availability of powerful hardware and software, \glspl{cnn} continue to remain an active area of research and development in the field of machine learning.
 
 
 \section{Image Captioning}
- 
+
+    Image captioning is a field of research where the objective is to generate textual descriptions from the content of an image. This process uses both computer vision and \gls{nlp} to gather information from images and give a text that describes or analyzes the content of the image. Image captioning is therefore a multimodal method that has excelled together with the advancements in both computer vision, helped greatly by \glspl{cnn} and language models. The motivation for developing this field of research is that its advancements can be utilized in many applications. Some applications where image captioning can contribute are in improving accessibility for the visually impaired, enhancing search and retrieval systems, assisting in image and video indexing, and making models that can use the combined information in both language and vision to gather information. 
+
+    Image captioning methods involves typically today techniques from deep learning, with \glspl{cnn} to extract image features and \glspl{rnn}, typically \glspl{lstm}, to use these extracted image features to generate captions. An advantage of the multimodal nature of image captioning methods is that the \gls{cnn} are able to capture spatial features within a given image, while the \gls{rnn} can structure this information, using temporal dynamics and syntaxes in language to make a description that is true to the image. 
+
+
+    \subsection{Attention Mechanisms}
+    % Attention is all you need
+    Recent advances in image captioning have seen the use of attention mechanisms, both in the vision and language modalities. The use of attention mechanisms has allowed the model to selectively focus on different parts of the image when generating captions. By selectively paying attention to different areas of the image, the model is able to capture the fine-grained details needed to generate accurate and descriptive captions. This has resulted in a significant improvement in the quality of captions, where attention-based methods often outperform traditional non-attention-based techniques. 
+    
+    The attention technique is inspired by nature and is designed to draw inspiration from cognitive attention. The main advantage is that attention allows the method to enhance some parts of the input data while giving a lower priority to other, less important parts. One goal is to use attention to learn which parts of the data that is most important in the context and prioritize these parts.  
+
+
+    % One attention method that has made huge advancements is the Transformer architecture proposed by Vaswani et al. The Transformer differs from a traditional network in that it entirely dispenses recurrence and convolutions. Instead, it is solely based on the attention mechanism, using self-attention and point-wise, fully connected layers for both the encoder and decoder of the architecture. 
+
+    Attention-like mechanisms have been part of the research field of machine learning since the 1990s. In the beginning, it was introduced under names like sigma pi units, multiplicative modules, and hyper-networks. The flexibility of attention-based techniques comes from their ability to learn which parts of the input data are most important in context. The soft attention method can change the model's focus during runtime, which can have a major advantage compared to non-attention models, which remain unchanged during inference. The ability to adaptively prioritize input data has popularized attention-based models in natural language processing, multimodal, and multisensory computing. Some influential methods that use attention are \glspl{lstm}, Transformers, and Perceivers \cite{hochreiterLongShorttermMemory1997, vaswaniAttentionAllYou2017, jaeglePerceiverGeneralPerception2021}. The use of transformers and attention mechanisms have made it possible to make large language models, such as \gls{bert}, \gls{bart}, and \gls{gpt} \cite{devlinBERTPretrainingDeep2019, lewisBARTDenoisingSequencetoSequence2019,, radfordImprovingLanguageUnderstanding2018, radfordLanguageModelsAre2019, brownLanguageModelsAre2020, openaiGPT4TechnicalReport2023}. 
+    
+    
+    In the language part of the model, the attention mechanisms can also be used to selectively focus on a different part of the features extracted from the image and can therefore generate the textual context that is most relevant to correctly identify. This way the model can describe the most important ones in natural language parts of the picture or video. Some recent models have moved from cnn architectures to extract image features and solely rely on attention mechanisms to gather relevant information in the visual context. Some recent models have moved from CNN architectures to extract image features and solely rely on attention mechanisms to gather relevant information in the image context. Some of these models are \gls{vit}, alongside versions of \gls{bert} that incorporate vision \cite{leiLessMoreClipBERT2021, liVisualBERTSimplePerformant2019, suVLBERTPretrainingGeneric2020}. % An image is worth 16x16 words: Transformers for image recognition at scale, ViBert 
+    
+    During training, attention weights are most commonly learned through backpropagation and gradient descent, and the weights are used to give relevance scores to different words in context for being the next word in the text sequence. Attention can be derived in a number of ways, notably global vs local and soft vs hard. Global vs. local attention refers to different ways of weighting input features, where a global process weights all input features equally without prioritizing specific parts, and each input feature is considered when computing the output.
+    In contrast, local attention refers to a more selective process in which the input features are weighted differently and are therefore prioritized when computing the output. This prioritized subset is usually determined by a region or window around the previous output or target position, borrowing ideas from the way \glspl{cnn} retrieves surrounding data from an image.
+    
+    Soft and hard attention refers to the different methods of incorporating attention into a neural network. Soft attention is computed by a weighted average of the input features, with the weights learned during training and typically normalized to a value between 0 and 1. This weighting allows the model to consider multiple parts of the input at once, gathering information from a larger range. On the other hand, hard attention selects a particular input feature to take care of at each time step, effectively forcing the model to make a discrete decision. This can make the model less flexible but can excel in situations where the input is highly structured and can be easily segmented into distinct parts.
+
+
+    
     \subsection{Image Classification}
 
+
+    \subsection{Natural Language Processing}
     % Labeling / Captioning
     \subsection{Automatic Labeling}
 
