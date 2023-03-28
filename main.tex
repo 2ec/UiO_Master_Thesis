@@ -1,20 +1,35 @@
 \documentclass[UKenglish]{DUO/ifimaster}  %% ... or USenglish or norsk or nynorsk
-\input{usepackage}
+%\usepackage[UKenglish]{uiomasterfp/uiomasterfp}
+%\documentclass[UKenglish]{report}
+\usepackage[UKenglish]{uiomasterfp/uiomasterfp}
 
+\input{usepackage}
 \raggedbottom %%reduces the gaps between the paragraphs
 
-\title{Thesis Title}        %% ... or whatever
-\subtitle{A subtitle of your thesis }         %% ... if any
-\author{Emil Christopher Gjøstøl Strømsvåg}                      %% ... or whoever 
+%\title{Thesis Title}        %% ... or whatever
+%\subtitle{A subtitle of your thesis }         %% ... if any
+%\author{Emil Christopher Gjøstøl Strømsvåg}                      %% ... or whoever 
 
 \addbibresource{bibliography.bib}            %% ... or whatever
 \input{acronyms}
 
 
 \begin{document}
-\duoforside[dept={Department of Informatics},   %% ... or your department
-  program={Informatics: Robotics and Intelligent Systems},  %% ... or your programme
-  long]                                        %% ... or long
+
+\uiomasterfp[
+    author={Emil Christopher Gjøstøl Strømsvåg}, 
+    colour={orange},
+    date={Spring 2023},
+    program={Informatics: Robotics and Intelligent Systems},
+    dept={Department of Informatics},
+    fac={Faculty of Mathematics and Natural Sciences},
+    supervisors={A Name\and Another Name\and Third name},
+    title={Thesis Title},
+    subtitle={A subtitle of your thesis}
+]
+%\duoforside[dept={Department of Informatics},   %% ... or your department
+%  program={Informatics: Robotics and Intelligent Systems},  %% ... or your programme
+%  long]                                        %% ... or long
 
 \frontmatter{}
 \chapter*{Abstract}                   %% ... or Sammendrag or Samandrag
