@@ -22,11 +22,48 @@ Another ethical issue with \gls{xai} is the possibility that the system will be 
 \end{comment}
 
 
-\gls{vqa} datasets and image caption tasks also raise ethical concerns about bias and fairness. The task of \gls{vqa} and image caption rely on training data to learn to generate natural language explanations for visual inputs. However, if the training data is biased in any way, the resulting system will also be biased. For example, if a \gls{vqa} dataset contains mostly white humans in images, the system may not work as well images with people of color. Similarly, if a dataset used for caption contains mostly images from affluent neighborhoods, the system may not work as well for images from low-income neighborhoods. 
+\gls{vqa} datasets and image caption tasks also raise ethical concerns about bias and fairness. The task of \gls{vqa} and image caption rely on training data to learn to generate natural language explanations for visual inputs. However, if the training data is biased in any way, the resulting system will also be biased. For example, if a \gls{vqa} dataset contains mostly white humans in images, the system may not work as well with images of people of color. Similarly, if a dataset used for captioning contains mostly images from affluent neighborhoods, the system may not work as well for images from low-income neighborhoods. 
 
 Another ethical issue related to \gls{vqa} and captions is the potential of the generated captions and explanations to perpetuate stereotypes or reinforce societal prejudice. For example, if a system is trained on images that portray people of a certain gender or race in a certain way, it can generate captions that perpetuate those stereotypes. In addition, when used in certain applications such as facial recognition, the system could reinforce societal prejudice and perpetuate discrimination.
 
-The work of Hirota et al. \cite{hirotaGenderRacialBias2022} analyzed gender and racial bias in five popular \gls{vqa} datasets and found unfavorable stereotypes in the samples. They are also exploring various possible solutions to address this issue. This includes not asking questions about race and sex when not required, and collecting a more standardized distribution related to race and sex. They also propose an alternative to the manual screening that some \gls{vqa} datasets use, not all of which can justify the cost of manual annotation. The proposed solution to this automatic screening, followed by ethical guidance for annotators, and lastly have a feedback platform for users. 
+The work of Hirota et al. \cite{hirotaGenderRacialBias2022} analyzed gender and racial bias in five popular \gls{vqa} datasets and found unfavorable stereotypes in the samples. They are also exploring various possible solutions to address this issue. This includes not asking questions about race and sex when not required, and collecting a more standardized distribution related to race and sex. They also propose an alternative to the manual screening that some \gls{vqa} datasets use, not all of which can justify the cost of manual annotation. The proposed solution to this automatic screening, followed by ethical guidance for annotators, and lastly a feedback platform for users. 
 
 
-In summary, \gls{xai}, \gls{vqa} datasets, and image captions raise important ethical concerns related to bias, fairness, and privacy. These concerns stem from reliance on training data, which may be biased or perpetuate stereotypes. Additionally, using \gls{xai} in certain areas and applications, such as surveillance or facial recognition raise concerns about privacy and civil liberties. It is imperative that researchers and practitioners consider these ethical concerns and work towards the development of \gls{xai} systems that are transparent, fair, and respectful of privacy and civil liberties.
+
+Regarding \glspl{llm} there are many ethical considerations to address. \glspl{llm} are trained on a large corpus of text, most often gathered from the Internet. The data gathered across the web are mostly written by humans and the \glspl{llm} are trained on this wast dataset to extract a more general understanding of human knowledge and present this with a well-structured syntax. With the advancements and availability of models such as \gls{gpt}-4 \cite{openaiGPT4TechnicalReport2023}, combined with a user-friendly and easy-to-use user interface, like the one used by ChatGPT \cite{ChatGPT}, the public has never before had an advanced \gls{ai} so accessible in their everyday life. Given that users come from different backgrounds and cultures, the \gls{llm} should be able to adapt to its users to close the gap between user and \gls{ai} alignment. 
+
+\glspl{llm} have billions of parameters and have a feature space that in itself is incomprehensible for humans to fully understand. These models are mostly today built using the Transformer model proposed by Vaswani et al. \cite{vaswaniAttentionAllYou2017}, but because of their size and scale, are very complex to understand. 
+???
+
+
+Training these large models takes a considerable amount of energy and therefore produces a lot of greenhouse emissions. It was estimated that training GPT-2 required ?? amounts of energy and had emissions of ??? CO$^2$ \cite{??}. This is roughly the same amount as ?? emits in a whole year \cite{???}. Therefore it is an ethical consideration to keep making larger models that consume more energy, when the energy used is not from clean sources, nor an unlimited resource \cite{??}.
+
+There have been numerous attempts recently to slow the growth of \glspl{llm}, to have time to address ethical, and technical concerns before a new, and better model gets released. The reasons why this wish to not continuously make the models are wast, but the most prominent concern is to better understand the models already developed. With a better understanding of these models, researchers are better equipped to tune models to better align with the overall goal of humans. An understanding of the inner workings of a model, including a \gls{llm}, can also give insight into how to make the model predictions more transparent, fair, and efficient. Another important consideration is to make tools that can detect \gls{ai} made content. This is important both for humans to be informed where the information comes from, but also that when \glspl{ai} that can search the web or when new datasets are made, researchers use \gls{ai} made content unaware to train new \glspl{ai}.  
+
+% something about the alignment problem.
+    % Inner and outer alignment
+
+
+Sam Altman, the founder, and CEO of OpenAI, has in an interview told that solving the alignment problem in \glspl{llm} is not a separate task from improving the model, but solving the alignment problem will also make the models better and more usable for researchers and users. This statement is backed by research, from among other ??? and ???. Solving the alignment problem will give models that better align with humans' overall goal and have an intrinsic goal of also following these goals itself. This can make models easier to adapt and fine-tune to different specific areas of interest, which also will make them more useful and widespread. 
+
+
+% Something about hallucinations
+
+% Transformers output linearly, with no internal dialog (reasoning)
+
+% Models are trained as imitators, humans are good at giving human features to non-humans (anthropomorphism). 
+
+% Reinforcement learning from human feedback (RLHF) teaches models to give answers that the human appreciates and thumbs up, giving an incentive to answer something that the human would like to hear, or harmonizes with the humans previous believers. Truth does not care if the human likes it or not, so giving this incentive would make the model pay less attention to giving correct answers, but rather giving answers human likes. 
+
+% The open letter to pause training large models
+
+% EU - The AI Act
+
+% If humans continue to hype the methods recently proposed, like ChatGPT, but the models do not fulfill the hype, there may be another AI winter. One of the main reasons for the two AI winters, as discussed in context in chapter 2 - is background history.
+
+
+\begin{comment}
+    Tell how this thesis uses the ethical information above when doing research.
+\end{comment}
+
+In summary, \gls{xai}, \gls{vqa} datasets, image captions, and \glspl{llm} raise important ethical concerns related to bias, fairness, and privacy. These concerns stem from reliance on training data, which may be biased or perpetuate stereotypes. Additionally, using \gls{xai} in certain areas and applications, such as surveillance or facial recognition raise concerns about privacy and civil liberties. Researchers and practitioners must consider these ethical concerns and work towards the development of \gls{xai} systems that are transparent, fair, and respectful of privacy and civil liberties.

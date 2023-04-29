@@ -14,7 +14,7 @@
 
 %% Base class load part:
 
-\LoadClass[a4paper,11pt,oneside,openright]{report}
+\LoadClass[a4paper,12pt,oneside,openright]{report}
 
 %% Adjustments:
 
@@ -22,6 +22,8 @@
 \addtolength{\textheight}{4\baselineskip}
 \addtolength{\evensidemargin}{-5mm}  % Compensate for binding
 \addtolength{\oddsidemargin}{5mm}
+
+\linespread{1.0} % regulate line spacing
 
 \pretolerance = 2000
 \tolerance = 5000   \hbadness = \tolerance
