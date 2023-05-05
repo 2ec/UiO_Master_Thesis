@@ -20,8 +20,8 @@
 
 \addtolength{\topmargin}{-2\baselineskip}
 \addtolength{\textheight}{4\baselineskip}
-\addtolength{\evensidemargin}{-5mm}  % Compensate for binding
-\addtolength{\oddsidemargin}{5mm}
+%\addtolength{\evensidemargin}{-5mm}  % Compensate for binding
+%\addtolength{\oddsidemargin}{5mm}
 
 \linespread{1.0} % regulate line spacing
 
