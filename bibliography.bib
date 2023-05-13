@@ -4,6 +4,22 @@
   urldate = {2023-03-10}
 }
 
+@online{abnarQuantifyingAttentionFlow2020,
+  title = {Quantifying {{Attention Flow}} in {{Transformers}}},
+  author = {Abnar, Samira and Zuidema, Willem},
+  date = {2020-05-31},
+  eprint = {2005.00928},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2005.00928},
+  url = {http://arxiv.org/abs/2005.00928},
+  urldate = {2023-05-12},
+  abstract = {In the Transformer model, "self-attention" combines information from attended embeddings into the representation of the focal embedding in the next layer. Thus, across layers of the Transformer, information originating from different tokens gets increasingly mixed. This makes attention weights unreliable as explanations probes. In this paper, we consider the problem of quantifying this flow of information through self-attention. We propose two methods for approximating the attention to input tokens given attention weights, attention rollout and attention flow, as post hoc methods when we use attention weights as the relative relevance of the input tokens. We show that these methods give complementary views on the flow of information, and compared to raw attention, both yield higher correlations with importance scores of input tokens obtained using an ablation method and input gradients.},
+  pubstate = {preprint},
+  keywords = {attention,Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning,transformer,xai},
+  file = {/Users/emilchri/Zotero/storage/8AGHHYFL/Abnar og Zuidema - 2020 - Quantifying Attention Flow in Transformers.pdf;/Users/emilchri/Zotero/storage/IVPEJTJP/2005.html}
+}
+
 @article{adadiPeekingBlackBoxSurvey2018,
   title = {Peeking {{Inside}} the {{Black-Box}}: {{A Survey}} on {{Explainable Artificial Intelligence}} ({{XAI}})},
   shorttitle = {Peeking {{Inside}} the {{Black-Box}}},
@@ -113,6 +129,25 @@
   url = {https://opg.optica.org/optica/fulltext.cfm?uri=optica-6-8-921&id=416103},
   urldate = {2023-04-28},
   keywords = {computational,computer,imaging,ml}
+}
+
+@inproceedings{barkanGradSAMExplainingTransformers2021,
+  title = {Grad-{{SAM}}: {{Explaining Transformers}} via {{Gradient Self-Attention Maps}}},
+  shorttitle = {Grad-{{SAM}}},
+  booktitle = {Proceedings of the 30th {{ACM International Conference}} on {{Information}} \& {{Knowledge Management}}},
+  author = {Barkan, Oren and Hauon, Edan and Caciularu, Avi and Katz, Ori and Malkiel, Itzik and Armstrong, Omri and Koenigstein, Noam},
+  date = {2021-10-30},
+  series = {{{CIKM}} '21},
+  pages = {2882--2887},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/3459637.3482126},
+  url = {https://dl.acm.org/doi/10.1145/3459637.3482126},
+  urldate = {2023-05-12},
+  abstract = {Transformer-based language models significantly advanced the state-of-the-art in many linguistic tasks. As this revolution continues, the ability to explain model predictions has become a major area of interest for the NLP community. In this work, we present Gradient Self-Attention Maps (Grad-SAM) - a novel gradient-based method that analyzes self-attention units and identifies the input elements that explain the model's prediction the best. Extensive evaluations on various benchmarks show that Grad-SAM obtains significant improvements over state-of-the-art alternatives.},
+  isbn = {978-1-4503-8446-9},
+  keywords = {attention,bert,cam,deep learning,explainable \& interpretable ai,grad,gradcam,nlp,self-attention,transformer,transformers,transparent machine learning,xai},
+  file = {/Users/emilchri/Zotero/storage/R87ZG4BZ/Barkan et al. - 2021 - Grad-SAM Explaining Transformers via Gradient Sel.pdf}
 }
 
 @article{barredoarrietaExplainableArtificialIntelligence2020,
@@ -238,6 +273,22 @@
   pubstate = {preprint},
   keywords = {Computer Science - Computer Vision and Pattern Recognition,Electrical Engineering and Systems Science - Image and Video Processing},
   file = {/Users/emilchri/Zotero/storage/BPK8DQMK/Bochkovskiy et al. - 2020 - YOLOv4 Optimal Speed and Accuracy of Object Detec.pdf;/Users/emilchri/Zotero/storage/RB4NDNBL/2004.html}
+}
+
+@online{bohleHolisticallyExplainableVision2023,
+  title = {Holistically {{Explainable Vision Transformers}}},
+  author = {Böhle, Moritz and Fritz, Mario and Schiele, Bernt},
+  date = {2023-01-20},
+  eprint = {2301.08669},
+  eprinttype = {arxiv},
+  eprintclass = {cs, stat},
+  doi = {10.48550/arXiv.2301.08669},
+  url = {http://arxiv.org/abs/2301.08669},
+  urldate = {2023-05-12},
+  abstract = {Transformers increasingly dominate the machine learning landscape across many tasks and domains, which increases the importance for understanding their outputs. While their attention modules provide partial insight into their inner workings, the attention scores have been shown to be insufficient for explaining the models as a whole. To address this, we propose B-cos transformers, which inherently provide holistic explanations for their decisions. Specifically, we formulate each model component - such as the multi-layer perceptrons, attention layers, and the tokenisation module - to be dynamic linear, which allows us to faithfully summarise the entire transformer via a single linear transform. We apply our proposed design to Vision Transformers (ViTs) and show that the resulting models, dubbed Bcos-ViTs, are highly interpretable and perform competitively to baseline ViTs on ImageNet. Code will be made available soon.},
+  pubstate = {preprint},
+  keywords = {Attention,Computer Science - Computer Vision and Pattern Recognition,Statistics - Machine Learning,transformer,xai},
+  file = {/Users/emilchri/Zotero/storage/6LG66MWX/Böhle et al. - 2023 - Holistically Explainable Vision Transformers.pdf;/Users/emilchri/Zotero/storage/R6CXFP74/2301.html}
 }
 
 @article{bolognaCharacterizationSymbolicRules2017,
@@ -380,6 +431,32 @@
   abstract = {A conversational AI system that listens, learns, and challenges},
   keywords = {openai},
   file = {/Users/emilchri/Zotero/storage/EMY7YSD4/login.html}
+}
+
+@inproceedings{cheferGenericAttentionModelExplainability2021,
+  title = {Generic {{Attention-Model Explainability}} for {{Interpreting Bi-Modal}} and {{Encoder-Decoder Transformers}}},
+  author = {Chefer, Hila and Gur, Shir and Wolf, Lior},
+  date = {2021},
+  pages = {397--406},
+  url = {https://openaccess.thecvf.com/content/ICCV2021/html/Chefer_Generic_Attention-Model_Explainability_for_Interpreting_Bi-Modal_and_Encoder-Decoder_Transformers_ICCV_2021_paper.html},
+  urldate = {2023-05-12},
+  eventtitle = {Proceedings of the {{IEEE}}/{{CVF International Conference}} on {{Computer Vision}}},
+  langid = {english},
+  keywords = {computer,transformer,vision,xai},
+  file = {/Users/emilchri/Zotero/storage/BX66TRQJ/Chefer et al. - 2021 - Generic Attention-Model Explainability for Interpr.pdf}
+}
+
+@inproceedings{cheferTransformerInterpretabilityAttention2021,
+  title = {Transformer {{Interpretability Beyond Attention Visualization}}},
+  author = {Chefer, Hila and Gur, Shir and Wolf, Lior},
+  date = {2021},
+  pages = {782--791},
+  url = {https://openaccess.thecvf.com/content/CVPR2021/html/Chefer_Transformer_Interpretability_Beyond_Attention_Visualization_CVPR_2021_paper.html},
+  urldate = {2023-05-12},
+  eventtitle = {Proceedings of the {{IEEE}}/{{CVF Conference}} on {{Computer Vision}} and {{Pattern Recognition}}},
+  langid = {english},
+  keywords = {attention,transformer,xai},
+  file = {/Users/emilchri/Zotero/storage/8N9TB8RB/Chefer et al. - 2021 - Transformer Interpretability Beyond Attention Visu.pdf}
 }
 
 @article{chengRumorGeneticMutation2021,
@@ -1093,6 +1170,24 @@
   file = {/Users/emilchri/Zotero/storage/8VZVYHIN/Explaining collaborative filtering recommendations.pdf;/Users/emilchri/Zotero/storage/Z4NMN3XK/358916.html}
 }
 
+@software{hicksImageCLEFmedMEDVQAGI20232023,
+  title = {{{ImageCLEFmed-MEDVQA-GI-2023}}},
+  author = {Hicks, Steven and Michael, Riegler and Vajira, Thambawita and Storås, Andrea M. and Halvorsen, Pål and family=Lange, given=Thomas, prefix=de, useprefix=false and Papachrysos, Nikolaos and Johanna, Schöler and Jha, Debesh},
+  date = {2023-05-08T12:20:33Z},
+  origdate = {2023-02-12T12:22:41Z},
+  url = {https://github.com/simula/ImageCLEFmed-MEDVQA-GI-2023},
+  urldate = {2023-05-12},
+  organization = {{Simula}}
+}
+
+@online{hicksImageCLEFmedMEDVQAGIImageCLEF,
+  title = {{{ImageCLEFmed MEDVQA-GI}} - {{ImageCLEF}} / {{LifeCLEF}} - {{Multimedia Retrieval}} in {{CLEF}}},
+  author = {Hicks, Steven and Riegler, Michael A. and Vajira, Thambawita and Storås, Andrea M. and Halvorsen, Pål and family=Lange, given=Thomas, prefix=de, useprefix=false and Papachrysos, Nikolaos and Johanna, Schöler and Jha, Debesh},
+  url = {https://www.imageclef.org/2023/medical/vqa},
+  urldate = {2023-05-12},
+  file = {/Users/emilchri/Zotero/storage/M67PPPWI/vqa.html}
+}
+
 @online{hintonForwardForwardAlgorithmPreliminary2022,
   title = {The {{Forward-Forward Algorithm}}: {{Some Preliminary Investigations}}},
   shorttitle = {The {{Forward-Forward Algorithm}}},
@@ -1259,6 +1354,15 @@
   file = {/Users/emilchri/Zotero/storage/EQQCUXMU/Hudson og Manning - 2019 - GQA A New Dataset for Real-World Visual Reasoning.pdf;/Users/emilchri/Zotero/storage/XSXLMAUR/1902.html}
 }
 
+@online{HuggingFaceAI,
+  title = {Hugging {{Face}} – {{The AI}} Community Building the Future.},
+  url = {https://huggingface.co/},
+  urldate = {2023-05-11},
+  abstract = {We’re on a journey to advance and democratize artificial intelligence through open source and open science.},
+  keywords = {face,hugging,huggingface},
+  file = {/Users/emilchri/Zotero/storage/F54X5GVD/huggingface.co.html}
+}
+
 @online{hughesMedicalTextClassification2017,
   title = {Medical {{Text Classification}} Using {{Convolutional Neural Networks}}},
   author = {Hughes, Mark and Li, Irene and Kotoulas, Spyros and Suzumura, Toyotaro},
@@ -1317,6 +1421,22 @@
   pubstate = {preprint},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Sound,Electrical Engineering and Systems Science - Audio and Speech Processing,multimodal,transformer},
   file = {/Users/emilchri/Zotero/storage/UYJTBQHX/Jaegle et al. - 2021 - Perceiver General Perception with Iterative Atten.pdf;/Users/emilchri/Zotero/storage/GPZ4V8A8/2103.html}
+}
+
+@online{jainAttentionNotExplanation2019,
+  title = {Attention Is Not {{Explanation}}},
+  author = {Jain, Sarthak and Wallace, Byron C.},
+  date = {2019-05-08},
+  eprint = {1902.10186},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1902.10186},
+  url = {http://arxiv.org/abs/1902.10186},
+  urldate = {2023-05-12},
+  abstract = {Attention mechanisms have seen wide adoption in neural NLP models. In addition to improving predictive performance, these are often touted as affording transparency: models equipped with attention provide a distribution over attended-to input units, and this is often presented (at least implicitly) as communicating the relative importance of inputs. However, it is unclear what relationship exists between attention weights and model outputs. In this work, we perform extensive experiments across a variety of NLP tasks that aim to assess the degree to which attention weights provide meaningful `explanations' for predictions. We find that they largely do not. For example, learned attention weights are frequently uncorrelated with gradient-based measures of feature importance, and one can identify very different attention distributions that nonetheless yield equivalent predictions. Our findings show that standard attention modules do not provide meaningful explanations and should not be treated as though they do. Code for all experiments is available at https://github.com/successar/AttentionExplanation.},
+  pubstate = {preprint},
+  keywords = {attention,Computer Science - Artificial Intelligence,Computer Science - Computation and Language,transformer},
+  file = {/Users/emilchri/Zotero/storage/NBMN2W9U/Jain og Wallace - 2019 - Attention is not Explanation.pdf;/Users/emilchri/Zotero/storage/4WFLGFH2/1902.html}
 }
 
 @article{jiangArtificialIntelligenceHealthcare2017,
@@ -1839,6 +1959,15 @@
   file = {/Users/emilchri/Zotero/storage/ZCXLZJEP/Li et al. - 2022 - YOLOv6 A Single-Stage Object Detection Framework .pdf;/Users/emilchri/Zotero/storage/MQWYPLNC/2209.html}
 }
 
+@online{LLaMA,
+  title = {{{LLaMA}}},
+  url = {https://huggingface.co/docs/transformers/main/model_doc/llama},
+  urldate = {2023-05-11},
+  abstract = {We’re on a journey to advance and democratize artificial intelligence through open source and open science.},
+  keywords = {llama},
+  file = {/Users/emilchri/Zotero/storage/IVFST6LK/llama.html}
+}
+
 @online{LLaMATokenizer,
   title = {{{LLaMA}}\_tokenizer},
   url = {https://huggingface.co/docs/transformers/main/model_doc/llama},
@@ -1954,6 +2083,25 @@
   issue = {4},
   langid = {english},
   file = {/Users/emilchri/Zotero/storage/YWZFGRQQ/McCarthy et al. - 2006 - A Proposal for the Dartmouth Summer Research Proje.pdf}
+}
+
+@incollection{mccloskeyCatastrophicInterferenceConnectionist1989,
+  title = {Catastrophic {{Interference}} in {{Connectionist Networks}}: {{The Sequential Learning Problem}}},
+  shorttitle = {Catastrophic {{Interference}} in {{Connectionist Networks}}},
+  booktitle = {Psychology of {{Learning}} and {{Motivation}}},
+  author = {McCloskey, Michael and Cohen, Neal J.},
+  editor = {Bower, Gordon H.},
+  date = {1989-01-01},
+  volume = {24},
+  pages = {109--165},
+  publisher = {{Academic Press}},
+  doi = {10.1016/S0079-7421(08)60536-8},
+  url = {https://www.sciencedirect.com/science/article/pii/S0079742108605368},
+  urldate = {2023-05-10},
+  abstract = {Connectionist networks in which information is stored in weights on connections among simple processing units have attracted considerable interest in cognitive science. Much of the interest centers around two characteristics of these networks. First, the weights on connections between units need not be prewired by the model builder but rather may be established through training in which items to be learned are presented repeatedly to the network and the connection weights are adjusted in small increments according to a learning algorithm. Second, the networks may represent information in a distributed fashion. This chapter discusses the catastrophic interference in connectionist networks. Distributed representations established through the application of learning algorithms have several properties that are claimed to be desirable from the standpoint of modeling human cognition. These properties include content-addressable memory and so-called automatic generalization in which a network trained on a set of items responds correctly to other untrained items within the same domain. New learning may interfere catastrophically with old learning when networks are trained sequentially. The analysis of the causes of interference implies that at least some interference will occur whenever new learning may alter weights involved in representing old learning, and the simulation results demonstrate only that interference is catastrophic in some specific networks.},
+  langid = {english},
+  keywords = {catastrophic,connectionist,forgetting,llm,transformer},
+  file = {/Users/emilchri/Zotero/storage/S69MYJBV/McCloskey og Cohen - 1989 - Catastrophic Interference in Connectionist Network.pdf;/Users/emilchri/Zotero/storage/JMDDIKUC/S0079742108605368.html}
 }
 
 @article{mccullochLogicalCalculusIdeas1943,
@@ -2189,6 +2337,22 @@
   abstract = {Natural language processing tasks, such as question answering, machine translation, reading comprehension, and summarization, are typically approached with supervised learning on taskspecific datasets. We demonstrate that language models begin to learn these tasks without any explicit supervision when trained on a new dataset of millions of webpages called WebText. When conditioned on a document plus questions, the answers generated by the language model reach 55 F1 on the CoQA dataset - matching or exceeding the performance of 3 out of 4 baseline systems without using the 127,000+ training examples. The capacity of the language model is essential to the success of zero-shot task transfer and increasing it improves performance in a log-linear fashion across tasks. Our largest model, GPT-2, is a 1.5B parameter Transformer that achieves state of the art results on 7 out of 8 tested language modeling datasets in a zero-shot setting but still underfits WebText. Samples from the model reflect these improvements and contain coherent paragraphs of text. These findings suggest a promising path towards building language processing systems which learn to perform tasks from their naturally occurring demonstrations.},
   langid = {english},
   file = {/Users/emilchri/Zotero/storage/DKNZIT5B/Radford et al. - Language Models are Unsupervised Multitask Learner.pdf}
+}
+
+@online{radfordLearningGenerateReviews2017,
+  title = {Learning to {{Generate Reviews}} and {{Discovering Sentiment}}},
+  author = {Radford, Alec and Jozefowicz, Rafal and Sutskever, Ilya},
+  date = {2017-04-06},
+  eprint = {1704.01444},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1704.01444},
+  url = {http://arxiv.org/abs/1704.01444},
+  urldate = {2023-05-12},
+  abstract = {We explore the properties of byte-level recurrent language models. When given sufficient amounts of capacity, training data, and compute time, the representations learned by these models include disentangled features corresponding to high-level concepts. Specifically, we find a single unit which performs sentiment analysis. These representations, learned in an unsupervised manner, achieve state of the art on the binary subset of the Stanford Sentiment Treebank. They are also very data efficient. When using only a handful of labeled examples, our approach matches the performance of strong baselines trained on full datasets. We also demonstrate the sentiment unit has a direct influence on the generative process of the model. Simply fixing its value to be positive or negative generates samples with the corresponding positive or negative sentiment.},
+  pubstate = {preprint},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing,linear,model,neuron,sentiment,transformer},
+  file = {/Users/emilchri/Zotero/storage/4H6B4YYL/Radford et al. - 2017 - Learning to Generate Reviews and Discovering Senti.pdf;/Users/emilchri/Zotero/storage/FK6SPPK3/1704.html}
 }
 
 @online{radfordLearningTransferableVisual2021,
@@ -2496,6 +2660,22 @@
   urldate = {2023-04-11},
   keywords = {LLaMA,llm,token length},
   file = {/Users/emilchri/Zotero/storage/M4Z724GB/16.html}
+}
+
+@online{serranoAttentionInterpretable2019,
+  title = {Is {{Attention Interpretable}}?},
+  author = {Serrano, Sofia and Smith, Noah A.},
+  date = {2019-06-09},
+  eprint = {1906.03731},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1906.03731},
+  url = {http://arxiv.org/abs/1906.03731},
+  urldate = {2023-05-12},
+  abstract = {Attention mechanisms have recently boosted performance on a range of NLP tasks. Because attention layers explicitly weight input components' representations, it is also often assumed that attention can be used to identify information that models found important (e.g., specific contextualized word tokens). We test whether that assumption holds by manipulating attention weights in already-trained text classification models and analyzing the resulting differences in their predictions. While we observe some ways in which higher attention weights correlate with greater impact on model predictions, we also find many ways in which this does not hold, i.e., where gradient-based rankings of attention weights better predict their effects than their magnitudes. We conclude that while attention noisily predicts input components' overall importance to a model, it is by no means a fail-safe indicator.},
+  pubstate = {preprint},
+  keywords = {attention,Computer Science - Computation and Language,transformer,xai},
+  file = {/Users/emilchri/Zotero/storage/2GG2RMMS/Serrano og Smith - 2019 - Is Attention Interpretable.pdf;/Users/emilchri/Zotero/storage/9U8P9FA6/1906.html}
 }
 
 @article{shapleyValueNpersonGames,
@@ -2963,6 +3143,14 @@
   file = {/Users/emilchri/Zotero/storage/SDSH6EMU/Vaswani et al. - 2017 - Attention is All you Need.pdf}
 }
 
+@online{Vgg16TorchvisionMain,
+  title = {Vgg16 — {{Torchvision}} Main Documentation},
+  url = {https://pytorch.org/vision/main/models/generated/torchvision.models.vgg16.html},
+  urldate = {2023-05-11},
+  keywords = {pytorch,vgg16},
+  file = {/Users/emilchri/Zotero/storage/TSPFMBRP/torchvision.models.vgg16.html}
+}
+
 @online{vincentMetaPowerfulAI2023,
   title = {Meta’s Powerful {{AI}} Language Model Has Leaked Online — What Happens Now?},
   author = {Vincent, James},
@@ -3340,6 +3528,23 @@
   eventtitle = {Proceedings of the {{IEEE}}},
   keywords = {Adaptation models,Covariance matrices,Data models,Domain adaptation,interpretation,learning,machine learning,Machine learning,Semisupervised learning,transfer,transfer learning,Transfer learning},
   file = {/Users/emilchri/Zotero/storage/7MUD3RR4/Zhuang et al. - 2021 - A Comprehensive Survey on Transfer Learning.pdf;/Users/emilchri/Zotero/storage/IJ9KA3YR/9134370.html}
+}
+
+@online{zhuVisual7WGroundedQuestion2016,
+  title = {{{Visual7W}}: {{Grounded Question Answering}} in {{Images}}},
+  shorttitle = {{{Visual7W}}},
+  author = {Zhu, Yuke and Groth, Oliver and Bernstein, Michael and Fei-Fei, Li},
+  date = {2016-04-09},
+  eprint = {1511.03416},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1511.03416},
+  url = {http://arxiv.org/abs/1511.03416},
+  urldate = {2023-05-08},
+  abstract = {We have seen great progress in basic perceptual tasks such as object recognition and detection. However, AI models still fail to match humans in high-level vision tasks due to the lack of capacities for deeper reasoning. Recently the new task of visual question answering (QA) has been proposed to evaluate a model's capacity for deep image understanding. Previous works have established a loose, global association between QA sentences and images. However, many questions and answers, in practice, relate to local regions in the images. We establish a semantic link between textual descriptions and image regions by object-level grounding. It enables a new type of QA with visual answers, in addition to textual answers used in previous work. We study the visual QA tasks in a grounded setting with a large collection of 7W multiple-choice QA pairs. Furthermore, we evaluate human performance and several baseline models on the QA tasks. Finally, we propose a novel LSTM model with spatial attention to tackle the 7W QA tasks.},
+  pubstate = {preprint},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing,vqa},
+  file = {/Users/emilchri/Zotero/storage/NNX9JYBA/Zhu et al. - 2016 - Visual7W Grounded Question Answering in Images.pdf;/Users/emilchri/Zotero/storage/LKWTUNUK/1511.html}
 }
 
 @online{zouGeneralizedDecodingPixel2022,

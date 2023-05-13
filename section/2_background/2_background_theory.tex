@@ -13,7 +13,7 @@ Overall, this section of the thesis provides a brief overview of the history of 
 Throughout history, humans have had the desire to wield the power of creating artificial creatures. The concept of artificial beings that are able to observe, evaluate and react to their surroundings can be dated back to the story of Talos in Greek mythology \cite{universityAncientMythsReveal2019}. The concept has since been featured in countless fiction novels and movies, such as Frankenstein, R.U.R, HAL9000, and Metropolis \cite{shelleyFrankensteinModernPrometheus1992, capekRossumUniversalRobots, kubrick2001SpaceOdyssey1969, langMetropolis1927a}. 
 
 Humanity has since taken the dream of artificial beings with consciousness from the realm of fiction and driven the evolution of \gls{ai} as a research field forward with impressive results. 
-AI has become an integral part of people's everyday lives, fueling advances in science and technology, including social media, computational photography, voice assistants, and chatbots \cite{barbastathisUseDeepLearning, hoyAlexaSiriCortana2018, biswasRoleChatGPT2023}. Doctors can now use artificial intelligence to interpret medical images, and artists are using AI to create new art \cite{wangMachineLearningRadiology2012, thrallArtificialIntelligenceMachine2018}.
+AI has become an integral part of people's everyday lives, fueling advances in science and technology, including social media, computational photography, voice assistants, and chatbots \cite{barbastathisUseDeepLearning, hoyAlexaSiriCortana2018, biswasRoleChatGPT2023}. Doctors can now use \gls{ai} to interpret medical images, and artists are using AI to create new art \cite{wangMachineLearningRadiology2012, thrallArtificialIntelligenceMachine2018}.
 
 
 \subsection{A Short History of AI}
@@ -38,7 +38,7 @@ Symbolic Artificial Intelligence refers to a collection of AI methods based on h
 In the period between the 1950s and mid-1990s, symbolic representation was seen as dominant over the other main representation, connectionism, which will be discussed in the next sub-chapter. This was because symbolic representation came closer to the thought human way of learning symbolic representations rather than analyzing neuron activation in the brain and therefore had an advantage over connections \cite{garneloReconcilingDeepLearning2019}. 
 The goal was to provide machines/computer code with human knowledge and patterns of action by defining rules in programs. The main idea behind symbolic AI is to define a high-level symbolic representation that creates the building blocks for the intelligence of the program. In addition to these pre-programmed rules, an expert system is used, which then checks which rules are fulfilled and makes a decision on this basis.
 
-The advantage of symbolic AI is that because of the pre-programmed rules, it is more transparent about what underlies the decisions, and, given the same assumptions, the same result is obtained every time. Because of the rule-based nature of the algorithms, they work well even on data with little variation. They also work well for datasets with few examples because programmers can use a priori knowledge of the problem when defining the rules.
+The advantage of symbolic AI is that because of the pre-programmed rules, it is more transparent about what underlies the decisions, and, given the same assumptions, the same result is obtained every time. Because of the rule-based nature of the algorithms, they work well even on data with little variation. They also work well for datasets with few examples because programmers can use \textit{a priori} knowledge of the problem when defining the rules.
 
 Symbolic AI has disadvantages in that irregular variations cannot be accounted for other than creating new and additional rules to cover all variants that may be encountered. This is a disadvantage in systems that process data from the real world, as they often contain large variations. It is, therefore, often practically impossible to write rules to cover all variations unless the task is severe and well-defined.
 
@@ -53,7 +53,7 @@ Since 2012, models that can train on increasingly large datasets have improved s
 
 The main benefit of connectionism is that the model can learn more complex relationships than symbolic \gls{ai} since the weights in the neurons can be updated as new examples are trained. This allows the method to extract information from datasets with large variations between individual samples.
 
-The main downside, however, is that it's often difficult for humans to gain insight into the formation of judgments, as the process learns by adjusting weights in each of the many neurons. The models, therefore, can learn connected structures that humans would not pick up. Another disadvantage of these models is that they often become more accurate with more data and more complex model structures, making accurate models harder to interpret. Because of the difference in how humans reason and some deep artificial networks learn, new fields of research like \gls{xai} try to make models more transparent and understandable.
+The main downside, however, is that it's often difficult for humans to gain insight into the formation of judgments, as the process learns by adjusting weights in each of the many neurons. The models, therefore, can learn connected structures that humans would not pick up. Another disadvantage of these models is that they often become more accurate with more data and more complex model structures, making accurate models even harder to interpret. Because of the difference in how humans reason and some deep artificial networks learn, new research fields like \gls{xai} try to make models more transparent and understandable.
 
 
     % Combining these two representations
@@ -75,14 +75,15 @@ The main downside, however, is that it's often difficult for humans to gain insi
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{images/ai_ml_dnn_argue.jpeg}
-        \caption[Overview of an alternative structure for \gls{ai}, \gls{ml}, and deep learning. This structure argues that AI is the pursuit of developing non-biological systems with human-like intelligence and can be achieved with methods that do not use machine learning or deep learning, such as symbolic representations in a shallow architecture.]{Overview of an alternative structure for \gls{ai}, \gls{ml}, and deep learning. This structure argues that AI is the pursuit of developing non-biological systems with human-like intelligence and can be achieved with methods that do not use machine learning or deep learning, such as symbolic representations in a shallow architecture. This representation is not de facto and is not used in this work.\\Figure credit: Raschka \cite{raschkaChapterIntroductionMachine2020}}
+        \caption[Overview of an alternative structure for \gls{ai}, \gls{ml}, and deep learning. This structure argues that AI is the pursuit of developing non-biological systems with human-like intelligence and can be achieved with methods that do not use machine learning or deep learning, such as symbolic representations in a shallow architecture.]{Overview of an alternative structure for \gls{ai}, \gls{ml}, and deep learning. This structure argues that AI is the pursuit of developing non-biological systems with human-like intelligence and can be achieved with methods that do not use machine learning or deep learning, such as symbolic representations in a shallow architecture. This representation is not de facto and is not used in this work.\\Figure by Sebastian Raschka \cite{raschkaChapterIntroductionMachine2020}}
         \label{fig:ai_ml_dnn_argue}
     \end{figure} 
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=9cm]{images/ai_ml_dnn.png}
-        \caption[Overview of the structure between artificial intelligence, machine learning, and deep learning. This is the structure used in this thesis.]{Overview of the structure between artificial intelligence, machine learning, and deep learning. This is the structure used in this thesis. Figure by the author.}
+        \caption[Overview of the structure between artificial intelligence, machine learning, and deep learning. This is the structure used in this thesis.]{Overview of the structure between artificial intelligence, machine learning, and deep learning. This is the structure used in this thesis.% Figure by the author.
+        }
         \label{fig:ai_ml_dnn}
     \end{figure} 
 
@@ -135,7 +136,9 @@ The main downside, however, is that it's often difficult for humans to gain insi
                  \caption{The classes of the 4 closest samples are counted, and the majority class is chosen. Of the 4 samples, one is blue, and three are red. The new sample is therefore classified as red.} 
              \end{subfigure}
              }
-            \caption{Example of how the clustering algorithm k-Nearest Neighbors computes the class of a new sample. Figure by the author.}
+            \caption{Example of how the clustering algorithm k-Nearest Neighbors computes the class of a new sample. 
+            %Figure by the author.
+            }
             \label{fig:knn}
         \end{figure}
         
@@ -146,7 +149,7 @@ The main downside, however, is that it's often difficult for humans to gain insi
         \begin{figure}[htb]
             \centering
             \includegraphics[width=11cm]{images/auto_encoder.png}
-            \caption{A diagram of an autoencoder consisting of an encoder and a decoder network. The encoder network maps the input image into a low-dimensional representation, while the decoder network reconstructs the original image from the low-dimensional representation. By minimizing the reconstruction error between input and output, the autoencoder can learn a compressed representation of the input data.\\Figure credit Steven Flores \cite{floresVariationalAutoencodersAre2019}.}
+            \caption{A diagram of an autoencoder consisting of an encoder and a decoder network. The encoder network maps the input image into a low-dimensional representation, while the decoder network reconstructs the original image from the low-dimensional representation. By minimizing the reconstruction error between input and output, the autoencoder can learn a compressed representation of the input data.\\Figure by Steven Flores \cite{floresVariationalAutoencodersAre2019}.}
             \label{fig:auto_encoder}
         \end{figure} 
         
@@ -174,7 +177,7 @@ The main downside, however, is that it's often difficult for humans to gain insi
     \subsection{Deep learning and Neural Networks} \label{sec:2_background_theory_deep_learning_and_neural_networks}
     Neural networks, also known as \glspl{ann}, are an ML method inspired by how the biological brain processes information and learns. Essentially, \glspl{ann} approach the goal of extracting information and constructing knowledge by forming a network of artificial neurons that can process input data. These artificial neurons, called perceptrons, are the building blocks of neural networks and are likewise inspired by biological neurons. In this representation, the inputs to the artificial neuron are synapses on the dendrites, the axon hillock inspires the activation function, and the output from the artificial neuron is the biological axon.
     
-    The artificial neurons process data by weighting the input data and a predetermined bias before passing it through an activation function, such as a sigmoid or ReLu \cite{dubeyActivationFunctionsDeep2022} that produces the neuron's output. When the output of the activation function exceeds a certain threshold, the neuron is activated and sends data to the next layer. No further data is sent if the output does not exceed the threshold.
+    The artificial neurons process data by weighting the input data and a predetermined bias before passing it through an activation function, such as a sigmoid or \gls{relu} \cite{dubeyActivationFunctionsDeep2022} that produces the neuron's output. When the output of the activation function exceeds a certain threshold, the neuron is activated and sends data to the next layer. No further data is sent if the output does not exceed the threshold.
 
     \begin{comment}
     % Remove this
@@ -187,7 +190,7 @@ The main downside, however, is that it's often difficult for humans to gain insi
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{images/deep_neural_network.png}
-        \caption{A fully connected deep artificial neural network with two hidden layers and two input and output neurons. Figure by the author.}
+        \caption{A fully connected deep artificial neural network with two hidden layers and two input and output neurons.} %Figure by the author.}
         \label{fig:deep_network}
     \end{figure}
 
@@ -202,7 +205,7 @@ The main downside, however, is that it's often difficult for humans to gain insi
         \centering
         \includegraphics[width=\linewidth]{images/imagenet_results_graph.jpeg}
         \caption[Overview of the ImageNet competition winners from 2010 to 2016.]{Overview of the ImageNet competition winners from 2010 to 2016. The figure shows how deep networks have significantly improved the networks' ability to guess the right label for the images in the ImageNet dataset. In 2015, the deep network ResNet \cite{heDeepResidualLearning2015} surpassed the average human ability to label these images correctly. \\
-        Figure credit: Gordon Cooper \cite{cooperSoftwareFrameworkRequirements2017}.}
+        Figure by Gordon Cooper \cite{cooperSoftwareFrameworkRequirements2017}.}
         \label{fig:imagenet_results_graph}
     \end{figure}
 
@@ -220,19 +223,19 @@ The main downside, however, is that it's often difficult for humans to gain insi
         \centering
         \includegraphics[width=\linewidth]{images/convolution.png}
         \caption[Illustration of a convolution.]{An illustration of a convolution where a $3 \times 3$ kernel is convolved with a $5 \times 5$ input matrix. The convolution illustrated has full padding and a one-step stride.\\
-        Figure credit: Vincent Dumoulin and Francesco Visin \cite{dumoulinGuideConvolutionArithmetic2018}.}
+        Figure by Vincent Dumoulin and Francesco Visin \cite{dumoulinGuideConvolutionArithmetic2018}.}
         \label{fig:convolutuon}
     \end{figure}
 
 
     % Short history and advantage.
-    The first \gls{cnn} that trained with backpropagation was first proposed by LeCun et al. in 1989 \cite{lecunHandwrittenDigitRecognition1989} and has since had a huge importance in making machines interpret images and videos. A major advantage of using a convolutional layer is that it can compress information while preserving information and the context around the retrieved information. A very common \gls{cnn} architecture is shown in Figure \ref{fig:vgg_cnn} to see. Also seen in the figure is that a typical \gls{cnn} has a fully connected neural network. A \gls{cnn} often uses fully connected layers, unlike a normal neural network, because of the condensation of information with surrounding information, allowing for a network that can take advantage of using many parameters without overfitting.  
+    The first \gls{cnn} that trained with backpropagation was first proposed by LeCun et al. in 1989 \cite{lecunHandwrittenDigitRecognition1989} and has since had a huge importance in making machines interpret images and videos. A major advantage of using a convolutional layer is that it can compress information while preserving information and the context around the retrieved information. A very common \gls{cnn} architecture is shown in Figure \ref{fig:vgg_cnn}. Also seen in the figure is that a typical \gls{cnn} has a fully connected neural network. A \gls{cnn} often uses fully connected layers, unlike a normal neural network, because of the condensation of information with surrounding information, allowing for a network that can take advantage of using many parameters without overfitting.  
 
     \begin{figure}[htb]
         \centerline{
         \includegraphics[width=1.1\linewidth]{images/vgg_cnn.png}}
         \caption[Example of a CNN architecture, illustrated by the VGG16 model.]{Example of a typical CNN architecture, here illustrated by the VGG16 model proposed by Simonyan and Zisserman \cite{simonyanVeryDeepConvolutional2015}. As seen in this figure, the first part of the network convolves the input image and extracts feature maps. These feature maps are then fed into a fully connected artificial network that classifies the image in a given class.\\
-        Figure credit: Satya Mallick \cite{UnderstandingConvolutionalNeural2023}.}
+        Figure by Satya Mallick \cite{UnderstandingConvolutionalNeural2023}.}
         \label{fig:vgg_cnn}
     \end{figure}
     
@@ -272,7 +275,7 @@ The main downside, however, is that it's often difficult for humans to gain insi
         \centerline{
         \includegraphics[width=10cm]{images/Transformer_architecture.png}}
         \caption[Transformer architecture proposed by Vaswani et al.]{Transformer architecture proposed by Vaswani et al.\\
-        Figure credit: Vaswani et al. \cite{vaswaniAttentionAllYou2017}.}
+        Figure by Vaswani et al. \cite{vaswaniAttentionAllYou2017}.}
         \label{fig:transformer_architecture}
     \end{figure}
     
@@ -304,9 +307,10 @@ The main downside, however, is that it's often difficult for humans to gain insi
 
 
 \section{Model evaluation}
-    In the field of machine learning and artificial intelligence, model evaluation refers to the process of measuring the quality and effectiveness of a trained model. These evaluations are essential in developing machine learning systems, allowing researchers and practitioners to determine their models' accuracy and generalization performance. Model evaluation helps to identify any weaknesses or shortcomings in a model's design or training process and enables researchers to make improvements to enhance the model's performance.
+    In the field of machine learning and \gls{ai}, model evaluation refers to the process of measuring the quality and effectiveness of a trained model. These evaluations are essential in developing machine learning systems, allowing researchers and practitioners to determine their models' accuracy and generalization performance. Model evaluation helps to identify any weaknesses or shortcomings in a model's design or training process and enables researchers to make improvements to enhance the model's performance.
 
     \subsection*{Performance Metrics}
+    \label{sec2:performance_metrics}
     Performance metrics are integral to machine learning models, allowing us to measure how well a model performs on a given task. These metrics evaluate the accuracy and effectiveness of a model's predictions by comparing them to the actual values. The choice of performance metrics depends on the problem being solved and the type of model being used. For example, in a binary classification problem, the model's accuracy can be used as a performance metric. In contrast, for multi-class classification problems, metrics like precision, recall, and $F1$ score are more appropriate. In general, model evaluation metrics like precision and recall provide information about the performance of a model on a particular class, while accuracy and $F1$ score provide an overall measure of model performance. Choosing appropriate performance metrics when developing a machine learning model is essential to ensure that the model's predictions align with the intended use case.
     
      % Precision and  Recall
@@ -346,7 +350,8 @@ The main downside, however, is that it's often difficult for humans to gain insi
              \label{fig:confusion_multi}
          \end{subfigure}
          }
-        \caption{Example of confusion matrices, both for a binary (a) and multi-class (b) classifier. Figure by the author.}
+        \caption{Example of confusion matrices, both for a binary (a) and multi-class (b) classifier.%Figure by the author.
+        }
         \label{fig:confusion_matrices}
     \end{figure}
 
@@ -435,12 +440,13 @@ We often use F1 score when the classes are imbalanced and there is a serious dow
 
     
     
-    Google has developed a specialized hardware data processor, the Tensor Processing Unit (TPU), an application-specific integrated circuit (ASIC). The TPU is tailored to optimize the TensorFlow framework, functioning as an AI accelerator. By utilizing the TPU rather than a conventional GPU, models can achieve superior optimization while minimizing the time and power consumption required to train and run compatible models. This hardware optimization is not exclusive to TensorFlow, as other processor designers have integrated specialized machine learning chips. The increased prevalence of such chips will enable machine learning to be executed on new devices while reducing the carbon footprint. Although this thesis does not employ such chips, they serve as a noteworthy illustration of the promising prospect of deploying machine learning techniques in energy-efficient devices, ultimately paving the way toward the democratization of \gls{ai}.
+Google has developed a specialized hardware data processor, the Tensor Processing Unit (TPU), an application-specific integrated circuit (ASIC). The TPU is tailored to optimize the TensorFlow framework, functioning as an AI accelerator. By utilizing the TPU rather than a conventional GPU, models can achieve superior optimization while minimizing the time and power consumption required to train and run compatible models. This hardware optimization is not exclusive to TensorFlow, as other processor designers have integrated specialized machine learning chips. The increased prevalence of such chips will enable machine learning to be executed on new devices while reducing the carbon footprint. Although this thesis does not employ such chips, they serve as a noteworthy illustration of the promising prospect of deploying machine learning techniques in energy-efficient devices, ultimately paving the way toward the democratization of \gls{ai}.
 
 
     
 
     \subsection{Text tokenization}
+    \label{sec2:text_tokenization}
 
     Large language models such as GPT-3 \cite{brownLanguageModelsAre2020} and BERT \cite{devlinBERTPretrainingDeep2019} are trained on massive amounts of text data and can generate coherent and contextually relevant sentences, paragraphs, and even longer texts. However, feeding raw text data to such models can be computationally expensive and lead to suboptimal results due to high input variability. Therefore, text pre-processing techniques such as tokenization convert raw text into a form the model can more easily process.
     
