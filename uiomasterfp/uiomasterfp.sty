@@ -159,9 +159,10 @@
  
 \newcommand{\uiomfp@page@i}{%
   \begin{titlepage}
-    {\tiny .}  %% An invisible dot so the page is not empty.
+    \phantom{.}
+    %{\tiny .}  %% An invisible dot so the page is not empty.
     \setlength{\unitlength}{1bp}
-    % Background colours (or image):
+    % Background colors (or image):
     \AddToShipoutPictureBG*{%
       \put(0,0){\color{uiomfp@light@\uiomfp@color}%
         \rule{21cm}{29.7cm}}

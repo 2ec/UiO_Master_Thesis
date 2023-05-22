@@ -9,7 +9,7 @@ Alternatively, one can state a research hypothesis, but if so, it should follow 
 \section{Problem statement}
 
 % Intro
-For machine learning and computer vision to be truly trustworthy, they will need to be understood. Researchers need to understand the inner workings of the model to improve it and discover biases in the dataset. Users and domain experts utilizing the models need to have trust in the model predicting accurately while using useful features when evaluating. The models should be able to achieve \gls{sota} performance, without sacrificing interpretability and explainability in what they evaluate when predicting. 
+For machine learning and computer vision to be truly trustworthy, they will need to be understood. Researchers need to understand the inner workings of the model to improve it and discover biases in the dataset. Users and domain experts utilizing the models need to have trust in the model predicting accurately while using useful features when evaluating. The models should be able to achieve \gls{sota} performance without sacrificing interpretability and explainability in what they evaluate when predicting. 
 
 % What this is and How I want to do it
 In this thesis, the goal is to explore the roam of visual and linguistic understanding.
@@ -21,10 +21,59 @@ The main topics that will be explored to reach the research goal are:
 \begin{itemize}
     \item Does an explainable image caption model improve its answers when trained on a \gls{vqa} dataset?
     \item With only the explaining model choosing the captions, will the output be more intuitive for humans?
-    \item Are the explanations, both captions and answers from open-ended questions locally faithful to the underlying \gls{cnn} model?
+    \item Are the explanations, both captions, and answers from open-ended questions locally faithful to the underlying \gls{cnn} model?
     \item If there is enough time during this thesis, it would be an interesting task to see if the image caption and \gls{vqa} will perform better when using transfer learning  on a language model pretrained on a large language dataset. 
 \end{itemize}
 
+
+\begin{comment}
+    
+% Research questions:
+\subsection{Research Questions}
+
+This thesis is going to examine how explanatory models in various domains can contribute to gaining new and important insights into the functioning of the \gls{ai} methods.\\
+Formally, the goal can be written as follows:
+\begin{itemize}
+    \item Can \gls{vqa} with explanatory models in different domains provide additional insights into the underlying data?
+\end{itemize}
+
+Although the following research questions are specified, they should be seen as more of a guideline for the experiments rather than defining rules. 
+This is because the overarching goal is exploring how explanatory models in different domains can provide additional insight. Therefore, the objective is a need for more exploration of this topic to gain new insights rather than answering a specific problem.
+
+
+% FLEX-VQA
+\subsubsection{Visual Domain: FLEX-VQA}
+As the task of \gls{vqa} combines both linguistic and visual understanding, the visual part contains significant information regarding the task and therefore benefits from being explained. 
+A locally accurate explanation ensures that the reason given is actually based on what the underlying model evaluates.
+However, for an explanation to be locally accurate, the explanatory model may sometimes work on features on a low level. As humans often evaluate the contents of an image as a whole instead of low-level features, the explanation model could benefit from using locally accurate features to describe the image as a whole.\\
+More formally, the question for the visual domain that would be answered can be noted as follows:
+
+\begin{itemize}
+    \item Will the answers given by a \gls{vqa} system be explained more intuitively with additional locally accurate image descriptions?
+\end{itemize}
+
+For the visual domain, the FLEX-VQA method is proposed. This fusion of the \gls{flex} framework with the \gls{vqa} task archives the ability to both answer questions and describe images using locally accurate visual features. The features are extracted from the feature maps of the \gls{cnn}, labeled with a word with high co-occurrence. Finally, the words from the feature maps get formed into natural language descriptions by a language model.
+
+
+% Alpaca-VQA
+\subsubsection{Linguistic Domain: Alpaca-VQA}
+The explanatory models can only be applied to text input in the linguistic area. Since \glspl{llm} can be trained on large text corpora, they can learn connections and gain valuable insights into how language works. These insights can be used when creating explanatory models and using these linguistic insights to explain an answer to a user intuitively.\\
+Specifically, the research questions in the linguistic field can be formulated as follows:
+
+\begin{itemize}
+    \item Can an \gls{llm} fine-tuned on a new modality brings new insights from its pertaining?
+
+    \item Can additional methods explain an \gls{llm} after training is complete?
+\end{itemize}
+
+The model of choice used to answer the questions regarding the linguistic domain is the Alpaca model, adapted to the \gls{vqa} task. Because it is an \gls{llm} that has been pre-trained on a large corpus, it can use its extensive knowledge base to gain new insights and connections, thus expanding the available dataset for fine-tuning.
+
+\end{comment}
+
+
+
 % What is the result
-With these research questions answered this thesis will be one step closer to an explanatory model that can give insight into how models understand broad concepts in vision and language. This knowledge can be used to make computers understand a more complex worldview and help humans understand what it sees and value.
+With these research questions answered, this thesis will be one step closer to an explanatory model that can give insight into how models understand broad concepts in vision and language. This knowledge can be used to make computers understand a more complex worldview and help humans understand what it sees and value.
+
+
 

@@ -4,18 +4,21 @@
 \raggedbottom %%reduces the gaps between the paragraphs
 \addbibresource{bibliography.bib}            %% ... or whatever
 
+\DeclareGraphicsExtensions{.png,.pdf} % Change this before delivering
+%\DeclareGraphicsExtensions{.pdf,.png}
+
 \input{acronyms}
 \begin{document}
 \frontmatter{}
 \tableofcontents{}
 
 \mainmatter{}
-% include - puts on new page
-% input - puts on same page
+% include - puts on a new page
+% input - puts on the same page
 \setcounter{chapter}{3} % Start chapter numbering from 4
 \setcounter{footnote}{0}
-\chapter{Experiments and Results}
-\input{section/4_Experiments_and_results/4_Experiments_and_results.tex}
+\chapter{Experiments, Results, and Discussion}
+\input{section/4_Experiments_and_results/4_Experiments.tex}
 
 \backmatter{}
 
