@@ -11,8 +11,8 @@ INTRO: What will you look at in this chapter and why? Again, point back to the s
 \end{comment}
 
 
-In this chapter, the Alpaca-VQA model presented in the previous chapter is tested on two different dataset sizes. First, hyperparameters, their values, and the reasons for choosing these are discussed. Then an investigatory experiment will be conducted using a smaller dataset to get initial results for training on more data. 
-These results will be analyzed to understand better how the model responds to the data, aiding understanding how the model responds to the data.
+In this chapter, the Alpaca-VQA model presented in the previous chapter is tested on two different dataset sizes. First, hyperparameters, their values, and the reasons for choosing these are discussed. Then an investigatory experiment is conducted using a smaller dataset to get initial results for training on more data. 
+These results are analyzed to understand better how the model responds to the data, aiding understanding how the model responds to the data.
 The Alpaca-VQA model is then trained on 20,000 samples, and its results are discussed. Methods for visualizing transition scores and training a proxy model explained by \gls{lime} are implemented when the Alpaca-VQA model has finished training. 
 The insights from these supplementary methods uncovered a possibility that the model did not evaluate the image features when predicting an answer. A language-only Alpaca-VQA model was tested to test this hypothesis, and its findings are discussed. 
 Finally, a more general examination of the findings in this work is discussed. 
@@ -24,11 +24,11 @@ MIDDLE SECTIONS: Explain your experiments and evaluations. Include a detailed de
 
 \section{Hyperparameters}
     The Alpaca-VQA model is based on the Stanford Alpaca model and therefore draws inspiration when deciding on hyperparameters from their findings.
-    To finetune the Stanford Alpaca model, the authors suggest training for two or three epochs. The low number of epochs is not to let the model forget the previous knowledge and still be able to use the knowledge gathered from the original training corpus, known as \textit{catastrophic forgetting}. Therefore, for the following experiments, the hyperparameters were chosen as in \autoref{table:hyperparameters_alpaca}. 
+    To finetune the Stanford Alpaca model, the authors suggest training for two or three epochs. The low number of epochs is to prevent the model from forgetting the previous knowledge and still be able to use the knowledge gathered from the original training corpus, known as \textit{catastrophic forgetting}. Therefore, for the following experiments, the hyperparameters were chosen as in \autoref{table:hyperparameters_alpaca}. 
     
     The \gls{lora} parameters were selected to be the same as the original Alpaca-LoRA implementation. 
     The transformer architecture contains four weight matrices for the self-attention module. These weights are for \textit{query} ($W_q$), \textit{key} ($W_k$), \textit{value} ($W_v$) and \textit{output} ($W_o$).
-    In the paper introducing \gls{lora}, the authors find that choosing to apply \gls{lora} to the attention weights for \glspl{llm}, specifically GPT-3 on the datasets WikiSQL \cite{zhongSeq2SQLGeneratingStructured2017} and MultiNLI \cite{williamsBroadCoverageChallengeCorpus2018}, they achieved the best results overall by only adapting the $W_q$ and $W_v$ matrices. The developer of Alpaca-LoRA also confirmed these results, and therefore the experiments in this thesis will also use these update matrices.
+    In the paper introducing \gls{lora}, the authors find that when applying \gls{lora} to the attention weights for \glspl{llm}, specifically GPT-3 on the datasets WikiSQL \cite{zhongSeq2SQLGeneratingStructured2017} and MultiNLI \cite{williamsBroadCoverageChallengeCorpus2018}, they achieved the best results overall by only adapting the $W_q$ and $W_v$ matrices. The developer of Alpaca-LoRA also confirmed these results, and therefore the experiments in this thesis will also use these update matrices.
     The authors of \gls{lora} also did experiments for GPT-2 and GPT-3 to see which effect the rank \textit{r} would have on the performance. They found that \gls{lora} performs competitively with small values of \textit{r}, especially when only adapting $W_q$ and $W_v$.
 
     As seen in \autoref{table:lora_parms}, the \gls{lora} update parameters are only 0.0622\% of the original amount of trainable parameters in the Alpaca-VQA model. This low amount of trainable parameters using \gls{lora} update matrices results in considerably faster training and lower memory use.
@@ -38,7 +38,7 @@ MIDDLE SECTIONS: Explain your experiments and evaluations. Include a detailed de
     The \glspl{gpu} used for this experiment was an Nvidia RTX2080Ti with 11 GB of \gls{vram} and an Nvidia A100 with 40 GB of \gls{vram}. For the initial experiment, the smaller RTX2080Ti was used not to demand more compute resources than needed. The A100 was used when training on the larger datasets, and the batch size was doubled to 256, which benefited from more \gls{vram}. The increased batch size would allow the model to see more of the samples simultaneously during training.
     The number of epochs was kept to three while the step length was increased, effectively making the model evaluate more often in each epoch.
     
-    The size of the validation set was chosen to be roughly 30\% of the training data, and the cutoff length was chosen to be 1485, as this corresponds to $256 \text{ question tokens} + 1229 \text{ tokens from the encoded image}$, as discussed in Section \ref{sec:3_cutoff}. This token length should allow the model to see most of the available input data, both text and images when predicting the output.
+    The size of the validation set was chosen to be roughly 30\% of the training data, and the cutoff length was chosen to be 1485, as this corresponds to $256 \text{ question tokens} + 1229 \text{ tokens from the encoded image}$, as discussed in Section \ref{sec:3_contex_cutoff_eval}. This token length should allow the model to see most of the available input data, both text and images when predicting the output.
 
     The temperature parameter influences the probabilities when predicting new tokens. In practice is a measure of how creative the language model should be during text generation. A lower temperature value makes the model choose tokens it is more confident are correct, and a larger value makes it more creative. As this task is to answer a question, the goal is more based on facts than creativity, and therefore the temperature was chosen to be 0.1.
 
@@ -114,7 +114,7 @@ Before training the model on the complete dataset, a subsection of the available
     \subsubsection{Results}
 
 
-    The graph in \autoref{fig:MED-QA-ImageID_5000_samples-Training_loss} shows the training and evaluation loss for the training session over 3 epochs, with 8 evaluation steps during training. As seen by the graph, the model has a decrease in loss midway before it flattens out without a further significant decrease. This can suggest that the model is able to fit the data in the training set. However, since it does not continue to decrease, it indicates that the model has already learned the relevant parts midway through the training. It can also be seen that the evaluation loss follows the training loss closely, indicating that the model does not overfit the available data. As the loss flattens towards the end, it can suggest that the chosen hyperparameters were reasonable for the size of this training data. 
+    The graph in \autoref{fig:MED-QA-ImageID_5000_samples-Training_loss} shows the training and evaluation loss for the training session over 3 epochs, with 8 evaluation steps during training. As seen by the graph, the model has a decrease in loss midway before it flattens out without a further significant decrease. This can suggest that the model is able to fit the data in the training set. However, since it does not continue to decrease, it indicates that the model has already learned the relevant parts midway through the training. It can also be seen that the evaluation loss follows the training loss closely, indicating that the model does not overfit the available data. The loss flattens towards the end, suggesting that the chosen hyperparameters were reasonable for the size of this training data. 
     However, changing hyperparameters such as learning rate or \gls{lora} parameters may improve the model. By increasing the size of the \gls{lora} update matrices, the model could learn more features, which could increase the fit.
 
     It can also be seen that evaluation loss closely follows the same trend as the training loss. The loss on the validation data is expected to be lower than the training data, which is often called the "generalization gap". When the training and evaluation loss follow each other, separated by the generalization gap, it can indicate that the model did not overfit the available data. If the model were to overfit, the gap between training and evaluation loss would tend to increase at the end. Training loss would continue to decrease, and evaluation loss would flatten out or possibly increase. 
@@ -131,7 +131,7 @@ Before training the model on the complete dataset, a subsection of the available
     \subsubsection{Analysis}
     
     It is helpful to analyze the dataset used in training to investigate why the model often answers with "Not relevant".
-    When analyzing the correct answers in the dataset, as seen in \autoref{fig:ImageCLEFmed-MEDVQA-GI-2023_answer_label_balance}, it can be seen that the dataset is unbalanced and has a majority of correct answers being "Not relevant". This dataset can be balanced by either over-sample the non-majority classes or under-sample the abundant class, making the model learn that "Not Relevant" is not the best answer in 21,7\% of all questions.
+    As seen in \autoref{fig:ImageCLEFmed-MEDVQA-GI-2023_answer_label_balance}, the majority of correct answers in the dataset is "Not relevant". This dataset can be balanced by either over-sample the non-majority classes or under-sample the abundant class, making the model learn that "Not Relevant" is not the best answer in 21,7\% of all questions.
     Going further in the following experiments, the original dataset will be modified. The class "Not relevant" is removed, and the rest of the dataset stays the same. The rationale behind not doing any additional sampling modifications is to reflect the natural occurrences of question-answer pairs in the original dataset. Since this dataset is based on real-world examinations in a hospital, the number of occurrences in the dataset could reflect the real-world occurrence of these findings. In contrast, if this dataset were made synthetically and did not have biases from real-world examinations, there would be more reasonable to modify the number of occurrences of the classes to get a better fit. 
     
     The Alpaca-VQA model will be trained on a larger dataset in the next section. 
@@ -140,7 +140,7 @@ Before training the model on the complete dataset, a subsection of the available
 
     \begin{figure}[htb]
         \centerline{
-        \includegraphics[width=17cm]{images/ImageCLEFmed-MEDVQA-GI-2023_answer_label_balance.png}}
+        \includegraphics[width=1.08\textwidth]{images/ImageCLEFmed-MEDVQA-GI-2023_answer_label_balance}}
         \caption{Overview of the answer label balance in the ImageCLEFmed-MEDVQA-GI-2023 dataset. 
         %Note that the category "segmentation" is already removed from the dataset due to not being relevant for this task at this stage. 
         The category "Other" is a collection of 46 labels that occur in less than 2,5\% of the samples.}
@@ -165,7 +165,7 @@ Before training the model on the complete dataset, a subsection of the available
         \label{fig:dataset_split}
     \end{figure} 
     
-    While training the model on considerably more data would be interesting, the time and computing cost for this experiment would not justify the possible better-trained system, resulting in a more generalized and nuanced model. The experiments carried out with the Alpaca-VQA model are to see how a \gls{llm} would perform on a \gls{vqa} task with image features encoded in the text.
+    While training the model on considerably more data would be interesting, the time and computing cost for this experiment would not justify the possible better-trained system, resulting in a more generalized and nuanced model. The experiments carried out with the Alpaca-VQA model aim to investigate how an \gls{llm} would perform on a \gls{vqa} task with image features encoded in the text.
     The final dataset used for training in this experiment contains 20,000 samples, and the class distribution can be seen in \autoref{fig:ImageCLEFmed-MEDVQA-GI-2023_answer_label_balance-modified}.
 
 
@@ -311,7 +311,7 @@ transition_scores = model.compute_transition_scores(
     It can also be seen how the Alpaca-VQA model splits up words into tokens, like how \textit{"Computed Tomography"} gets split into tokens that can be used in other words. For example, the token \textit{"comput"} be used in words like \textit{"computer"}, \textit{"computed"}, \textit{"computing"}, and so on. By splitting the words into non-redundant tokens, the tokenizer keeps the dictionary of tokens efficient. 
 
     An interesting finding is that the predicted answers are not always from the fine-tuning dataset. In \autoref{table:transition_score}, the predicted answers \textit{"Computed Tomography"} and \textit{"Paraplexis"} does not occur in the dataset Alpaca-VQA is fine-tuned on, namely ImageCLEFmed-MEDVQA-GI-2023. 
-    It can also be seen in the case of \textit{"Paraplexis"} that the model correctly identifies the first token, \textbf{par}, although with a low score. Then the model follows up with the tokens it thinks finish the word by predicting \textit{ed} with a 47,85\% score. Most likely, \textit{"Paraplexis"} was predicted by having a higher average score in the four beams than the correct answer. As the training data has multiple instances of the Paris classification system, potentially diluting the importance of the polyp class following the prefix "Paris".
+    It can also be seen in the case of \textit{"Paraplexis"} that the model correctly identifies the first token, \textit{par}, although with a low score. Then the model follows up with the tokens it thinks finish the word by predicting \textit{ed} with a 47,85\% score. Most likely, \textit{"Paraplexis"} was predicted by having a higher average score in the four beams than the correct answer. As the training data has multiple instances of the Paris classification system, potentially diluting the importance of the polyp class following the prefix "Paris".
     
     The base model of Alpaca-VQA, the Stanford Alpaca, is a fine-tuned instruction-following model based on the \gls{llama} 7 billion parameters model. Upon investigation, \textit{"Computed Tomography"} and \textit{"Paraplexis"} are not part of this instruction-following fine-tuning dataset either. Therefore the knowledge of these medical subjects originates from the original \gls{llama} model. As noted in \autoref{table:llama_pre_train_data} on Page \pageref{table:llama_pre_train_data}, the dataset used for pre-training the \gls{llama} model is disclosed and based on publicly available data, but not made public as the time of writing. Therefore it can not be known exactly where this information stems from, other than from the dataset used for pre-training the \gls{llama} 7B model.
 
@@ -337,7 +337,7 @@ transition_scores = model.compute_transition_scores(
     
     \subsubsection{Proxy model}
     The proxy model used to interpret the Alpaca-VQA model was trained on the predicted outputs of the \gls{llm}. These answers were generated using half of the available dataset, as shown in \autoref{fig:dataset_split}. The rationale behind this was to see how well the Alpaca-VQA model performed on unseen data that could be used to fit the proxy model so that it mimics the underlying model. 
-    The available test set of 20,000 samples with predicted answers by the Alpaca-VQA model was used as a training and testing set for the proxy model. The dataset was split into roughly 70\% training data and 30\% evaluation data. Because a random split was used, the precise numbers used were 14,351 for the training set and 5649 for the test set.
+    The available test set of 20,000 samples with predicted answers by the Alpaca-VQA model was used as a training and testing set for the proxy model. The dataset was split into roughly 70\% training data and 30\% evaluation data. Because a random split was used, the precise numbers used were 14,351 for the training set and 5,649 for the test set.
     The proxy model is a \gls{sdg} classifier implemented by SciKit Learn \cite{SklearnLinearModel}.
     The hyperparameters used when training the proxy model are shown in \autoref{table:proxy_params}. Mostly the parameters used are the default for this implementation of the model, with the most notable difference being that the loss function is a modified Huber instead of the default \textit{hinge}, giving a linear \gls{svm}. 
     The modified Huber is a smooth loss function that brings tolerance to
@@ -364,7 +364,7 @@ transition_scores = model.compute_transition_scores(
     \end{table}
     
 
-    A classification report was made when the \gls{sdg} classifier, used as a proxy model, was fitted. This report can be seen in \autoref{tab:classification_report_proxy}, and it can be seen that the model fits the Alpaca-VQA model with a satisfactory accuracy of 84\%. This score indicates that the proxy model will answer the same as the Alpaca-VQA model approximately 86\% of the time, given the same questions and images.
+    A classification report was made when the \gls{sdg} classifier, used as a proxy model, was fitted. This report can be seen in \autoref{tab:classification_report_proxy}, and it can be seen that the model fits the Alpaca-VQA model with a satisfactory accuracy of 84\%. This score indicates that the proxy model will answer the same as the Alpaca-VQA model approximately 84\% of the time, given the same questions and images.
 
     \input{section/4_Experiments_and_results/classification_report_proxy}
 
@@ -376,10 +376,10 @@ transition_scores = model.compute_transition_scores(
     In order to explain the proxy model, the \gls{lime} method first generates a neighborhood of the data by hiding features randomly from the explaining instance. Then the explaining instance uses this neighborhood to learn locally weighted linear models that explain each class. By learning these linear models, the \gls{lime} instance can interpret which word has a high impact on the predicted outcome. 
     
     
-    As the stacked model design of this explanation pipeline can obscure the underlying Alpaca-VQA model, there are still some insights to be had. The \gls{lime} model is designed to give locally accurate interpretations of which parameters the underlying model uses. Therefore, the \gls{lime} model should be transparent to the proxy model. However, the proxy model has no transparency of which features it bases its decisions on. 
+    Even though the stacked model design of this explanation pipeline can obscure the underlying Alpaca-VQA model, there are still some insights to be obtained. The \gls{lime} model is designed to give locally accurate interpretations of which parameters the underlying model uses. Therefore, the \gls{lime} model should be transparent to the proxy model. However, the proxy model has no transparency of which features it bases its decisions on. 
     The similarities between the Alpaca-VQA model and the proxy model are that they both are trained on data from the same dataset and sample distribution, with the proxy model ignoring ground truth and using the predicted answer from Alpaca-VQA as its correct answer. 
     Therefore, the proxy model does not give a locally accurate representation of the inner workings of the underlying model and may weigh the inputs differently than the Alpaca-VQA model. 
-    Yet, as the proxy model is trained to mimic the underlying model and fits with an accuracy of 86\%, there is still a possibility that the proxy model can give insight into how the \gls{llm} work and possibly exploit biases in the dataset.
+    Yet, as the proxy model is trained to mimic the underlying model and fits with an accuracy of 84\%, there is still a possibility that the proxy model can give insight into how the \gls{llm} work and possibly exploit biases in the dataset.
 
     The outcome of the proxy model being explained by \gls{lime} for one instance can be seen in \autoref{fig:lime_crop}. Here it can be seen that the \gls{lime} instance predicts that the input question is most relevant in answering the question. The ground truth answer can be seen in the top left corner of this figure, together with the predicted answer by Alpaca-VQA and the proxy model. In this figure \gls{lime} highlights words that have a high impact on the outcome. The four most probable classes are visualized to the left in the image. The class "Other" is how the \gls{lime} instance classifies the possibility of the predicted class not being in the top four.
     In the \autoref{fig:lime_crop}, it can be seen that the class "Red" is thought to have the highest probability of being correct. In the middle of the figure, the two most probable classes are explained by visualizing the positive and negative impact different words have on the outcome. The figure shows that both "Red" and "Yellow" mostly depend on the same words and do not consider the image features.
@@ -439,7 +439,7 @@ transition_scores = model.compute_transition_scores(
 As explored in this chapter, visualizing transition scores and having proxy models explained by \gls{xai} methods like \gls{lime} can give insight into how the larger underlying model handles the data. Even though one extra model is stacked on top of the explainability pyramid, it can still provide an understanding of how the model functions. 
 
 An analogy of this proxy model is how most computer vision systems tackle predicting a person's mood by looking at their face. Instead of trying to analyze every facial muscle that makes up the expression, the system looks at the resulting expression when predicting the mood. 
-Another example may be how humans can determine the species of trees. As taking a DNA sample every time is relatively resource-intensive, most people use features such as the shape of the leaves, the color, and the structure of the bark. In this example, the \gls{llm} represent the DNA, the proxy model outside of the three, and \gls{lime} represent which features to pay attention to and why these are important. 
+Another example may be how humans can determine the species of trees. As taking a DNA sample every time is relatively resource-intensive, most people use features such as the shape of the leaves, the color, and the structure of the bark. In this example, the \gls{llm} represents the DNA, the proxy model represents the outside of the three, and \gls{lime} represents which features to pay attention to and why these are important. 
 Using a proxy model, the \gls{llm} can make a prediction, and some of the details can be abstracted to more high-level features, which can be explained by intuitive methods like \gls{lime}.
 
 In the experiment with the proxy model explained by \gls{lime}, like in \autoref{fig:lime_crop}, it was discovered that the proxy model primarily evaluated the question when predicting an answer. 
@@ -451,14 +451,15 @@ This finding suggests that the Alpaca-VQA model trained on the current dataset h
 
 
 % Visualizing transition scores
-The transition scores can be calculated by exploring how the \gls{llm} predicts the next token. In the experiments in \autoref{sec4:vis_transtion_scores}, the transition scores were visualized by studying how these scores progress throughout the predicted answer. A user can gain insight into how the model samples from the available distribution of tokens. In conjunction with a proxy model, these insights can give additional insights into how a model interprets the given dataset. By leveraging additional models and explanation methods, a user can get a combined interpretation of how larger, more complex, and opaque models may use the available data when predicting outputs.
+The transition scores can be calculated by exploring how the \gls{llm} predicts the next token. In the experiments in \autoref{sec4:vis_transtion_scores}, the transition scores were visualized by studying how these scores progress throughout the predicted answer. A user can gain insight into how the model samples from the available distribution of tokens. Further insights about how the model interprets the dataset can be gained by complementing the resulting transition scores with a proxy model. %In conjunction with a proxy model, these insights can give additional insights into how a model interprets the given dataset. 
+By leveraging additional models and explanation methods, a user can get a combined interpretation of how larger, more complex, and opaque models may use the available data when predicting outputs.
 Another advantage of these additional models and explanation methods is that they require much fewer computing resources than training the primary model. 
 This makes these complimentary explanation models have a little-to-no impact during inference, compared to the processing time of an \gls{llm}. 
 These explanation methods will, therefore, add additional information on how the model computes an answer, in combination with details on how the model may use the data. These insights can facilitate a user in gaining important information on how the model solves the task.
 
 % Classification Reports
 From the classification reports, it could be seen that the Alpaca-VQA model had relatively low accuracy. During the generation of answers, as seen when visualizing transition scores, the model sometimes predicts answers not present in the fine-tuning dataset. This demonstrates the ability of the \gls{lora} implementation to resist catastrophic forgetting, letting the model continue to learn new features without forgetting what has already been learned. 
-This prediction of answers not present in the test dataset may be why the model does not archive a higher accuracy. As discussed earlier, another reason for the low accuracy may be the image features encoded into the input text prompt do not bring more signal than noise to the model. The language-only Alpaca-VQA model did archive higher accuracy than the one using image features, hinting that the visual elements bring more noise than value into the model. 
+This prediction of answers not present in the test dataset may be why the model does not archive a higher accuracy. As discussed earlier, another reason for the low accuracy may be that the image features encoded into the input text prompt do not bring more signal than noise to the model. The language-only Alpaca-VQA model did archive higher accuracy than the one using image features, hinting that the visual elements bring more noise than value into the model. 
 
 
 % Challenges and pitfalls experienced
@@ -467,48 +468,7 @@ As the goal of \gls{vqa} is to answer a question as accurately as possible, it o
 By having the FLEX-VQA model both answer the specific question and supplement with a description of the image, using the locally accurate image features, the model can archive  both a locally accurate and a more global explanation of the image. As the image features are used to make the description, the model uses locally accurate image features to create a descriptive text using natural language that describes the image in a broader way than just answering the specific answer. Given both the answer and the description of a single instance, a user can archive a complete picture of how the model interprets the task.
 
 
-
-\subsection{Answering the Research Questions}
-
-This research project aimed to explore how different explanatory methods could provide additional insights into how larger, more complex, and opaque models interpret the underlying data.\\
-For the visual domain, the original question was:
-\begin{itemize}
-    \item Will the answers given by a VQA system be explained more intuitively with additional locally accurate image descriptions?
-\end{itemize}
-
-% Changing the explanation part from FLEX to Alpaca
-As the FLEX-VQA model did not materialize in results, the visual explanation was done by fitting a proxy model, which was explained by \gls{lime}. Although the proxy model and \gls{lime} were not designed to describe an image and used text as input data, the image features were encoded as text. Therefore, the essential elements could be highlighted by the TextExplainer method in \gls{lime}. In \autoref{sec4:proxy_lime}, it was shown that the Alpaca-VQA model on this specific dataset did not evaluate the visual features as necessary compared to the question. Still, the experiment aimed to investigate if these visual highlights would intuitively bring additional important information. The visual representation of the input features of the proxy model was highlighted using a locally accurate \gls{xai} method, \gls{lime}. These features made it more straightforward to investigate further, leading to the experiment with the language-only Alpaca-VQA model. As concluded in \autoref{sec4_language_only_model}, the model tested on language-only proved that the model tested on language-only performed better than the on interpreting images. As this finding was consistent with the proxy model, it provided valuable insight into how the model used the available data. 
-Even though a stacked proxy model design can obscure the underlying model's inner workings, it proved helpful in investigating how the Alpaca-VQA model may have used the input data.\\
-
-
-% Visualize transiton scores 
-In the linguistic domain, the initial research questions were:
-\begin{itemize}
-    \item Can an \gls{llm} fine-tuned on a new modality brings new insights from its pertaining?
-
-    \item Can additional methods explain an \gls{llm} after training is complete?
-\end{itemize}
-
-The correctness of the first question was confirmed in this experiment, as demonstrated in \autoref{sec4:vis_transtion_scores}. The Alpaca-VQA model used knowledge from the underlying \gls{llama} model when predicting answers. As these answers from previous training did not occur in the test set, the model did not answer the question correctly. However, the model understood how the question was structured and appropriately responded with a medically relevant term, which could be correct given a different input image.
-This suggests that the model's \textit{a priori} general knowledge from pretraining could potentially enhance responses when tested on more open-ended tasks or questions. It was fine-tuned to provide a single answer to facilitate the evaluation of the Alpaca-VQA model. This contrasts how many \glspl{llm} are trained as conversation systems that generate longer sentences or paragraphs. As the Alpaca-VQA uses \gls{lora} weights for fine-tuning, it performs as well as the original Alpaca model on the tasks Alpaca was initially trained on. This allows the Alpaca-VQA model to work as an extension on an already capable \gls{llm}. Alpaca-VQA can therefore handle more freeform responses, where the knowledge from the pretraining can contribute to a better answer.
-
-The proxy model and visualization of the Alpaca-VQA model were implemented after the \gls{llm} completed its fine-tuning. Yet, they proved instrumental in interpreting the decision-making process of the underlying model. 
-Consequently, the conducted experiments in this study shed light on how \textit{post-hoc} explanatory models can aid in comprehending larger and more complex models without compromising the accuracy that the larger model can provide.\\
-
-
-% Summary
-In the experiments carried out in this work, the additional locally accurate explanations proved valuable in understanding the model's performance, although not expressed in natural language descriptions. Visualizations of transition scores and the proxy model explained through \gls{lime} provided valuable supplementary information that the \gls{llm} initially lacked, contributing to a better understanding of its usage and reliability.
-
-
-
-
-
-
-
-
-
-
-% SUMMARY:
+ % Summary
 \section{Summary}
 \label{sec4:summary}
 \begin{comment}
@@ -518,7 +478,7 @@ In the experiments carried out in this work, the additional locally accurate exp
 
 This chapter presents the results of examining the Alpaca-VQA model, an \gls{llm} designed to answer questions about the contents of images. An investigatory experiment was conducted to see how the model responded to the available dataset. The dataset was modified to remove the majority class to make more of the samples relevant to the specific task.
 
-The Alpaca-VQA model was trained on the larger dataset of 20,000 samples. From the classification report, it could be seen that the model had learned biases in the dataset and potentially exploited biases in the questions. These findings were discovered using explanatory \textit{post-hoc} methods. Specifically, these methods were a proxy model explained by \gls{lime} and visualizing of transition scores of the \gls{llm}. These additional methods gave supplementary information not present in the original model, which helped provide an understanding of how the model may exploit biases in the dataset. 
+The Alpaca-VQA model was trained on the larger dataset of 20,000 samples. From the classification report, it could be seen that the model had learned biases in the dataset and potentially exploited biases in the questions. These findings were discovered using explanatory post-hoc methods. Specifically, these methods were a proxy model explained by \gls{lime} and visualizing transition scores of the \gls{llm}. These additional methods gave supplementary information not present in the original model, which helped provide an understanding of how the model may exploit biases in the dataset. 
 
 To explore the possibility of linguistic biases in the model, which could lead to inaccurate or unfair results, a language-only version of the model was tested, and compared its performance to the original version that used both images and language.
 

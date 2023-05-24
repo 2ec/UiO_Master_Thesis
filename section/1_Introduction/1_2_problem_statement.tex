@@ -1,5 +1,3 @@
-\label{sec:1_2_problem_statement}
-
 \begin{comment}
 In a short and precise way, state what your research is about in this thesis. It can be in the form of a (set of) research questions, goals/aims, or objectives (or a mix) - but it should clearly state what the problems or challenges you are addressing.
 
@@ -7,12 +5,13 @@ Alternatively, one can state a research hypothesis, but if so, it should follow 
 \end{comment}
 
 \section{Problem statement}
+    \label{sec:1_2_problem_statement}
 
 % Intro
 For machine learning and computer vision to be truly trustworthy, they will need to be understood. Researchers need to understand the inner workings of the model to improve it and discover biases in the dataset. Users and domain experts utilizing the models need to have trust in the model predicting accurately while using useful features when evaluating. The models should be able to achieve \gls{sota} performance without sacrificing interpretability and explainability in what they evaluate when predicting. 
 
 % What this is and How I want to do it
-In this thesis, the goal is to explore the roam of visual and linguistic understanding.
+In this thesis, the goal is to explore the realm of visual and linguistic understanding.
 The visual knowledge will come from a \gls{cnn} that learn features in images. An \gls{rnn} \cite{rumelhartLearningRepresentationsBackpropagating1986, choLearningPhraseRepresentations2014, sutskeverSequenceSequenceLearning2014, bahdanauNeuralMachineTranslation2016} or transformer is used to extract linguistic information from open-ended questions and answers in natural language, taken from a \gls{vqa} dataset. A backward pass that looks for large gradients through layers of the \gls{cnn} will be used to choose locally faithful words to caption the image in an explainable way. 
 
 

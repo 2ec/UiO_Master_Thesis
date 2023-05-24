@@ -1,5 +1,174 @@
-\label{sec:5_conclusions_all_content}
+\section{Summary}
+\label{sec:5_1_summary}
+\begin{comment}
+    Briefly summarize what you have done more or less in a step-by-step manner.
+    
+    Here you summarize and conclude the thesis, and it contains a lot of repetitions from previous chapters. Often, it has been structured in the following three sections, but sometimes they are also merged (especially the first two).
+\end{comment}
 
-\input{section/5_Conclusions/5_1_summary.tex}
-\input{section/5_Conclusions/5_2_main_contributions.tex}
-\input{section/5_Conclusions/5_3_further_research.tex}
+% Intro 
+This thesis has explored the realm of deep neural networks and the potential ways these can be explained. 
+This work has focused on multimodal \gls{vqa} models and how these can be explained in both the visual and linguistic domains.
+The \gls{vqa} task has the benefit of being interactive so that a user can input an image and ask a question regarding the contents of the image. Therefore, the model that processes these requests must be a multimodal model that can comprehend both text and images and fuse these to give a correct answer. 
+
+
+% Method
+    Two distinct frameworks were introduced and discussed to provide better explanations and transparency to \gls{vqa} methods.
+    % FLEX-VQA
+    The first is named FLEX-VQA and combines a robust \gls{vqa} method with the \gls{flex} framework to give locally accurate image descriptions alongside the response to the user's question. 
+    This method uses natural language to explain locally accurate and faithful image features.
+    An image and corresponding caption are inputted during training and used to find co-occurrences between feature maps of the image network and words in the caption. 
+    During interference, the system uses the gradient of the predicted class backpropagated in the \gls{cnn}. The feature maps found in this backpropagation are labeled with the word of highest co-occurrence from the training set and used to generate a natural language description of the image. This ensures that the image description is based on relevant words associated with the predicted class and only features present in the image. This description, faithful to the underlying model combined with a \gls{vqa} task, makes an interactive system where users can ask questions and get informative answers. 
+    As this method did not have results, it was discussed in depth so that future works can use it as motivation for new explainable methods.
+
+
+    % Alpaca-VQA
+    The second method described in this work is the Alpaca-VQA model. This is a \gls{llm} in the \gls{llama} family, trained to interpret images and answer questions. As language models by design are usually not multimodal, the image features were extracted using a \gls{cnn}, which then was encoded into the input text. To make this model even more computationally efficient than originally, a \gls{lora} implementation is used. This freezes the weights of the \gls{llm} and only adds a smaller update matrix during training. Using this optimization, the model can learn new tasks without forgetting what it was previously trained on. During interference, the input was put through the original weights and the new update matrix, and the merged result was given as the output. The dataset used was an extensive collection of images from the gastrointestinal tract, paired with questions and answers to each image. 
+    \glspl{llm} have no intrinsic or intuitive ways to explain how they interpret the input data or do their reasoning. As these transformer-based architectures continue to outperform other methods and therefore get implemented in new systems, it is vital to be able to interpret their decisions.\\
+    
+    
+% Experiments and Results
+    This work investigates how smaller and explainable supplementary methods can be adapted to a larger model to get a more nuanced understanding. 
+    The two methods experimented with are visualizations of transition scores and a proxy model explained by \gls{lime}. The proxy model gives insight into which parts of the input data may contribute most when predicting an answer, and the visualization of transition scores provides insight into the model's certainty when estimating a new token. 
+    % Transition Scores
+    Transition scores extracted during the generation of the \gls{llm}s response give insight into how well the model predicts the token's fit in the sequence. By visualizing these scores, based on the transformer self-attention, a user can get a more intuitive insight into how a sentence is generated. In the experiments, the visualizations provided intuitive insights into the way the model uses prior knowledge from pre-training while providing an assessment of the model's reliability in generating responses.
+    
+    % Proxy model
+    The other method used to explain the Alpaca-VQA model was a proxy model trained to simulate the underlying \gls{llm}. As \glspl{llm} are computationally expensive to run and often challenging to interpret, a model mimicking how the model responds while being explained by \gls{llm} was developed. This model was trained on the responses that the Alpaca-VQA model had given on several image-question-pairs and used the TextExplainer method in \gls{lime} to highlight essential words in making the given prediction. Although the design of a stacked proxy model offers the possibility to obscure the inner workings of the underlying model, it proved useful when investigating how the Alpaca-VQA model used input data.
+
+    With the two explainable post-hoc methods adapted to the Alpaca-VQA model, they could together bring valuable insight into how the underlying model may use the input data. 
+    Insights gained from these models indicated that the Alpaca-VQA model seemed to have discovered a bias in the dataset and only evaluated the questions when responding, mostly ignoring the encoded image features. 
+    A language-only version of the model was tested to explore if the proxy model and transition scores had uncovered these linguistic biases found by the Alpaca-VQA model.
+    The Alpaca-VQA model from the main experiment, trained on both images and text, was given the same test data but with the image features removed. As implied by the supplementary explanatory models, the Alpaca-VQA model utilized biases in the language. This was proven by the language-only model's higher accuracy than the one tested on images and text. 
+    As biases in datasets are common, they are sometimes hard to uncover and can lead to inaccurate or unfair results.
+    As this finding could have been difficult to discover without these additional explanatory models, they have proven to be valuable in developing a complex system with a model that is hard to interpret at the center without sacrificing accuracy. 
+
+    % Summary
+    Through conducting experiments for this study, insights have been gained into the usefulness of post-hoc explanatory models in comprehending larger and more intricate models while maintaining the accuracy that the larger model can offer. 
+
+
+
+
+\section{Main Contributions}
+\label{sec:5_3_main_contributions}
+
+\begin{comment}
+    Again, you "sell" your work. Convince that you have performed a great piece of research (meaning, stay honest and to the facts, but make sure that all your achievements are listed). What are your main contributions? What have you and the readers learned? What is the main knowledge gained? Put this in the context of section 1.2 - problem statement. 
+    Detail out how your research/work answers the initially stated challenges and what the "answers" are. Usually, the main goal/question/objective is repeated and then answered.
+\end{comment}
+% Main findings
+
+    The experiments in this work have proven the ability of post-hoc explainability models to provide valuable insight into the underlying model, with no cost of the explained model's accuracy. 
+    The proxy model presents a useful understanding of how the \gls{llm} may work, even though it is not transparent to the underlying model but instead emulates its behavior. Visualization of transition scores provides an intuitive description of how \glspl{llm} predicts tokens in a sequence.  
+
+    In this work, it has been studied how a \gls{llm} can be adapted to a new modality while preserving the knowledge from the pre-training.
+    % Additional methods explaining an LLM after training is complete
+    This fine-tuned model has then been explained by models adapted after the training is complete. These smaller, more explanatory models have given valuable insights and indicators of how the \gls{llm} works on the given dataset. 
+    By attaching additional methods to a fully trained model, it can leverage all of the initial benefits and accuracy while still providing users with intuitive justifications for its answers. Models that are easier to understand by a user make them more functional and more effective to develop further.\\
+
+   
+
+
+    %The key finding of this research is that larger and more complex models, like an LLM, can be explained by smaller methods added after the primary model has completed training. These additional models add no significant resources use or compute time during inference but provide valuable insights into the model. In addition, these supplementary models do not change how the larger, more complex model works. Therefore, these models can combine complex methods with layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
+
+    
+This research project aimed to explore how different explanatory methods could provide additional insights into how larger, more complex, and opaque models interpret the underlying data.\\
+For the visual domain, the original question was:
+\begin{itemize}
+    \item Will the answers given by a VQA system be explained more intuitively with additional locally accurate image descriptions?
+\end{itemize}
+
+% Changing the explanation part from FLEX to Alpaca
+As the FLEX-VQA model did not materialize in results, the visual explanation was done by fitting a proxy model, which was explained by \gls{lime}. Although the proxy model and \gls{lime} were not designed to describe an image and used text as input data, the image features were encoded as text. Therefore, the essential elements could be highlighted by the TextExplainer method in \gls{lime}. In \autoref{sec4:proxy_lime}, it was shown that the Alpaca-VQA model on this specific dataset did not evaluate the visual features as necessary compared to the question. Still, the experiment aimed to investigate if these visual highlights would intuitively bring additional important information. The visual representation of the input features of the proxy model was highlighted using a locally accurate \gls{xai} method, \gls{lime}. These features made it more straightforward to investigate further, leading to the experiment with the language-only Alpaca-VQA model. As concluded in \autoref{sec4_language_only_model}, the model tested on language-only proved that the model tested on language-only performed better than the on interpreting images. As this finding was consistent with the proxy model, it provided valuable insight into how the model used the available data. 
+Even though a stacked proxy model design can obscure the underlying model's inner workings, it proved helpful in investigating how the Alpaca-VQA model may have used the input data.\\
+
+
+% Visualize transiton scores 
+In the linguistic domain, the initial research questions were:
+\begin{itemize}
+    \item Can an \gls{llm} fine-tuned on a new modality bring new insights from its pertaining?
+
+    \item Can additional methods explain an \gls{llm} after training is complete?
+\end{itemize}
+
+The correctness of the first question was confirmed in this experiment, as demonstrated in \autoref{sec4:vis_transtion_scores}. The Alpaca-VQA model used knowledge from the underlying \gls{llama} model when predicting answers. As these answers from previous training did not occur in the test set, the model did not answer the question correctly. However, the model understood how the question was structured and appropriately responded with a medically relevant term, which could be correct given a different input image.
+This suggests that the model's \textit{a priori} general knowledge from pre-training could potentially enhance responses when tested on more open-ended tasks or questions. It was fine-tuned to provide a single answer to facilitate the evaluation of the Alpaca-VQA model. This contrasts how many \glspl{llm} are trained as conversation systems that generate longer sentences or paragraphs. As the Alpaca-VQA uses \gls{lora} weights for fine-tuning, it performs as well as the original Alpaca model on the tasks Alpaca was initially trained on. This allows the Alpaca-VQA model to work as an extension on an already capable \gls{llm}. Alpaca-VQA can therefore handle more freeform responses, where the knowledge from the pre-training can contribute to a better answer.
+
+The proxy model and visualization of the Alpaca-VQA model were implemented after the \gls{llm} completed its fine-tuning. Yet, they proved instrumental in interpreting the decision-making process of the underlying model. 
+Consequently, the conducted experiments in this study shed light on how post-hoc explanatory models can aid in comprehending larger and more complex models without compromising the accuracy that the larger model can provide.\\
+
+
+% Summary
+In the experiments carried out in this work, the additional locally accurate explanations proved valuable in understanding the model's performance, although not expressed in natural language descriptions. Visualizations of transition scores and the proxy model explained through \gls{lime} provided valuable supplementary information that the \gls{llm} initially lacked, contributing to a better understanding of its usage and reliability.
+
+
+
+\section{Limitations and Future Work}
+\label{sec:5_3_future_work}  % Max two pages
+
+\begin{comment}
+    Your thesis will NOT answer everything. Still, it is important that you here show that you are aware of that and list various things that could be done to follow up on your work. What would be the next steps? Next experiments? Maybe link this up against section 1.3 - scope and limitations.
+\end{comment}
+
+As the scope of this project limits what can be explored in this work, not every aspect of the methods presented and discussed can be examined. Therefore, in this subchapter, some parts of the limitations of the techniques studied in this work are discussed, and ways to overcome these limitations and further investigate these methods in future research are suggested.
+
+\subsection{FLEX-VQA}
+    % Limitations
+    The FLEX-VQA model presented in this work did not provide any results due to technical issues outside the scope of this work. However, the method offers a solution for a better understanding of the methods used in critical computer vision systems deployed today.
+
+    % Future work
+    Some initial issues have been solved when developing this model, but some remain to be overcome. The most prominent remaining problems have been discussed in  \autoref{subsec:no_flex}. Most notable is to make the \gls{flex} framework non-dependent on the machine learning framework Caffe. As this framework is no longer developed, its support for modern hardware and complimentary software dependencies is decreasing. The \gls{flex} framework still possesses the potential of making systems dependent on \glspl{cnn} more transparent to its users. Therefore, future research is encouraged to develop this method further and other variants of locally accurate post-hoc methods. 
+
+    % making FLEX run
+    In future research, the \gls{flex} framework should not build its dependence on Caffe for this method to be implemented efficiently and versatilely. 
+    This adaptation can be made in a multitude of ways, where the main goal would be to decouple the \gls{cnn} feature extraction from \gls{flex}. Modern machine learning frameworks have properties that easily traverse networks and list their feature maps. This allows for a more manageable implementation of \gls{flex} that can be agnostic of the specific \gls{cnn} model used. 
+
+
+    % Transformers and FLEX
+    One restriction of the current implementation of \gls{flex} is that it is based on explaining \glspl{cnn}. Most computer vision systems today rely on \glspl{cnn} as the algorithms window to the outside world. 
+    Transformer-based vision systems are, however, gaining popularity and are used instead of \glspl{cnn} in many modern systems. As the current state of \gls{flex} depends on labeling \gls{cnn} feature maps, it does not currently work with other vision algorithms. The \gls{flex} framework may still be adapted in future work to the transformer architecture, as the main requirement is that it can map specific features in the input to particular parts of the internal features. Various methods have been developed to explain transformers more transparently. Many of these rely on a GradCAM method or similar methods based on heat-maps of gradients \cite{barkanGradSAMExplainingTransformers2021, cheferTransformerInterpretabilityAttention2021}.
+    These heat-map-based methods can, in theory, be used to map specific labels to the gradients and relevance matrices throughout the computation, resulting in a locally accurate representation of these matrices. By labeling these features with co-occurring words, \gls{flex} can be used to generate descriptive captions using the locally accurate features of the transformer.
+    
+    A limitation that could be solved by adapting \gls{flex} to a transformer is more accessible transfer learning compared to \glspl{rnn}. Currently, the \gls{flex} framework needs a dataset containing image descriptions and a single class label. The class label is used to train the \gls{cnn} to predict the class, and the image description is used to train the \glspl{lstm} to output the locally accurate description. Not many datasets are available with both these features, so the transformer could be pre-trained using image descriptions to label its gradient features. \gls{flex} can then label features in the gradients before the transformer is fine-tuned on the specific task. Although the development of this method uses \gls{flex} in between transfer learning and does not become fully post-hoc, it does not affect the fine-tuned model. Therefore, it still contains the same benefits of allowing the finished model to train and interpret uninterrupted while providing transparency.
+
+
+\subsection{Alpaca-VQA}
+
+% Limitations and Future Work
+
+    % No fine-tuned cnn
+    One constraint of the implemented Alpaca-VQA model is that it uses a \gls{cnn} not pre-trained for the given task. It may not be a robust approach depending on the fact that the feature maps of the pre-trained classes from ImageNet are similar to the ones observed in separate tasks. 
+    Future work can include fine-tuning the \gls{cnn} used for the specific task, making the extracted image feature more relevant. 
+    The \gls{cnn} used in future works is encouraged to experiment with object detection models that can encode \gls{roi} or bounding boxes so that the \gls{llm} can learn to interpret where the objects are in the image.
+
+    % Bad accuracy on the experiments conducted in this thesis.
+    % The LLM may not be the best fit for the dataset used. 
+    % Fine-tune an LLM to a medical dataset that could be combined with a vision-LLM
+    In the experiments conducted in this work, the goal has not been to train a state-of-the-art \gls{llm}, but rather explore how it can be explained. This is reflected in the relatively low accuracy for Alpaca-VQA on the given dataset.
+    However, in future experiments, \gls{llm} could be extended to make it more beneficial to the end user.
+    An interesting future work could include a \gls{llm} pre-trained on domain-specific data, like a medical dataset, before fine-tuning to include images. This way, the system user could ask questions about an image or simply text-only questions. Therefore, the \gls{llm} could be used as a multimodal personal assistant in a domain-specific setting. 
+
+    % It does not answer the questions using natural language.
+    The Alpaca-VQA model used in this work is trained to output only the predicted answer to a question to facilitate evaluation. However, this does not use the ability of \gls{llm} to construct sentences in natural language. Because the model is pre-trained on instructions-following tasks, it can still generate longer responses. Techniques such as self-instruct, also used when generating data for the Stanford Alpaca model, can make datasets with natural language answers. Future work can use these methods to create a dataset containing descriptive information in natural language based on factually correct information. 
+
+    % Step-by-step reasoning
+    Interesting results were investigated in previous work by asking \glspl{llm} to answer step-by-step, also called chain-of-thought \cite{lievinCanLargeLanguage2023, weiChainofThoughtPromptingElicits2023}. This prompt engineering causes the model to output its thought process, allowing users to follow their reasoning. The Alpaca-VQA did not respond to this prompt, most likely due to its relatively few parameters compared to other \glspl{llm}. However, it has been found that by training with more data, \gls{llama} models achieve comparable results to larger models \cite{touvronLLaMAOpenEfficient2023}. Future research on step-by-step prompting in multimodal models could provide valuable insights into how \glspl{llm} works.
+    
+
+\subsection{Explainable Methods}
+
+% Limitations and Future Work
+    The experiments in this work have demonstrated how smaller, more transparent models can be adapted to explain a more complex and opaque model. 
+    However, the models described in this thesis have some limitations. 
+    % Self-Attention may not be accurate to the decisions made by the model
+    One of these is that the visualization of transition scores and self-attention are unreliable sources of insight into how the model works. 
+    Some previous works have investigated how attention may not be an interpretable nor accurate method to explain methods based on attention \cite{serranoAttentionInterpretable2019, jainAttentionNotExplanation2019}. 
+    As presented in this work, these features can still bring valuable insights into how the model work and interprets the data. 
+    A future experiment worth investigating would therefore be a larger user study, asking end users whether attention or transition scores make a model more intuitive.
+    
+    % The proxy model is not transparent to the underlying LLM
+    The proxy model used in this work had the limitation that it was not transparent how the Alpaca-VQA worked. It was designed to simulate the behavior of the \gls{llm} instead of giving direct insight into how the underlying model functioned. Yet, during experimentation, it provided valuable insights that helped discover bias in the Alpaca-VQA model. 
+    As more complex models get higher accuracies at the cost of transparency, future work is needed to develop models with intrinsic explainability or methods that can be attached to a larger model post-hoc.
+
+    % Some smart end sentence here
+

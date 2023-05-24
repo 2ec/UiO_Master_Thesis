@@ -1,30 +1,30 @@
-\begin{comment}
-Here you summarize and conclude the thesis, and it contains a lot of repetitions from previous chapters. Often, it has been structured in the following three sections, but sometimes they are also merged (especially the first two).
-\end{comment}
-
-\documentclass[UKenglish]{article}
+\documentclass[UKenglish]{DUO/ifimaster}
 \input{usepackage}
 
-
-
 \raggedbottom %%reduces the gaps between the paragraphs
-
 \addbibresource{bibliography.bib}            %% ... or whatever
+
+
+%\DeclareGraphicsExtensions{.png,.pdf} % Change this before delivering
+\DeclareGraphicsExtensions{.pdf,.png}
 
 \input{acronyms}
 \begin{document}
+%\onehalfspacing
 \frontmatter{}
 \tableofcontents{}
-%\listoffigures{}
-%\listoftables{}
 
 \mainmatter{}
-% include - puts on new page
-% input - puts on same page
+% include - puts on a new page
+% input - puts on the same page
+\setcounter{chapter}{4} % Start chapter numbering from 5
+\setcounter{footnote}{0}
+\chapter{Conclusions}
 \input{section/5_Conclusions/5_conclusions_all_content}
 
 \backmatter{}
 
 \newpage
+%\singlespacing
 \printbibliography
 \end{document}

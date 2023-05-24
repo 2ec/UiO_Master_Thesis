@@ -14,11 +14,14 @@
 
 \addbibresource{bibliography.bib}            %% ... or whatever
 \input{acronyms}
+\makeglossaries
 
+%\DeclareGraphicsExtensions{.png,.pdf} % Change this before delivering
+\DeclareGraphicsExtensions{.pdf,.png} % Change this before delivering
 
-\DeclareGraphicsExtensions{.png,.pdf} % Change this before delivering
 
 \begin{document}
+
 
 \uiomasterfp[
     author={Emil Christopher Gjøstøl Strømsvåg}, 
@@ -36,23 +39,33 @@
 %  program={Informatics: Robotics and Intelligent Systems},  %% ... or your programme
 %  long]                                        %% ... or long
 
+
+
+
+
 \frontmatter{}
-\chapter*{Abstract}                   %% ... or Sammendrag or Samandrag
+\chapter*{Abstract}                
 \input{section/Abstract}
 \tableofcontents{}
 \listoffigures{}
 \listoftables{}
+% Print Acronyms 
+\printglossary[type=\acronymtype, title=List of Acronyms]
 
-\chapter*{Preface}                    %% ... or Forord
+
+
+%\onehalfspacing
+\singlespacing
+
+\chapter*{Preface}                  
 \input{section/Preface.tex}
 
 \mainmatter{}
-%\part{Introduction}                   %% ... or Innledning or Innleiing
 
-\chapter{Introduction}                  %% ... or Bakgrunn
-%\input{section/1_Introduction/1_Introduction_all_content.tex}
 
-% \part{The project}                    %% ... or ??
+
+\chapter{Introduction}               
+\input{section/1_Introduction/1_Introduction_all_content.tex}
 
 \chapter{Background}
 \input{section/2_background/2_background_all_content.tex}
@@ -68,6 +81,7 @@
 
 
 \backmatter{}
+\singlespacing
 \printbibliography
 
 \end{document}

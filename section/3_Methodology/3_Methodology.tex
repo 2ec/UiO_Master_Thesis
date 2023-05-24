@@ -503,7 +503,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
         A subset of the images and videos were annotated by at least one experienced gastroenterologist, from Bærum Hospital, the Cancer Registry of Norway, or Karolinska University Hospital in Sweden, together with one or more experienced persons working in the medical field.  
         
         The dataset can benefit medical and technical communities exploring semi-supervised and unsupervised methods. It can also help artificial intelligence-based computer-assisted diagnosis systems to provide better patient treatment.
-        The full HyperKvasir dataset is available to the public and is open access\footnote{https://doi.org/10.17605/OSF.IO/MH9SJ, https://datasets.simula.no/hyper-kvasir}.
+        The full HyperKvasir dataset is available to the public and is open access\footnote{https://doi.org/10.17605/OSF.IO/MH9SJ}\footnote{https://datasets.simula.no/hyper-kvasir}.
 
 
       
@@ -532,7 +532,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
         \end{figure}
 
 
-        First, the nested structure was flattened so each row received the appropriate image ID, making the prompts easier to parse. The resulting structure can be seen in Figure \ref{fig:colon_vqa_pandas}. However, some questions, particularly regarding localization and color, have multiple correct answers. Instead of teaching the model to score multiple correct answers, the questions were flattened. Evaluating multiple correct answers to a question can be challenging because the model needs to know which answer is correct and which is incorrect. To circumvent this challenge, the answers in the dataset are flattened so that each row contains only one correct answer.
+        First, the nested structure was flattened so each row received the appropriate image ID, making the prompts easier to parse. The resulting structure can be seen in Figure \ref{fig:colon_vqa_pandas}. However, some questions, particularly regarding localization and color, have multiple correct answers. Instead of teaching the model to score multiple correct answers, the questions were flattened. Evaluating numerous correct answers to a question can be challenging because the model needs to know which answer is correct and which is incorrect. To circumvent this challenge, the answers in the dataset are flattened so that each row contains only one correct answer.
 
         \begin{figure}[htb]
             \centering
@@ -558,11 +558,12 @@ Therefore, these two models discussed in this chapter will investigate explanati
         
         
     \subsection{Context Window, Cuttoff, and Evaluation Metrics}
+    \label{sec:3_contex_cutoff_eval}
          This section will discuss essential features when training language models: context window, cutoff length, and evaluation metrics. 
 
         % How to train the model
         \subsubsection{Context window and cutoff length}
-        \label{sec:3_cutoff}
+       
         The context window of a language model refers to the number of words or tokens considered in predicting the next word or token. The context window is typically linked to both the input prompt and the output since the model refers to the input when generating the output. When training \glspl{llm}, the model receives a sequence of input tokens and produces a series of output tokens. 
         Similarly, when fine-tuning a pre-trained language model on a specific task, the context window is also linked to both the input and the output. 
         The input would consist of the prompt defined by the context window, and the output would be the predicted tokens that the \gls{llm} predicts based on the tokens in the context window. 
