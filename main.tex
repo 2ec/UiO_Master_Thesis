@@ -1,28 +1,21 @@
-\documentclass[UKenglish]{DUO/ifimaster}  %% ... or USenglish or norsk or nynorsk
-%\usepackage[UKenglish]{uiomasterfp/uiomasterfp}
-%\documentclass[UKenglish]{report}
+\documentclass[UKenglish]{DUO/ifimaster}
 \usepackage[UKenglish]{uiomasterfp/uiomasterfp}
 
 \input{usepackage}
 \raggedbottom %%reduces the gaps between the paragraphs
 
-%\title{Thesis Title}        %% ... or whatever
-%\subtitle{A subtitle of your thesis }         %% ... if any
-%\author{Emil Christopher Gjøstøl Strømsvåg}                      %% ... or whoever 
-
 \setabbreviationstyle[acronym]{long-short}
 
-\addbibresource{bibliography.bib}            %% ... or whatever
+\addbibresource{bibliography.bib}           
 \input{acronyms}
 \makeglossaries
 
 %\DeclareGraphicsExtensions{.png,.pdf} % Change this before delivering
 \DeclareGraphicsExtensions{.pdf,.png} % Change this before delivering
 
+\linespread{1.2} % regulate line spacing
 
 \begin{document}
-
-
 \uiomasterfp[
     author={Emil Christopher Gjøstøl Strømsvåg}, 
     colour={orange},
@@ -35,13 +28,6 @@
     subtitle={A subtitle of your thesis},
     image={images/forside_bilde.pdf}
 ]
-%\duoforside[dept={Department of Informatics},   %% ... or your department
-%  program={Informatics: Robotics and Intelligent Systems},  %% ... or your programme
-%  long]                                        %% ... or long
-
-
-
-
 
 \frontmatter{}
 \chapter*{Abstract}                
@@ -53,16 +39,14 @@
 \printglossary[type=\acronymtype, title=List of Acronyms]
 
 
-
 %\onehalfspacing
-\singlespacing
+%\singlespacing
+
 
 \chapter*{Preface}                  
 \input{section/Preface.tex}
 
 \mainmatter{}
-
-
 
 \chapter{Introduction}               
 \input{section/1_Introduction/1_Introduction_all_content.tex}

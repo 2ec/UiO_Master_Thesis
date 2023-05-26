@@ -4,25 +4,34 @@
 Here you can tell the reader about the scope of your thesis, kind of meaning describing what you have done in slighter more detail. The question in section 1.2 might be of the general type, but are you using any specific case studies/application scenarios? Are you limited to a specific type of platform? Have you performed experiments in special environments only, etc.? Describe such information here so that the reader does not expect something going beyond this.
 \end{comment}
 
-\section{Scope and limitations}
+\section{Scope and Limitations}
+
 
 % Scope:
+    In order to answer the research questions and find a solution to the problem posed, the scope of the work must be focused. This section describes which methods are used, their scope, and where the main limitations lie. Two different models are proposed and described, one taking on the explanation in the visual domain and the other in the linguistic domain.
 
-   % Fine-tune the LLM to
+    % Short description of the FLEX-VQA model so that the scope can be narrowed
+    For the visual domain, the FLEX-VQA method is suggested. This is a fusion of an \gls{xai} method called \gls{flex} \cite{wickramanayakeFLEXFaithfulLinguistic2019} with the \gls{vqa} task. The FLEX-VQA method achieves the ability to both answer questions and describe images using locally accurate visual features. The features are extracted from the feature maps of the \gls{cnn}, which are pre-labeled with descriptive words. Finally, a language model converts the words from the feature maps into natural language descriptions.
 
-    
+   % Short description of the Alpaca-VQA model so that the scope can be narrowed
+    In the linguistic area, a \gls{llm} is used in this work. The model is based on the Stanford Alpaca \cite{taoriStanfordCRFM, taoriStanfordAlpacaInstructionfollowing2023}, based on \gls{llama} \cite{touvronLLaMAOpenEfficient2023}. This Alpaca model is adapted to the multimodal \gls{vqa} task, giving it the name Alpaca-VQA. Since it is a \gls{llm} that has been pre-trained on a large corpus, it can use its extensive knowledge base to gain new insights and connections, thus expanding the available dataset for fine-tuning. 
 
 
 % Limitations:
     
-    % Only with one CNN (VGG16) and one LLM
     
-    
+    %  Only one LLM
+    Since training an \gls{llm} requires a large number of computational resources, it is neither feasible nor ethical to train it from scratch for the experiments in this work. Fortunately, pre-trained \glspl{llm} are openly available and can be fine-tuned to the specific task. Since the subject of this work is not to create a state-of-the-art \gls{llm}, the experiments were limited to using a single \gls{llm}.
+    % Restrict the LLM only to answer the response and not whole sentences
+    One of the measures used to accomplish that the \gls{llm} can be analyzed and evaluated with as little bias as possible is that it is trained to only output a single answer to a question. \glspl{llm} have the ability to answer in long sentences, but the quality of natural language can be challenging to evaluate \cite{reiterStructuredReviewValidity2018}. Therefore, this work limits the answer length to test the answer directly with ground truth.
+
+    % Only with one CNN (VGG16)
+    Since the initial implementation of \gls{flex} the framework uses a variant of VGG16 \cite{simonyanVeryDeepConvolutional2015, gaoCompactBilinearPooling2016}, it was decided to use the VGG16 model to also extract image features into the \gls{llm} prompt. 
+    Other methods could have yielded better results, such as object recognition models. Still, by having the same image extractor in both FLEX-VQA and Alpaca-VQA, their explanations could be compared more easily.
+
+
     % Only one dataset
-
-    
-
-    
+    The experiments performed in this work are trained using a single dataset. Although multiple datasets could have examined more general findings, the scope was narrowed to focus on complementary explanatory methods. This is because these explanatory methods do not focus on the specific dataset but rather on how the primary model uses the samples.
     
    
     

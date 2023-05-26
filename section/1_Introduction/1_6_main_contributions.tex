@@ -5,4 +5,59 @@ It is important to “sell” your work to the reader, making him interested and
 \end{comment}
 
 \section{Main Contributions}
+% https://github.com/2ec/alpaca-lora
+% https://github.com/2ec/FLEX-VQA
 
+The experiments conducted in this research project demonstrate the effectiveness of post-hoc explainability models in providing valuable insights into the underlying model without sacrificing accuracy. 
+By employing a proxy model that simulates the behavior of the \gls{llm}, a useful understanding of how the \gls{llm} works can be gained. The visualization of transition scores further contributes to the intuitive description of how the \gls{llm} predicts tokens in a sequence.
+
+This work explores the adaptability of \glspl{llm} to new modalities while preserving pre-training knowledge. By adding additional methods to a fully trained model, it is possible to leverage the benefits and accuracy of the initial model while providing users with intuitive justifications for its answers.
+
+The key finding of this research is that larger and more complex models, like an \gls{llm}, can be explained by smaller methods added after the model has completed training. These additional explanatory methods add no significant resource use or compute time during inference but provide valuable insights into the model. In addition, these supplementary models do not change how the larger, more complex model works. Therefore, these methods can combine complex models with supplementary layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
+
+The main contributions are an understanding of how smaller and interpretable methods can be added to a model that is finished training. These methods provide valuable insights into how the main model may work, even though the methods are not interpreting the main model itself but a proxy model. 
+All the code used in the experiments conducted in this work is open and available.\footnote{https://github.com/2ec/alpaca-lora}\footnote{https://github.com/2ec/FLEX-VQA}
+
+\begin{comment} 
+% From the Main Conclusions from Chapter 5:
+
+In this work, it has been studied how a \gls{llm} can be adapted to a new modality while preserving the knowledge from the pre-training.
+% Additional methods explaining an LLM after training is complete
+This fine-tuned model has then been explained by models adapted after the training is complete. These smaller, more explanatory models have given valuable insights and indicators of how the \gls{llm} works on the given dataset. 
+By attaching additional methods to a fully trained model, it can leverage all of the initial benefits and accuracy while still providing users with intuitive justifications for its answers. Models that are easier to understand by a user make them more functional and more effective to develop further.\\
+
+
+
+
+%The key finding of this research is that larger and more complex models, like an LLM, can be explained by smaller methods added after the primary model has completed training. These additional models add no significant resources use or compute time during inference but provide valuable insights into the model. In addition, these supplementary models do not change how the larger, more complex model works. Therefore, these models can combine complex methods with layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
+
+    
+This research project aimed to explore how different explanatory methods could provide additional insights into how larger, more complex, and opaque models interpret the underlying data.\\
+For the visual domain, the original question was:
+\begin{itemize}
+    \item Will the answers given by a VQA system be explained more intuitively with additional locally accurate image descriptions?
+\end{itemize}
+
+% Changing the explanation part from FLEX to Alpaca
+As the FLEX-VQA model did not materialize in results, the visual explanation was done by fitting a proxy model, which was explained by \gls{lime}. Although the proxy model and \gls{lime} were not designed to describe an image and used text as input data, the image features were encoded as text. Therefore, the essential elements could be highlighted by the TextExplainer method in \gls{lime}. In \autoref{sec4:proxy_lime}, it was shown that the Alpaca-VQA model on this specific dataset did not evaluate the visual features as necessary compared to the question. Still, the experiment aimed to investigate if these visual highlights would intuitively bring additional important information. The visual representation of the input features of the proxy model was highlighted using a locally accurate \gls{xai} method, \gls{lime}. These features made it more straightforward to investigate further, leading to the experiment with the language-only Alpaca-VQA model. As concluded in \autoref{sec4_language_only_model}, the model tested on language-only proved that the model tested on language-only performed better than the on interpreting images. As this finding was consistent with the proxy model, it provided valuable insight into how the model used the available data. 
+Even though a stacked proxy model design can obscure the underlying model's inner workings, it proved helpful in investigating how the Alpaca-VQA model may have used the input data.\\
+
+
+% Visualize transiton scores 
+In the linguistic domain, the initial research questions were:
+\begin{itemize}
+    \item Can an \gls{llm} fine-tuned on a new modality bring new insights from its pertaining?
+
+    \item Can additional methods explain an \gls{llm} after training is complete?
+\end{itemize}
+
+The correctness of the first question was confirmed in this experiment, as demonstrated in \autoref{sec4:vis_transtion_scores}. The Alpaca-VQA model used knowledge from the underlying \gls{llama} model when predicting answers. As these answers from previous training did not occur in the test set, the model did not answer the question correctly. However, the model understood how the question was structured and appropriately responded with a medically relevant term, which could be correct given a different input image.
+This suggests that the model's \textit{a priori} general knowledge from pre-training could potentially enhance responses when tested on more open-ended tasks or questions. It was fine-tuned to provide a single answer to facilitate the evaluation of the Alpaca-VQA model. This contrasts how many \glspl{llm} are trained as conversation systems that generate longer sentences or paragraphs. As the Alpaca-VQA uses \gls{lora} weights for fine-tuning, it performs as well as the original Alpaca model on the tasks Alpaca was initially trained on. This allows the Alpaca-VQA model to work as an extension on an already capable \gls{llm}. Alpaca-VQA can therefore handle more free-form responses, where the knowledge from the pre-training can contribute to a better answer.
+
+The proxy model and visualization of the Alpaca-VQA model were implemented after the \gls{llm} completed its fine-tuning. Yet, they proved instrumental in interpreting the decision-making process of the underlying model. 
+Consequently, the conducted experiments in this study shed light on how post-hoc explanatory models can aid in comprehending larger and more complex models without compromising the accuracy that the larger model can provide.\\
+
+
+% Summary
+In the experiments carried out in this work, the additional locally accurate explanations proved valuable in understanding the model's performance, although not expressed in natural language descriptions. Visualizations of transition scores and the proxy model explained through \gls{lime} provided valuable supplementary information that the \gls{llm} initially lacked, contributing to a better understanding of its usage and reliability.
+\end{comment}

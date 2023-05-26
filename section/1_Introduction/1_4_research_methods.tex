@@ -4,9 +4,23 @@
 You are doing a research education, so it might be nice to show that you are aware of different ways of doing research. Here, you should describe your research methods showing the reader that you are conscious of your method. There exist several methodologies, and finding a reference somewhere would probably be good.
 \end{comment}
 
-\section{Research methods}
+\section{Research Methods}
 
-In order to answer the research goals and achieve the goal of this thesis, a proof of concept method was developed and implemented by the author. In order to have an implementation the new method could be tested against, an existing code base was used as chosen as a starting point. The most fitting existing method was \gls{flex} \cite{wickramanayakeFLEXFaithfulLinguistic2019}. 
 
-This method was chosen because it proposes a novel method to associate features responsible for the decisions in a \gls{cnn} model with words. This way, it can generate intuitive, descriptive, and faithful explanations that annotate objects in an image. These post-hoc justifications for classification using natural language are achieved using a \gls{cnn} for extracting features in images and two stacked \glspl{lstm} to extract features from text descriptions during the training phase, and use this knowledge and \glspl{lstm}, in conjunction with image features to give faithful descriptions during testing, when no text descriptions are supplied with the image.
 
+\begin{comment}
+    In order to answer the research goals and achieve the goal of this thesis, a proof of concept method was developed and implemented by the author. In order to have an implementation the new method could be tested against, an existing code base was used as chosen as a starting point. The most fitting existing method was \gls{flex} \cite{wickramanayakeFLEXFaithfulLinguistic2019}. 
+    
+    This method was chosen because it proposes a novel method to associate features responsible for the decisions in a \gls{cnn} model with words. This way, it can generate intuitive, descriptive, and faithful explanations that annotate objects in an image. These post-hoc justifications for classification using natural language are achieved using a \gls{cnn} for extracting features in images and two stacked \glspl{lstm} to extract features from text descriptions during the training phase, and use this knowledge and \glspl{lstm}, in conjunction with image features to give faithful descriptions during testing, when no text descriptions are supplied with the image.
+    
+    
+    In this thesis, the goal is to explore the realm of visual and linguistic understanding.
+    The visual knowledge will come from a \gls{cnn} that learn features in images. An \gls{rnn} \cite{rumelhartLearningRepresentationsBackpropagating1986, choLearningPhraseRepresentations2014, sutskeverSequenceSequenceLearning2014, bahdanauNeuralMachineTranslation2016} or transformer is used to extract linguistic information from open-ended questions and answers in natural language, taken from a \gls{vqa} dataset. A backward pass that looks for large gradients through layers of the \gls{cnn} will be used to choose locally faithful words to caption the image in an explainable way. 
+
+\end{comment}
+
+ To effectively answer the research questions, this work incorporates quantitative studies to collect the necessary results. Quantitative research methods provide a structured and systematic approach to collecting and analyzing data, allowing for a rigorous investigation of the research objectives. This work aims to use these methods to gain objective and reliable insights contributing to a more comprehensive understanding of the topic. The models and experiments performed in this research are carefully designed to allow for an unbiased analysis of the subject matter. 
+
+The models and experiments conducted in this research are carefully designed to facilitate an unbiased analysis of the results. An unbiased analysis is an approach that minimizes the influence of personal biases or preconceived notions on the interpretation of data. It involves implementing rigorous experimental protocols, ensuring the validity and reliability of measurements, and maintaining transparency throughout the research process.
+
+By adopting an unbiased analysis approach, this work seeks to ensure that the obtained results are not skewed or influenced by subjective factors. This approach allows for a more objective evaluation and interpretation of the findings, promoting the reliability and generalizability of the results. This will enable researchers to draw meaningful conclusions and contribute to a broader understanding of the subject area while increasing the credibility and validity of research results.

@@ -14,7 +14,10 @@
 
 %% Base class load part:
 
+%\LoadClass[a4paper,12pt,twoside,openright]{report}
+
 \LoadClass[a4paper,12pt,oneside,openright]{report}
+
 
 %% Adjustments:
 
@@ -26,7 +29,8 @@
 \linespread{1.0} % regulate line spacing
 
 \pretolerance = 2000
-\tolerance = 5000   \hbadness = \tolerance
+\tolerance = 5000   
+\hbadness = \tolerance
 
 %% Required packages:
 

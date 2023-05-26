@@ -6,22 +6,49 @@ In about a page, summarize the most important background information. The text u
 
 \section{Background and Motivation}
 
-% Overview of XAI
-\gls{xai} is both a research area and a set of techniques aimed at developing \gls{ai} methods and systems that can provide interpretable and transparent explanations for the decisions and actions of an \gls{ai}. Motivation for \gls{xai} methods arises from the increased deployment of \gls{ai} systems, especially in high-stakes domains such as finance, criminal justice, and healthcare. These domains need to trust and understand the decisions made to deploy the methods safely and ethically. Furthermore, \gls{xai} is also significant in consumer-facing systems and applications using \gls{ai} in decision-making, where users may not have the technical expertise to understand the inner workings of an \gls{ai} system.
 
-% Dip the toes in VQA and image captioning
-A specific area of \gls{xai} that has received considerable attention is \gls{nlp}, image captioning \cite{vinyalsShowTellNeural2015, youImageCaptioningSemantic2016, vinyalsShowTellLessons2017}, and \gls{vqa}. Image captioning involves generating natural language explanations for visual input, such as images.
-These tasks are challenging objectives as they require a deep understanding of visual and linguistic information and the combination of these modalities into insight. Explanations are most valuable when they both naturally make sense in the given context and are helpful in their respective tasks. These tasks are also closely related to human cognition, as understanding and describing visual scenes is a fundamental attribute of human perception. 
+% Short description of the problem
+    % Deployments of AI more widespread 
+    \gls{ai} have made remarkable achievements in various fields, but their lack of interpretability and opacity have brought the lack of trustworthiness to the forefront of discussion. 
+    % Complex and opaque AI systems that are difficult to interpret
+    The black-box nature of \gls{ai} models inhibits user trust and understanding, which can be critical in decision-making scenarios and deploying models in real-world applications. This lack of transparency limits the ability to address bias, identify model limitations, and provide accountability. 
 
-% What it can do
-Research on \gls{vqa} and image captioning has important implications for a variety of applications. For example, in computer vision, \gls{vqa} and image captions can be utilized to improve object recognition and scene understanding. \gls{nlp} applications can use information in \gls{vqa} and image captions to improve machine understanding of text and images. This improvement can come from understanding modalities like vision and language to learning visual semantics that better correlate with human thinking. Through cross-modality learning, particularly in the areas of vision and language, like \gls{vqa}, improvements can be made by automating data set generation. Images can be automatically categorized, labeled, and annotated by an \gls{ai} \cite{lancasterAutomatedLabelingHuman1997, mnihMachineLearningAerial}. Models and methods can extract new knowledge about images and videos, like the semi-supervised teacher-student framework proposed by Gjestang et al. \cite{gjestangSelflearningTeacherstudentFramework2021}.
-In addition, \gls{vqa} and image captions can also be applied to assistive technologies, such as helping visually impaired people understand and navigate their situation or helping robots understand and react to their surroundings.
 
-% Why it is important
-The importance of \gls{xai}, \gls{vqa}, and image captions is further reinforced by recent advances in deep learning and computer vision, as these techniques have greatly improved the performance of \gls{xai} systems in these tasks. 
-However, despite these advances, many challenges remain to be addressed, such as the lack of interpretability of deep neural networks and the limitations of current evaluation metrics. Solving these challenges and advancing the state-of-the-art in \gls{xai}, \gls{vqa}, and image captioning are important research goals that can lead to significant advances in \gls{xai}.
+% Short intro to XAI
 
-% Summary
-In summary, \gls{xai}, \gls{vqa}, and image captioning are important research areas that have many real-world applications and implications. 
-These tasks are challenging and require a deep understanding of both visual and verbal information. Advances in both of these areas can lead to significant advances in \gls{ai} and \gls{xai}. Making these models more reliable and trustworthy for use in high-stakes scenarios and more accessible to everyday users with no domain knowledge. 
-Research in these areas will also benefit from advances in deep learning and computer vision. Likewise, research on interpretability issues must be done.
+    % What it is
+    \gls{xai} is both a research area and a set of techniques to address these weaknesses by providing methods and techniques to explain the decisions and predictions made by \gls{ai} models.     
+    Motivation for \gls{xai} methods arises from the increased deployment of \gls{ai} systems, especially in high-stakes domains such as finance, criminal justice, and healthcare, where justification is vital.
+    %These domains need to trust and understand the decisions made to deploy the methods safely and ethically. 
+    Additionally, \gls{xai} is important in consumer-facing decision-making applications using \gls{ai}, where users may not have the technical expertise to understand the inner workings of an \gls{ai} system. 
+   
+
+
+% Short intro to VQA
+    % What it is
+    As many \gls{xai} methods strive to provide locally accurate explanations, that is, explanations faithful to the underlying model, they often include low-level features. However, often these features are challenging to convey to a non-technical user or do not provide an intuitive explanation. 
+    A user can gain a fuller picture of a model's reasoning by having higher-level explanations that come from multiple modalities \cite{alipourStudyMultimodalInteractive2020}.
+    The multimodal task of \gls{vqa} combines text questions in natural language and corresponding images to get a model to output a response based on these two modalities. These multimodal tasks are closely related to human cognition, as understanding and describing visual scenes with language is a fundamental attribute of human perception. 
+    
+    
+    % A specific area of \gls{ai} that has received considerable attention is \gls{nlp}, image captioning \cite{vinyalsShowTellNeural2015, youImageCaptioningSemantic2016, vinyalsShowTellLessons2017}, and \gls{vqa}. Image captioning involves generating natural language explanations for visual input, such as images. These tasks are challenging objectives as they require a deep understanding of visual and linguistic information and the combination of these modalities into insight. Explanations are most valuable when they both naturally make sense in the given context and are helpful in their respective tasks.
+
+    
+    
+    % Research on \gls{vqa} and image captioning has important implications for a variety of applications. For example, in computer vision, \gls{vqa} can be utilized to improve object recognition and scene understanding. \gls{nlp} applications can use information in \gls{vqa} and image captions to improve machine understanding of text and images. This improvement can come from understanding modalities like vision and language to learning visual semantics that better correlate with human thinking. Through cross-modality learning, particularly in the areas of vision and language, like \gls{vqa}, improvements can be made by automating data set generation. Images can be automatically categorized, labeled, and annotated by an \gls{ai} \cite{lancasterAutomatedLabelingHuman1997, mnihMachineLearningAerial}. Models and methods can extract new knowledge about images and videos, like the semi-supervised teacher-student framework proposed by Gjestang et al. \cite{gjestangSelflearningTeacherstudentFramework2021}. In addition, \gls{vqa} and image captions can also be applied to assistive technologies, such as helping visually impaired people understand and navigate their situation or helping robots understand and react to their surroundings.
+
+% Connect XAI and VQA
+
+    The combination of the \gls{vqa} task and \gls{xai} is an important area of research since it has the potential to bring the most intuitive explanations to researchers and users. By describing the contents of images in natural language and being able to answer questions regarding images and text, users can gain a better insight into these complex models and determine if they can be trusted in critical assignments. 
+    
+    % How it can make a difference
+    % The importance of \gls{xai}, \gls{vqa}, and image captions is further reinforced by recent advances in deep learning and computer vision, as these techniques have greatly improved the performance of \gls{xai} systems in these tasks. However, despite these advances, many challenges remain to be addressed, such as the lack of interpretability of deep neural networks. Solving these challenges and advancing the state-of-the-art in \gls{xai} and \gls{vqa} are important research goals that can lead to significant advances and deployments of \gls{ai} systems.
+
+% What this work is and solves these problems
+    This work explores how \gls{vqa} systems can be explained using visual and linguistic justifications. As complex models often achieve the highest accuracies, the experiments in this work explore how smaller, transparent, and explainable methods can be attached to a fully developed primary model. These models can provide valuable insights during development and in the real world at no cost to the predicting model's accuracy.
+        
+     % How it can make a difference
+    %\gls{xai} aims to make \gls{ai} systems more interpretable, intuitive, and trustworthy by generating explanations that are descriptive, faithful, and understandable to humans. These explanations help users understand the reasons behind \gls{ai} decisions, uncover bias, assess trustworthiness, and identify potential areas for improvement.
+
+% Summary that leads to the problem statement
+%In summary, \gls{xai}, \gls{vqa}, and image captioning are important research areas that have many real-world applications and implications. These tasks are challenging and require a deep understanding of both visual and verbal information. Both of these areas can lead to significant advances in \gls{ai} and \gls{xai}. Making these models more reliable and trustworthy for use in high-stakes scenarios and more accessible to everyday users with no domain knowledge. Research in these areas will also benefit from advances in deep learning and computer vision. Likewise, research on interpretability issues must be done.

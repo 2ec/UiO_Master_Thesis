@@ -58,7 +58,7 @@ The \gls{vqa} task has the benefit of being interactive so that a user can input
 \end{comment}
 % Main findings
 
-    The experiments in this work have proven the ability of post-hoc explainability models to provide valuable insight into the underlying model, with no cost of the explained model's accuracy. 
+    The experiments in this work have proven the ability of post-hoc explainability models to provide valuable insight into the underlying model with no cost to the explained model's accuracy. 
     The proxy model presents a useful understanding of how the \gls{llm} may work, even though it is not transparent to the underlying model but instead emulates its behavior. Visualization of transition scores provides an intuitive description of how \glspl{llm} predicts tokens in a sequence.  
 
     In this work, it has been studied how a \gls{llm} can be adapted to a new modality while preserving the knowledge from the pre-training.
@@ -92,7 +92,7 @@ In the linguistic domain, the initial research questions were:
 \end{itemize}
 
 The correctness of the first question was confirmed in this experiment, as demonstrated in \autoref{sec4:vis_transtion_scores}. The Alpaca-VQA model used knowledge from the underlying \gls{llama} model when predicting answers. As these answers from previous training did not occur in the test set, the model did not answer the question correctly. However, the model understood how the question was structured and appropriately responded with a medically relevant term, which could be correct given a different input image.
-This suggests that the model's \textit{a priori} general knowledge from pre-training could potentially enhance responses when tested on more open-ended tasks or questions. It was fine-tuned to provide a single answer to facilitate the evaluation of the Alpaca-VQA model. This contrasts how many \glspl{llm} are trained as conversation systems that generate longer sentences or paragraphs. As the Alpaca-VQA uses \gls{lora} weights for fine-tuning, it performs as well as the original Alpaca model on the tasks Alpaca was initially trained on. This allows the Alpaca-VQA model to work as an extension on an already capable \gls{llm}. Alpaca-VQA can therefore handle more freeform responses, where the knowledge from the pre-training can contribute to a better answer.
+This suggests that the model's \textit{a priori} general knowledge from pre-training could potentially enhance responses when tested on more open-ended tasks or questions. It was fine-tuned to provide a single answer to facilitate the evaluation of the Alpaca-VQA model. This contrasts how many \glspl{llm} are trained as conversation systems that generate longer sentences or paragraphs. As the Alpaca-VQA uses \gls{lora} weights for fine-tuning, it performs as well as the original Alpaca model on the tasks Alpaca was initially trained on. This allows the Alpaca-VQA model to work as an extension on an already capable \gls{llm}. Alpaca-VQA can therefore handle more free-form responses, where the knowledge from the pre-training can contribute to a better answer.
 
 The proxy model and visualization of the Alpaca-VQA model were implemented after the \gls{llm} completed its fine-tuning. Yet, they proved instrumental in interpreting the decision-making process of the underlying model. 
 Consequently, the conducted experiments in this study shed light on how post-hoc explanatory models can aid in comprehending larger and more complex models without compromising the accuracy that the larger model can provide.\\
@@ -120,7 +120,7 @@ As the scope of this project limits what can be explored in this work, not every
     Some initial issues have been solved when developing this model, but some remain to be overcome. The most prominent remaining problems have been discussed in  \autoref{subsec:no_flex}. Most notable is to make the \gls{flex} framework non-dependent on the machine learning framework Caffe. As this framework is no longer developed, its support for modern hardware and complimentary software dependencies is decreasing. The \gls{flex} framework still possesses the potential of making systems dependent on \glspl{cnn} more transparent to its users. Therefore, future research is encouraged to develop this method further and other variants of locally accurate post-hoc methods. 
 
     % making FLEX run
-    In future research, the \gls{flex} framework should not build its dependence on Caffe for this method to be implemented efficiently and versatilely. 
+    In future research, the \gls{flex} framework should not build its dependence on Caffe for this method to be implemented efficiently and with versatility.
     This adaptation can be made in a multitude of ways, where the main goal would be to decouple the \gls{cnn} feature extraction from \gls{flex}. Modern machine learning frameworks have properties that easily traverse networks and list their feature maps. This allows for a more manageable implementation of \gls{flex} that can be agnostic of the specific \gls{cnn} model used. 
 
 
