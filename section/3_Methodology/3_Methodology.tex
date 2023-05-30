@@ -16,15 +16,18 @@ SUMMARY: End this chapter with a summary section. Summarize what you have done a
 
 
 %This chapter will introduce some methods that address some of the challenges presented in this chapter. 
-In this chapter, the two methods proposed in this work are presented in more detail. The overall goal of these two methods is to explore how different machine learning models can implement explanatory methods in various domains that still provide value to the user. Different model architectures represent data in different ways. 
+In this chapter, the two methods proposed in this work are presented in more detail. The overall goal of these two methods is to explore how different machine learning models can implement explanatory methods in various domains that still provide value to the user. 
+
+% In order to answer the research goals of if a \gls{vqa} 
+Different model architectures represent data in separate ways. 
 This chapter highlights how insights into these representations can give a researcher or user a new understanding of the data and models used.
 Both models presented in this chapter have multimodal capabilities, specifically in visual and linguistics. The way they achieve this multimodality differs. 
 
 The first model uses a classical \gls{vqa} architecture, with the addition of the \gls{flex} framework. 
-Using this framework, the model can label feature maps in the \gls{cnn} to get information from the visual domain translated into natural language. The explanation originates, therefore, from the visual domain, translated into text. 
+Using this framework, the model can label feature maps in the \gls{cnn} to get information from the visual domain translated into natural language. The explanation originates, therefore, from the visual domain, translated into text. Although no results from this method are examined due to hindrances outside the scope of this work, the process is discussed thoroughly.
 
 
-The second method introduces a large language model (LLM) combined with a standard \gls{cnn}. The image features of the \gls{cnn} get translated into text, and the explanation happens in the text domain. 
+The second method introduces an \gls{llm} combined with a standard \gls{cnn}. The image features of the \gls{cnn} get translated into text, and the explanation happens in the text domain. 
 
 Therefore, these two models discussed in this chapter will investigate explanations originating from different domains.
 
@@ -42,7 +45,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
 
         % FLEX
         To make \gls{vqa} models easier to understand for the user, the explanation can originate from either of the two modalities of the model, either the language model, the image model, or both. 
-        The method presented in this experiment will address this task using the cross-modality explanation method \gls{flex}. An overview of the \gls{flex} model has already been described shortly in sub-chapter \ref{sec:2_related_work} on page \pageref{sec:2_related_work}. This method is relevant to this method because it explains the network's visual reasoning of why a picture should be in a given class using natural language. The \gls{flex} framework combines a \gls{cnn}, which is pretrained on the specific task and does not need any further training that alters the \gls{cnn} to give it explainable abilities. An overview of the original \gls{flex} framework can be seen in Figure \ref{fig:flex_overview}.
+        The method presented in this experiment will address this task using the cross-modality explanation method \gls{flex}. An overview of the \gls{flex} model has already been described shortly in sub-chapter \ref{sec:2_related_work} on page \pageref{sec:2_related_work}. This method is relevant to this work because it explains the network's visual reasoning of why a picture should be in a given class using natural language. The \gls{flex} framework combines a \gls{cnn}, which is pre-trained on the specific task and does not need any further training that alters the \gls{cnn} to give it explainable abilities. An overview of the original \gls{flex} framework can be seen in Figure \ref{fig:flex_overview}.
 
         \begin{figure}[htb]
             \centering
@@ -63,7 +66,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
         % More in detail on how FLEX works. 
         \subsection{Original FLEX in more detail}
         \label{sec3:flex_detailed}
-        First, the \gls{flex} framework works by having a \gls{cnn} predict the class of an input image. Given the image and its predicted class $c$, the method finds a subset of the most important feature maps from each layer in the pretrained \gls{cnn}. To find the global activation score of each feature map, it sums up each neuron in the layer and then repeats this process for each layer in the \gls{cnn}. After that, it sorts the layers in order of importance and chooses a subset of $n$ layers so that the subgroup has a combined importance over a predefined threshold. When a subset of the most important visual features is collected, \gls{flex} connects these visual features with linguistic features. 
+        First, the \gls{flex} framework works by having a \gls{cnn} predict the class of an input image. Given the image and its predicted class $c$, the method finds a subset of the most important feature maps from each layer in the pre-trained \gls{cnn}. To find the global activation score of each feature map, it sums up each neuron in the layer and then repeats this process for each layer in the \gls{cnn}. After that, it sorts the layers in order of importance and chooses a subset of $n$ layers so that the subgroup has a combined importance over a predefined threshold. When a subset of the most important visual features is collected, \gls{flex} connects these visual features with linguistic features. 
 
         \gls{flex} uses the \gls{gradcam} technique proposed by Selvaraju et al. \cite{selvarajuGradCAMVisualExplanations2020} to do a backward pass through the feature maps of the \gls{cnn} to find the largest class activation maps when predicting a class. This information is then used to map words to important visual feature extractions in the network. This mapping of words combines the separable feature layers salient layers of the \gls{gradcam} method with natural language to make better explanations.
         
@@ -143,7 +146,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
 
         % Input from essay here.
         \subsubsection{Proposed architecture}
-        \label{sec3:proposed_architecture}
+        \label{sec:3_proposed_architecture}
         
         Figure \ref{fig:flex_architecture_proposal} shows how the data flow in the proposed method is supposed to work. It closely follows the original \gls{flex} architecture, with adaptations to make it answer questions. It consists of a \gls{cnn} that extracts visual information and a 2-layered \gls{lstm} \cite{hochreiterLongShorttermMemory1997} \gls{rnn} that combine linguistic information with extracted visual features. 
         The \gls{cnn} used in this implementation is the same as in the original framework, which is a modified VGG-16. The modification is a technique proposed by \cite{gaoCompactBilinearPooling2016} et al. called Compact Bilinear Pooling, which reduces feature dimensionality without sacrificing performance. This ensures a more efficient and faster training and inference time, which also has the potential benefit of reducing the risk of overfitting.
@@ -214,7 +217,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
     
             
         \begin{comment}
-            During the training of the method proposed in this thesis, an image and its corresponding questions and answers from the \gls{vqa} dataset are used as input. The images are fed through a \gls{cnn}-network, which can be pretrained on a larger dataset, such as ImageNet \cite{dengImageNetLargeScaleHierarchical2009}. This is because the explaining method utilizes feature maps in each layer of the \gls{cnn}, so it is agnostic on what type of \gls{cnn} it is and what dataset it is trained on earlier. The \gls{cnn} predicts a class of what it sees in the image and, with a backward pass, finds important feature maps in each  convolutional layer. Each feature in the set of important feature maps gets associated with a word and stored in a relevance vector. This process is done by computing a co-occurrence score between each word in the ground truth caption and the feature. The feature with the highest co-occurrence score gets linked with that feature. 
+            During the training of the method proposed in this thesis, an image and its corresponding questions and answers from the \gls{vqa} dataset are used as input. The images are fed through a \gls{cnn}-network, which can be pre-trained on a larger dataset, such as ImageNet \cite{dengImageNetLargeScaleHierarchical2009}. This is because the explaining method utilizes feature maps in each layer of the \gls{cnn}, so it is agnostic on what type of \gls{cnn} it is and what dataset it is trained on earlier. The \gls{cnn} predicts a class of what it sees in the image and, with a backward pass, finds important feature maps in each  convolutional layer. Each feature in the set of important feature maps gets associated with a word and stored in a relevance vector. This process is done by computing a co-occurrence score between each word in the ground truth caption and the feature. The feature with the highest co-occurrence score gets linked with that feature. 
         
                 % LSTM
              
@@ -222,7 +225,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
                 % Testing
             The architecture takes an image and an optional question as input during prediction. The \gls{cnn} extracts important features in the layers, which get fed into the \gls{lstm}. 
             
-            If no question is input to the algorithm during prediction, the model will use the most accurate predicted answer caption that describes the image as a whole as a caption for the image. On the other hand, if a question is submitted alongside the image, the \gls{lstm} will generate captions that answer the question asked and then chose the most decision-relevant answer as the caption. 
+            If no question is input to the algorithm during prediction, the model will use the most accurate predicted answer caption that describes the image as a whole as a caption for the image. On the other hand, if a question is submitted alongside the image, the \gls{lstm} will generate captions that answer the question asked and then choose the most decision-relevant answer as the caption. 
         \end{comment}
         
         
@@ -232,8 +235,8 @@ Therefore, these two models discussed in this chapter will investigate explanati
         \begin{figure}[htb]
             \centering
             
-            \includegraphics[width=\linewidth]{images/flex_architecture_proposal.png}
-            \caption{Proposal of the data flow and components explored in this experiment.
+            \includegraphics[width=\linewidth]{images/flex_architecture_proposal}
+            \caption[Proposal of the data flow and components of FLEX-VQA.]{Proposal of the data flow and components explored in this experiment.
             %Figure by the author.
             }
             \label{fig:flex_architecture_proposal}
@@ -278,7 +281,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
 
             \paragraph{Why Caffe was needed\\}
             % Why Caffe was needed
-            To use the same \gls{cnn} as the original \gls{flex} in a new context, as in this experiment, would require retraining or fine-tuning this network to suit the images in the given dataset. This would require the Compact-Bilinear Pooling model to train using the new pictures in the specific dataset. Alternatively, a new \gls{cnn} could be chosen that could be merged with the \gls{flex} framework. The original Compact-Bilinear Pooling came with pretrained weights from training on the Caltech-UCSD Birds (CUB) \cite{PeronaLabCUB2002011} dataset. This dataset has images from Flickr and ImageNet containing a subset solely focused on bird species and a relatively small amount of photos (11,788, compared to 14 million images in ImageNet \cite{dengImageNetLargeScaleHierarchical2009}). Therefore, the original weights are best fit to classify this CUB dataset and will require retraining outside this specific task.
+            To use the same \gls{cnn} as the original \gls{flex} in a new context, as in this experiment, would require retraining or fine-tuning this network to suit the images in the given dataset. This would require the Compact-Bilinear Pooling model to train using the new pictures in the specific dataset. Alternatively, a new \gls{cnn} could be chosen that could be merged with the \gls{flex} framework. The original Compact-Bilinear Pooling came with pre-trained weights from training on the Caltech-UCSD Birds (CUB) \cite{PeronaLabCUB2002011} dataset. This dataset has images from Flickr and ImageNet containing a subset solely focused on bird species and a relatively small amount of photos (11,788, compared to 14 million images in ImageNet \cite{dengImageNetLargeScaleHierarchical2009}). Therefore, the original weights are best fit to classify this CUB dataset and will require retraining outside this specific task.
             Because of how the original \gls{flex} framework is structured, it would need to be substantially rewritten for a new \gls{cnn} to be used in place of the Compact-Bilinear Pooling. Therefore the best way forward was to use this \gls{cnn}, like the original method.
 
             \paragraph{Getting Caffe to run\\}
@@ -300,12 +303,9 @@ Therefore, these two models discussed in this chapter will investigate explanati
             At that stage, only an experimental implementation of containerization was available through the container engine Podman \cite{Podman}. Using this container engine, the Nvidia container could not attach the Nvidia \glspl{gpu}. However, the AMD ROCm container could access the AMD \glspl{gpu}. Unfortunately, this AMD container did not have the correct driver compatibility to train the \gls{cnn}. Since Podman did not result in a container that could run successfully, a different container engine was installed, namely Apptainer, formerly known as Singularity. This new engine could see all the Nvidia \glspl{gpu}, but not the AMD ones. After the initial errors were ironed out, a Caffe container from Nvidia was successfully installed. Although successfully installed, the container had trouble running the training examples in the \gls{flex} code repository. 
             When an error message was solved, a new one arose.
             Therefore no definite problem could be addressed, but rather several error messages pointing to possible driver incompatibility. 
-            The most likely explanation for the error messages was an incompatibility issue between the Caffe version in the container and the hardware it was tested on. After extensive testing and error-solving in seven months, the decision was taken that this technical problem was outside the scope of this experiment, and this method was discontinued for this project. 
+            The most likely explanation for the error messages was an incompatibility issue between the Caffe version in the container and the hardware it was tested on. After extensive testing and error-solving in most of this thesis time frame, the decision was taken that this technical problem was outside the scope of this experiment, and this method was discontinued for this project. 
             
-            \begin{comment}
-                KOMMET HIT!!
-            \end{comment}
-            
+
             \paragraph{How these problems could have been mitigated\\}
             % How this could be fixed.
             % implemented from scratch. 
@@ -334,12 +334,12 @@ Therefore, these two models discussed in this chapter will investigate explanati
         To summarize, by implementing the \gls{flex} framework into a \gls{vqa} method, the combined framework would make interpreting \gls{vqa} models easier and locally accurate. \gls{flex} has the same benefits as \gls{lime} of being locally accurate and model agnostic. Having insight into a locally accurate explanation model would make it possible for researchers and users of an implemented system to see if the underlying model is trustworthy based on what the model deems important. 
 
         Unfortunately, no experiments were conducted with this method due to technical difficulties. However, the process described in this section still provides insight into how an interpretable and locally accurate \gls{vqa} system could be designed. 
-        The main takeaways from this section are how a framework could be designed to extract visual explanations in the visual domain described in the linguistic field. The \gls{flex} framework searches through the \gls{cnn} and finds important features that are then described using natural language. 
+        The main takeaways from this section are how a framework could be designed to extract visual explanations in the visual domain described in the linguistic field. The \gls{flex} framework searches through the \gls{cnn} and finds important features that are then described using natural language. In order to make the \gls{flex} framework easier to be  developed further by future research, the model should be made agnostic to the \gls{cnn} in practice, facilitating researchers to use the image encoder they want to study. 
 
         The following section will introduce an experiment where, in contrast to the previous, the visual features are first translated to the linguistic domain and explained using linguistic explanation techniques.
 
     \section{Alpaca-VQA}
-    \label{sec3:alpaca_vqa}
+    \label{sec:3_alpaca_vqa}
 
     The experiment in this section will explore an approach to design an \gls{llm} that can interpret images, reason about their content, and be able to answer general text questions. 
     There are many ways a multimodal \gls{llm} could be developed, but this experiment aims to have a system with an explanation method in the linguistic domain. The rationale is that the previous experiment, described in Section \ref{sec3:flex_vqa}, was explained in the visual domain and translated into text. The investigation in this section will do the opposite. The image features are extracted and translated to text, where the explanation system works on the text directly. 
@@ -349,7 +349,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
 
         \subsection{Overview}
         % What:
-        To make an \gls{llm} that can see the world and explain what it sees, it was outside the scope of this experiment to train an \gls{llm} from scratch, both regarding time and resources. When training, an \gls{llm} requires vast quantities of good-quality data. Training the model requires large compute clusters that consume lots of energy, cost much to facilitate, and produce unwanted greenhouse emissions. Therefore, an \gls{llm} that was already pretrained was needed for this experiment to be fine-tuned further to answer the research goals. 
+        To make an \gls{llm} that can see the world and explain what it sees, it was outside the scope of this experiment to train an \gls{llm} from scratch, both regarding time and resources. When training, an \gls{llm} requires vast quantities of good-quality data. Training the model requires large compute clusters that consume lots of energy, cost much to facilitate, and produce unwanted greenhouse emissions. Therefore, an \gls{llm} that was already pre-trained was needed for this experiment to be fine-tuned further to answer the research goals. 
         
 
 
@@ -357,13 +357,17 @@ Therefore, these two models discussed in this chapter will investigate explanati
         \subsubsection{Alpaca-LoRA}
         Even though the Stanford Alpaca model was trained using significantly less computing power compared to other \glspl{llm}, it is still advantageous to further lower the necessary compute budget to train and fine-tune models. A technique that was proposed by Hu et al. called \gls{lora} \cite{huLoRALowRankAdaptation2021} addresses this issue. This technique manages this task by adding pairs of rank-decomposition weight matrices, commonly called update matrices, on the current weights and only trains these newly added weights. This approach has many advantages, most importantly accelerating the training while reducing memory consumption. Other benefits of these added matrices are that the original weights are kept frozen, making the \gls{lora} model less prone to catastrophic forgetting. This catastrophic forgetting can happen when large connectionist networks, like deep neural networks for \glspl{llm}, are trained on multiple tasks in sequence. In these scenarios, the models are prone to forgetting the earlier tasks \cite{mccloskeyCatastrophicInterferenceConnectionist1989}. Having the original weights available in a frozen state while training on a new task keeps the learned representations, as they are not changed. The added weights are typically less than 10 percent of the original trainable parameters, making training domain-specific models more feasible and faster. 
         Because the fine-tuned matrices are so small, these \gls{lora} weight matrices can be changed on the fly depending on the task. 
-        This allows for a system where a large base model pretrained on an extensive text corpus, with smaller \gls{lora} matrices, is fine-tuned to different needs that still benefit from the larger base model when giving answers.
+        This allows for a system where a large base model, pre-trained on a large text corpus, is tuned to different requirements with smaller \gls{lora} matrices that still benefit from the larger base model when answering.
         When using \gls{lora} matrices, they also allow training and interference on consumer hardware, like regular desktop \glspl{gpu}. It is even possible to do interference on a single-board computer like the Raspberry Pi, although at a significant speed decrease \cite{artemandreenko[@miolini]VeSucefullyRunned2023}. 
 
 
         \subsection{Implementation}
         % What I did implement
-        To address the research questions stated in \ref{sec:1_2_problem_statement}, considering ??, a \gls{lora} version of the Stanford Alpaca version was used to carry out the experiments. The code used as a starting point was a fork of Erik J. Wang's Alpaca-LoRA \cite{wangAlpacaLoRA2023}, which was further modified to fit the experiments in this section. 
+        This implementation has the goal of answering the research questions stated in \ref{sec:1_2_problem_statement}. Specifically, to investigate if the model can be explained after it has finished training and if it still can bring knowledge from pre-training to the new modality.
+        
+        In order to answer these questions, a \gls{lora} version of the Stanford Alpaca version was used to carry out the experiments. 
+        
+        The code used as a starting point was a fork of Erik J. Wang's Alpaca-LoRA \cite{wangAlpacaLoRA2023}, which was further modified to fit the experiments in this section. 
         The most notable modification to this model is to make it cross-modal by allowing it to take both text and images as input.
 
 
@@ -378,17 +382,18 @@ Therefore, these two models discussed in this chapter will investigate explanati
         % Data flow
         \begin{figure}[htb]
             \centerline{
-            \includegraphics[width=\textwidth]{images/alpaca_vision.png}}
+            \includegraphics[width=\textwidth]{images/alpaca_vision}}
             \caption[Overview of the proposed dataflow to make large language models interpret images.]{Overview of the proposed dataflow to make large language models interpret images. The images in this Figure are from the HyperKvasir dataset by Borgli et al. \cite{borgliHyperKvasirComprehensiveMulticlass2020}. The rest of the diagram is by the author of this work.}
             \label{fig:alpaca_vision}
         \end{figure}
 
 
         % How & Why :
-        Specifically, the image encoder first implemented was \gls{vgg}-16, proposed by Simonyan and Zisserman at Oxford \cite{simonyanVeryDeepConvolutional2015}. The reason for implementing this \gls{cnn} is that it is a known network that performs relatively well on the ImageNet dataset, where the correct label is in the predicted top five in 90.38\% of the samples in the test set \cite{Vgg16TorchvisionMain}. The VGG-16 model used for the experiments is pre-trained on the ImageNet \cite{dengImageNetLargeScaleHierarchical2009} dataset. The model presumably performs better if pretrained on the specific dataset used, namely the HyperKvasir dataset \cite{borgliHyperKvasirComprehensiveMulticlass2020} introduced by Borgli et al. However, the experiments will explore the proposed approach's feasibility rather than achieve optimal accuracy.
+        Specifically, the image encoder first implemented was \gls{vgg}-16, proposed by Simonyan and Zisserman at Oxford \cite{simonyanVeryDeepConvolutional2015}. The reason for implementing this \gls{cnn} is that it is a known network that performs relatively well on the ImageNet dataset, where the correct label is in the predicted top five in 90.38\% of the samples in the test set \cite{Vgg16TorchvisionMain}. The VGG-16 model used for the experiments is pre-trained on the ImageNet \cite{dengImageNetLargeScaleHierarchical2009} dataset. The model presumably performs better if pre-trained on the specific dataset used, namely the HyperKvasir dataset \cite{borgliHyperKvasirComprehensiveMulticlass2020} introduced by Borgli et al. However, the experiments will explore the proposed approach's feasibility rather than achieve optimal accuracy.
 
         % Explain why VGG-16 should work even if it does not give regions of interest
-        Given that the \gls{vgg}-16 network is pre-trained on ImageNet, it outputs a probability for each of the 1000 classes in the dataset. To address the task of extracting valuable features from any image regardless of whether the \gls{cnn} has been pre-trained for the task, the method implemented extracts features(?) from the 100 ImageNet classes with the highest probability. With this approach, the image feature extraction will find a consistent number of features in an image, sorted with the feature with the highest probability first. The features with the highest probability will likely have a feature map similar to the predicted class in ImageNet. Therefore, even if the class label from ImageNet is not connected with a correct label from the HyperKvasir dataset, there is a high likelihood that the feature extraction will still be practical to extract image features.
+        Given that the \gls{vgg}-16 network is pre-trained on ImageNet, it outputs a probability for each of the 1,000 classes in the dataset. 
+        To accomplish the task of extracting valuable features from any image, regardless of whether \gls{cnn} has been pre-trained for the task, the implemented method extracts the label and probability of the 100 ImageNet classes with the highest probability. With this approach, the image feature extraction will find a consistent number of features in an image, sorted with the feature with the highest probability first. The features with the highest probability will likely have a feature map similar to the predicted class in ImageNet. Therefore, even if the class label from ImageNet is not connected with a correct label from the HyperKvasir dataset, there is a high likelihood that the feature extraction will still be practical to extract image features.
 
         The \gls{vgg}-16 \gls{cnn} was initially developed for the image classification task, not object classification. It consists of multiple convolutional layers followed by fully connected layers, and it does not have any built-in mechanisms for handling \gls{roi} operations. 
         Therefore, since \gls{vgg}-16 is designed as an image classifier, it only outputs the classes it recognizes in the image as a whole, which means it does not perform particularly well for localization tasks. Object classifiers, like R-CNN \cite{girshickRichFeatureHierarchies2014}, Faster R-CNN \cite{renFasterRCNNRealTime2015}, and variants of YOLO \cite{redmonYouOnlyLook2016, redmonYOLO9000BetterFaster2016, redmonYOLOv3IncrementalImprovement2018, bochkovskiyYOLOv4OptimalSpeed2020, jocherYolov5, liYOLOv6SingleStageObject2022, wangYOLOv7TrainableBagoffreebies2022, jocherYOLOUltralytics2023}, among others are made to output \gls{roi}, which would allow the image encoder also to encode locations of detected objects within the image. These object classifying qualities from an image encoder will most likely give the \gls{llm} image data of a higher quality to work from. However, the experiments will test the feasibility of the implementation using \gls{vgg}-16.
@@ -408,7 +413,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
         % Original prompt format
         \begin{figure}[htb]
             \centerline{
-            \includegraphics[width=\textwidth]{images/alpaca_prompt_format.png}}
+            \includegraphics[width=\textwidth]{images/alpaca_prompt_format}}
             \caption[Overview of the original text prompt to the Stanford Alpaca model, with additional input.]{Overview of the original text prompt to the Stanford Alpaca model \cite{taoriStanfordCRFM, taoriStanfordAlpacaInstructionfollowing2023}, with additional input.}
             \label{fig:alpaca_prompt_format}
         \end{figure}
@@ -416,8 +421,8 @@ Therefore, these two models discussed in this chapter will investigate explanati
         % Modified prompt format
         \begin{figure}[htb]
             \centerline{
-            \includegraphics[width=\textwidth]{images/alpaca_modified_prompt_format.png}}
-            \caption{Overview of the modified text prompt to the Alpaca-LoRA model, including extracted image features. The text in curly braces is not part of the prompt but represents the placeholder for the question and extracted image features.}
+            \includegraphics[width=\textwidth]{images/alpaca_modified_prompt_format}}
+            \caption[Overview of the modified text prompt to the Alpaca-LoRA model.]{Overview of the modified text prompt to the Alpaca-LoRA model, including extracted image features. The text in curly braces is not part of the prompt but represents the placeholder for the question and extracted image features.}
             \label{fig:alpaca_modified_prompt_format}
         \end{figure}
 
@@ -434,11 +439,9 @@ Therefore, these two models discussed in this chapter will investigate explanati
         
         \glspl{llm} have been trained on specific tokenization schemes that use unique tokenization rules and vocabularies. Therefore, they should use the same tokenizer when pre-training the model to get adequate performance. Suppose a different tokenizer is used to pre-process the text data. In that case, the tokenization output may not be compatible with the language model's vocabulary and encoding scheme, leading to poor model performance and incorrect predictions.
         
-        Using the tokenizer from the language model was designed for ensures that the tokenization process is consistent with the training data and the model's internal encoding scheme. 
-        This consistency ensures that the same tokenization scheme is used during both pertaining, fine-tuning, and inference. It is essential for the model consistency to learn the patterns and relationships within the text data effectively. 
+        % Using the tokenizer from the language model was designed for ensures that the tokenization process is consistent with the training data and the model's internal encoding scheme. This consistency ensures that the same tokenization scheme is used during both pertaining, fine-tuning, and inference. It is essential for the model consistency to learn the patterns and relationships within the text data effectively. 
     
-        The tokenizer from the language model has been trained on a large corpus of text data and optimized to handle specific language patterns and nuances. This makes it more effective than tokenization schemes that may not have the same optimization and language-specific knowledge level. 
-        Using the language model's tokenizer ensures that the text data is pre-processed in a way that is most compatible with the model, leading to better performance and more accurate predictions.
+        % The tokenizer from the language model has been trained on a large corpus of text data and optimized to handle specific language patterns and nuances. This makes it more effective than tokenization schemes that may not have the same optimization and language-specific knowledge level. Using the language model's tokenizer ensures that the text data is pre-processed in a way that is most compatible with the model, leading to better performance and more accurate predictions.
 
         The tokenizer used in this implementation is the one used by the original \gls{llama} model \cite{touvronLLaMAOpenEfficient2023} since the Alpaca model is a fork of this model. HuggingFace \cite{HuggingFaceAI} makes the specific implementation of the used LlamaTokenizer  and is based on SentencePiece \cite{LLaMATokenizer, Sentencepiece}. 
         This tokenizer and corresponding detokenizer allow for an unsupervised, end-to-end system without language-specific processing. 
@@ -469,7 +472,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
         As \glspl{llm} are often complex and have millions or even billions of parameters, making their internal workings challenging to interpret. A simplified version that is easier to understand and explain can be created by training a proxy model on top of the large language model. This proxy model acts as a "translator" between the complex language model and human interpreters, providing a more interpretable representation of the underlying model's decision-making process.
         The proxy model can help address the issue of transparency and trust in \gls{ai} systems. Like many deep neural networks, \glspl{llm} are often treated as black boxes, where the input-output relationship is not easily interpretable. By training a proxy model, insights can be gained into how the language model makes decisions, and this insight can be achieved using techniques such as \gls{lime}. 
         These explanations can help users understand why the model made a particular decision and provide a level of transparency and trust in the system.
-        Therefore, training a proxy model on a large language model enables us to bridge the gap between the complexity of the underlying model and the need for interpretability and explainability.
+        Therefore, training a proxy model on an \gls{llm} enables us to bridge the gap between the complexity of the underlying model and the need for interpretability and explainability.
 
         The proxy model used to mimic and interpret the Alpaca-VQA model is a \gls{sdg} classifier. 
         The data used to train the classifier includes 14,000 question-answer pairs, with the appropriate answers provided by Alpaca-VQA. The model is trained on the response predicted by the \gls{llm} instead of the ground truth to predict the same as the Alpaca-VQA. With 20,000 question-answer pairs created by the \gls{llm}, divided into 14,000 in the training set and 6,000 in the test set, the \gls{sdg} classifier achieves an accuracy of 86\% in the test set.
@@ -483,8 +486,8 @@ Therefore, these two models discussed in this chapter will investigate explanati
             \centering
             \centerline{
             \includegraphics[width=11cm]
-            {images/LIMEpyramide.png}}
-            \caption{This figure represents the explanation pipeline of the Alpaca-VQA model using a proxy model that is explained by \gls{lime}. The question and image features are fed into Alpaca-VQA, which predicts an answer. This answer is used to train a \gls{sdg} classifier that gets explained by \gls{lime}.}
+            {images/LIMEpyramide}}
+            \caption[Figure of the explanation pipeline for Alpaca-VQA.]{This figure represents the explanation pipeline of the Alpaca-VQA model using a proxy model that is explained by \gls{lime}. The question and image features are fed into Alpaca-VQA, which predicts an answer. This answer is used to train a \gls{sdg} classifier that gets explained by \gls{lime}.}
             \label{fig:LIMEpyramide}
         \end{figure}
 
@@ -527,7 +530,7 @@ Therefore, these two models discussed in this chapter will investigate explanati
             \centering
             \centerline{
             \includegraphics[width=1.2\textwidth]{images/colon_vqa_original_json.png}}
-            \caption{The original JSON from the ImageCLEFmed-MEDVQA-GI-2023 dataset. It comprises 6683 question-answer pairs related to images in a nested structure, with the image ID as the key and the question-answer pairs as values.}
+            \caption[The original JSON for the ImageCLEFmed-MEDVQA-GI-2023 dataset.]{The original JSON from the ImageCLEFmed-MEDVQA-GI-2023 dataset. It comprises 6683 question-answer pairs related to images in a nested structure, with the image ID as the key and the question-answer pairs as values.}
             \label{fig:colon_vqa_original_json}
         \end{figure}
 
@@ -538,20 +541,20 @@ Therefore, these two models discussed in this chapter will investigate explanati
             \centering
             \centerline{
             \includegraphics[width=1.2\textwidth]{images/colon_vqa_pandas.png}}
-            \caption{The ImageCLEFmed-MEDVQA-GI-2023 has the image IDs flattened. In this structure, each row has a question-answer pair and a corresponding image ID. Responses are still grouped in a list, making it difficult to evaluate individual responses.}
+            \caption[Figure of flattened image-IDs of the dataset.]{The ImageCLEFmed-MEDVQA-GI-2023 has the image-IDs flattened. In this structure, each row has a question-answer pair and a corresponding image ID. Responses are still grouped in a list, making it difficult to evaluate individual responses.}
             \label{fig:colon_vqa_pandas}
         \end{figure}
 
         Having all information self-contained would make inputting one row into the prompt easier, as all necessary information is contained in the row. 
         When the \gls{llm} predicts an answer, it can be quickly compared to the ground truth, making calculating accuracy more straightforward.
-        This flatting of ground truth answers made the original 36'683 question-answer pairs into 52'051 pairs.
+        This flatting of ground truth answers made the original 36,683 question-answer pairs into 52,051 pairs.
         The final structure of the data used in this experiment can be seen in Figure \ref{fig:colon_vqa_pandas_exploded}.
 
         \begin{figure}[htb]
             \centering
             \centerline{
             \includegraphics[width=1.2\textwidth]{images/colon_vqa_pandas_exploded.png}}
-            \caption{The ImageCLEFmed-MEDVQA-GI-2023 with image IDs and answers flattened. This structure has one question-answer pair on each row, allowing for easier calculation of predictions. This is the structure used when training the model in this experiment.}
+            \caption[Figure of flattened image-IDs and answers of the dataset.]{The ImageCLEFmed-MEDVQA-GI-2023 with image-IDs and answers flattened. This structure has one question-answer pair on each row, allowing for easier calculation of predictions. This is the structure used when training the model in this experiment.}
             \label{fig:colon_vqa_pandas_exploded}
         \end{figure}
 
@@ -576,15 +579,17 @@ Therefore, these two models discussed in this chapter will investigate explanati
         
 
         % Specific cutoff length
-        The updated input prompt shown in Figure \ref{fig:alpaca_modified_prompt_format} was used to training the model to interpret images. The prompt cutoff length was updated from the original 256 to 1485 tokens. The original LLaMA model was trained on 2048 tokens \cite{SequenceContextLength}, and the original Alpaca model is fine-tuned with 512 tokens as the cutoff length. The authors of the model used in this experiment, Alpaca-LoRA, analyzed the training data and found that 96\% of the prompts could be answered using a cutoff length of 256 tokens. 
+        The updated input prompt shown in Figure \ref{fig:alpaca_modified_prompt_format} was used to train the model to interpret images. The prompt cutoff length was updated from the original 256 to 1485 tokens. The original \gls{llama} model was trained on 2,048 tokens \cite{SequenceContextLength}, and the original Alpaca model is fine-tuned with 512 tokens as the cutoff length.
+        In this experiment, the Alpaca-LoRA implementation is used. The authors of the model found that 96\% of the prompts in the training data could be answered using a cutoff length of 256 tokens.
+        
         When deciding on the new token length, including the top 100 classes from \gls{vgg}-16, the LlamaTokenizer must encode the whole input text, including image features.  
         
-        When the class prediction score was represented using Numpy's floating number with 32 bits of precision, the average token length of just the image features where 162'654. As this would increase the original token size by more than 63,000\%, it was considered too significant to be reasonable for the model. Because the used language model uses the LoRA technique to lower memory consumption, such a considerable cutoff length should still technically be feasible. However, the increased training and inference time was considered too inefficient for this experiment.  
+        When the class prediction score was represented using Numpy's floating number with 32 bits of precision, the average token length of just the image features where 162,654. As this would increase the original token size by more than 63,000\%, it was considered too significant to be reasonable for the model. Because the used language model uses the LoRA technique to lower memory consumption, such a considerable cutoff length should still technically be feasible. However, the increased training and inference time was considered too inefficient for this experiment.  
         The prediction score was converted to floats with 16 bits of precision to decrease the image token length. In practice, this would not make a difference in accuracy when fed into the language model, as the predicted class is just a placeholder for the underlying feature maps extracted. 
-        The advantage of converting the prediction score is that the average token length of the extracted 100 classes was reduced to 144'654 tokens. The reduced token size is an 11\% reduction of tokens from the 32-bit precision representation and would still benefit from a further reduction. 
+        The advantage of converting the prediction score is that the average token length of the extracted 100 classes was reduced to 144,654 tokens. The reduced token size is an 11\% reduction of tokens from the 32-bit precision representation and would still benefit from a further reduction. 
         To give an additional decrease in the length of the prediction scores, they were rounded to three decimals. This will still provide the language model insight into the extracted class labels and the relationship between the classes while also significantly reducing the prediction score token length. 
-        The final rounded scores have an average length of 1229 tokens, resulting in a reduction of 99\% from the original 32-bit precision score. 
-        Combined with a prompt text length of 256, the total cutoff length is therefore calculated to be 1485 tokens. 
+        The final rounded scores have an average length of 1,229 tokens, resulting in a reduction of 99\% from the original 32-bit precision score. 
+        Combined with a prompt text length of 256, the total cutoff length is therefore calculated to be 1,485 tokens. 
         Thus, this cutoff length is designed to cover 96\% of the original prompts while incorporating the 100 most probable classes and their predictions. 
 
          

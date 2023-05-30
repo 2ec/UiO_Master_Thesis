@@ -24,10 +24,13 @@
     dept={Department of Informatics},
     fac={Faculty of Mathematics and Natural Sciences},
     supervisors={Andrea Storås\and Michael Riegler\and Kyrre Glette},
-    title={Thesis Title},
-    subtitle={A subtitle of your thesis},
+    title={Exploring the Why in AI},
+    subtitle={Investigating how Visual Question Answering models can be interpreted by post-hoc linguistic and visual explanations},
     image={images/forside_bilde.pdf}
 ]
+
+% Investigating how Visual Question Answering models can be interpreted by post-hoc linguistic and visual explanations
+%Investigating How Visual Question Answering Models Can Be Interpreted by Post-Hoc Linguistic and Visual Explanations
 
 \frontmatter{}
 \chapter*{Abstract}                
@@ -43,10 +46,11 @@
 %\singlespacing
 
 
-\chapter*{Preface}                  
+\chapter*{Acknowledgements}                  
 \input{section/Preface.tex}
 
 \mainmatter{}
+\glsresetall
 
 \chapter{Introduction}               
 \input{section/1_Introduction/1_Introduction_all_content.tex}
@@ -67,5 +71,9 @@
 \backmatter{}
 \singlespacing
 \printbibliography
+
+\begin{appendices}
+\input{appendix}
+\end{appendices}
 
 \end{document}

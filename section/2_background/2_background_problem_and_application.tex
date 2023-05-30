@@ -1,5 +1,5 @@
 \label{sec:2_problem_and_application}
-\section{Problem and application}
+\section{Problem and Application}
 % Intro to this chapter
 
 The increasing use of \gls{ai} has led to significant advances in various areas. However, understanding their decision-making processes becomes increasingly difficult as AI systems become more complex and opaque. 
@@ -22,15 +22,11 @@ In pursuing models with higher accuracies, the primary way to achieve this is wi
 
 % XAI
 \paragraph{Explainable AI\\}
-The field of \gls{xai} is working on solving the trade-off between performance and explainability. Some approaches specialize in explaining specific architectures, called model-specific. Meanwhile, others, called model-agnostic, try to explain models of different architectures, exploiting inherent properties in neural networks and statistics. Examples of inherently explainable models include decision trees, Bayesian classifiers, logistic regression, linear models, and \gls{knn} \cite{fixDiscriminatoryAnalysisNonparametric1989, coverNearestNeighborPattern1967, molnarInterpretableMachineLearning}. These algorithms are interpretable and, as a result of this, more explainable by design. This interpretability results from their internal structure, and computations follow clear rules or formulas that are manageable to comprehend.
-However, models such as deep neural networks can work better than less complex methods on larger datasets. Because of their complex structure, with many hidden layers and weights trained on large datasets, it is difficult, if not impossible, for humans to understand what the model evaluated when choosing a prediction. Researchers in \gls{xai} have developed model-specific and \textit{post-hoc} model-agnostic techniques to understand better these complex methods to explain the underlying model prediction. The term post-hoc comes from Latin and means \textit{"after this"}. In this thesis, the term is used to describe a method applied after a machine learning model is developed. These methods try to bridge the gap between high accuracies and explainability.
-In theory, this allows us to use the model best fit for the task, regardless of complexity, without the expense of not understanding the model's predictions. 
+\gls{xai} is an interdisciplinary research field that aims to make \gls{ai} models more transparent, interpretable, and accountable to human users. It combines techniques from machine learning, human-computer interaction, cognitive science, and other related disciplines to develop methods and tools for explaining the behavior and decisions of \gls{ai} models. The need for \gls{xai} arises from the fact that many machine learning models, especially deep neural networks, are often viewed as black boxes, meaning that their internal workings and decision-making processes are intricate for humans to comprehend. As a result, these models' lack of transparency and interpretability can create distrust among users, limit their adoption, and raise ethical concerns, especially in high-stakes applications such as healthcare, finance, and criminal justice.
 
-% Many models 
-Different explanations try to give additional insights into the predictions. A local explanation looks at one specific model decision and tries to explain what was important in the input data to provide this prediction. A global explanation, on the other hand, looks at the whole model's process of making decisions and sees how the different attributes contribute to making a decision. These global explanations can also be built from multiple local faithful explanations. A third type is contrastive explanations that utilize local features to explain the difference between instances. This allows insight into the model's inner workings on a more global scale based on local predictions.
+\gls{xai} can either be used to design models that are interpretable by design or adapt explanation methods to models already developed. 
+The goal of \gls{xai} is, therefore, to build models and methods that can achieve great results without a reduction in transparency
 
-% Cons
-One typical disadvantage of model-agnostic explanations is that their insights and descriptions are not always faithful to the underlying model they try to explain. This can happen if an explaining model is trained to look at the underlying model's input, inner workings, and output and learns the correlation between them. The problem is that correlation does not imply causation, and the explaining model can give a deceiving explanation that can look correct at first. Developing explanatory methods that find causations rather than correlations is an ongoing research topic.
 
 
 
@@ -67,14 +63,14 @@ One advantage of better understanding the model's evaluations in a prediction is
             Thought snow was an \\ important feature & 12 out of 27 & 25 out of 27 \\ [1ex] 
         \hline
     \end{tabular}
-    \caption[Overview over the trust by participants in the "Husky vs. Wolf" experiment by Ribeiro et al. \cite{ribeiroWhyShouldTrust2016}.]{Overview over the trust by participants in the "Husky vs. Wolf" experiment by Ribeiro et al. \cite{ribeiroWhyShouldTrust2016}. The majority lost trust when explained that a classifier considered snow in the background the most important feature when classifying images of huskies and wolves.}
+    \caption[Overview over the participants trust in the \textit{Husky vs. Wolf} experiment.]{Overview over the trust by participants in the \textit{Husky vs. Wolf} experiment by Ribeiro et al. \cite{ribeiroWhyShouldTrust2016}. The majority lost trust when explained that a classifier considered snow in the background the most important feature when classifying images of huskies and wolves.}
     \label{table:husky_vs_wolf}
 \end{table}
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{images/husky_vs_wolf.png}
-    \caption[Husky classified as a wolf, alongside an explanation of what the model considered important.]{Husky classified as a wolf, alongside an explanation of what the model considered important.\\ Figure by Ribeiro et al. \cite{ribeiroWhyShouldTrust2016}.}
+    \caption[Husky classified as a wolf, alongside what the model considered important.]{Husky classified as a wolf, alongside an explanation of what the model considered important.\\ Figure by Ribeiro et al. \cite{ribeiroWhyShouldTrust2016}.}
     \label{fig:wolf_husky}
 \end{figure} 
 

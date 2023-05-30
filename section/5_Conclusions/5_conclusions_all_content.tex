@@ -23,7 +23,7 @@ The \gls{vqa} task has the benefit of being interactive so that a user can input
 
 
     % Alpaca-VQA
-    The second method described in this work is the Alpaca-VQA model. This is a \gls{llm} in the \gls{llama} family, trained to interpret images and answer questions. As language models by design are usually not multimodal, the image features were extracted using a \gls{cnn}, which then was encoded into the input text. To make this model even more computationally efficient than originally, a \gls{lora} implementation is used. This freezes the weights of the \gls{llm} and only adds a smaller update matrix during training. Using this optimization, the model can learn new tasks without forgetting what it was previously trained on. During interference, the input was put through the original weights and the new update matrix, and the merged result was given as the output. The dataset used was an extensive collection of images from the gastrointestinal tract, paired with questions and answers to each image. 
+    The second method described in this work is the Alpaca-VQA model. This is an \gls{llm} in the \gls{llama} family, trained to interpret images and answer questions. As language models by design are usually not multimodal, the image features were extracted using a \gls{cnn}, which then was encoded into the input text. To make this model even more computationally efficient than originally, a \gls{lora} implementation is used. This freezes the weights of the \gls{llm} and only adds a smaller update matrix during training. Using this optimization, the model can learn new tasks without forgetting what it was previously trained on. During interference, the input was put through the original weights and the new update matrix, and the merged result was given as the output. The dataset used was an extensive collection of images from the gastrointestinal tract, paired with questions and answers to each image. 
     \glspl{llm} have no intrinsic or intuitive ways to explain how they interpret the input data or do their reasoning. As these transformer-based architectures continue to outperform other methods and therefore get implemented in new systems, it is vital to be able to interpret their decisions.\\
     
     
@@ -58,48 +58,26 @@ The \gls{vqa} task has the benefit of being interactive so that a user can input
 \end{comment}
 % Main findings
 
-    The experiments in this work have proven the ability of post-hoc explainability models to provide valuable insight into the underlying model with no cost to the explained model's accuracy. 
-    The proxy model presents a useful understanding of how the \gls{llm} may work, even though it is not transparent to the underlying model but instead emulates its behavior. Visualization of transition scores provides an intuitive description of how \glspl{llm} predicts tokens in a sequence.  
+    The goal of this work has been to investigate to what extent explanatory models in different domains can provide additional insights into the underlying data, specifically in the \gls{vqa} task.
+    The experiments in this work have proven the ability of post-hoc explanatory models to provide valuable insight into the underlying model with no cost to the explained model's accuracy. 
+    The proxy model presents a useful understanding of how the \gls{llm} may work, even though it is not transparent to the underlying model but instead emulates its behavior. The visualization of transition scores provides an intuitive description of how \glspl{llm} predicts tokens in a sequence.  
 
-    In this work, it has been studied how a \gls{llm} can be adapted to a new modality while preserving the knowledge from the pre-training.
+    In this work, it has been studied how an \gls{llm} can be adapted to a new modality while preserving the knowledge from the pre-training.
     % Additional methods explaining an LLM after training is complete
-    This fine-tuned model has then been explained by models adapted after the training is complete. These smaller, more explanatory models have given valuable insights and indicators of how the \gls{llm} works on the given dataset. 
-    By attaching additional methods to a fully trained model, it can leverage all of the initial benefits and accuracy while still providing users with intuitive justifications for its answers. Models that are easier to understand by a user make them more functional and more effective to develop further.\\
+    This fine-tuned model has then been explained by methods adapted after the training is complete. These smaller, more explanatory methods have given valuable insights and indicators of how the \gls{llm} works on the given dataset. 
+    By attaching additional explanatory methods to a fully trained model, the combined solution can leverage all of the initial benefits and accuracy while still providing users with intuitive justifications for its answers. Models that are easier for a user to understand make them more functional and effective for further development.
 
    
 
 
-    %The key finding of this research is that larger and more complex models, like an LLM, can be explained by smaller methods added after the primary model has completed training. These additional models add no significant resources use or compute time during inference but provide valuable insights into the model. In addition, these supplementary models do not change how the larger, more complex model works. Therefore, these models can combine complex methods with layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
+    The key finding of this research is that larger and more complex models, like an \gls{llm}, can be explained by smaller methods added after the primary model has completed training. These additional models add no significant resources use or compute time during inference but provide valuable insights into the model. In addition, these supplementary models do not change how the larger, more complex model works. Therefore, these models can combine complex methods with layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
 
     
-This research project aimed to explore how different explanatory methods could provide additional insights into how larger, more complex, and opaque models interpret the underlying data.\\
-For the visual domain, the original question was:
-\begin{itemize}
-    \item Will the answers given by a VQA system be explained more intuitively with additional locally accurate image descriptions?
-\end{itemize}
 
-% Changing the explanation part from FLEX to Alpaca
-As the FLEX-VQA model did not materialize in results, the visual explanation was done by fitting a proxy model, which was explained by \gls{lime}. Although the proxy model and \gls{lime} were not designed to describe an image and used text as input data, the image features were encoded as text. Therefore, the essential elements could be highlighted by the TextExplainer method in \gls{lime}. In \autoref{sec4:proxy_lime}, it was shown that the Alpaca-VQA model on this specific dataset did not evaluate the visual features as necessary compared to the question. Still, the experiment aimed to investigate if these visual highlights would intuitively bring additional important information. The visual representation of the input features of the proxy model was highlighted using a locally accurate \gls{xai} method, \gls{lime}. These features made it more straightforward to investigate further, leading to the experiment with the language-only Alpaca-VQA model. As concluded in \autoref{sec4_language_only_model}, the model tested on language-only proved that the model tested on language-only performed better than the on interpreting images. As this finding was consistent with the proxy model, it provided valuable insight into how the model used the available data. 
-Even though a stacked proxy model design can obscure the underlying model's inner workings, it proved helpful in investigating how the Alpaca-VQA model may have used the input data.\\
-
-
-% Visualize transiton scores 
-In the linguistic domain, the initial research questions were:
-\begin{itemize}
-    \item Can an \gls{llm} fine-tuned on a new modality bring new insights from its pertaining?
-
-    \item Can additional methods explain an \gls{llm} after training is complete?
-\end{itemize}
-
-The correctness of the first question was confirmed in this experiment, as demonstrated in \autoref{sec4:vis_transtion_scores}. The Alpaca-VQA model used knowledge from the underlying \gls{llama} model when predicting answers. As these answers from previous training did not occur in the test set, the model did not answer the question correctly. However, the model understood how the question was structured and appropriately responded with a medically relevant term, which could be correct given a different input image.
-This suggests that the model's \textit{a priori} general knowledge from pre-training could potentially enhance responses when tested on more open-ended tasks or questions. It was fine-tuned to provide a single answer to facilitate the evaluation of the Alpaca-VQA model. This contrasts how many \glspl{llm} are trained as conversation systems that generate longer sentences or paragraphs. As the Alpaca-VQA uses \gls{lora} weights for fine-tuning, it performs as well as the original Alpaca model on the tasks Alpaca was initially trained on. This allows the Alpaca-VQA model to work as an extension on an already capable \gls{llm}. Alpaca-VQA can therefore handle more free-form responses, where the knowledge from the pre-training can contribute to a better answer.
-
-The proxy model and visualization of the Alpaca-VQA model were implemented after the \gls{llm} completed its fine-tuning. Yet, they proved instrumental in interpreting the decision-making process of the underlying model. 
-Consequently, the conducted experiments in this study shed light on how post-hoc explanatory models can aid in comprehending larger and more complex models without compromising the accuracy that the larger model can provide.\\
 
 
 % Summary
-In the experiments carried out in this work, the additional locally accurate explanations proved valuable in understanding the model's performance, although not expressed in natural language descriptions. Visualizations of transition scores and the proxy model explained through \gls{lime} provided valuable supplementary information that the \gls{llm} initially lacked, contributing to a better understanding of its usage and reliability.
+In the experiments carried out in this work, the additional locally accurate explanations proved valuable insights into understanding the model's predictions. Visualizations of transition scores and the proxy model explained through \gls{lime} provided valuable supplementary information that the \gls{llm} initially lacked, contributing to a better understanding of its usage and reliability.
 
 
 
@@ -146,13 +124,13 @@ As the scope of this project limits what can be explored in this work, not every
     % Fine-tune an LLM to a medical dataset that could be combined with a vision-LLM
     In the experiments conducted in this work, the goal has not been to train a state-of-the-art \gls{llm}, but rather explore how it can be explained. This is reflected in the relatively low accuracy for Alpaca-VQA on the given dataset.
     However, in future experiments, \gls{llm} could be extended to make it more beneficial to the end user.
-    An interesting future work could include a \gls{llm} pre-trained on domain-specific data, like a medical dataset, before fine-tuning to include images. This way, the system user could ask questions about an image or simply text-only questions. Therefore, the \gls{llm} could be used as a multimodal personal assistant in a domain-specific setting. 
+    An interesting future work could include an \gls{llm} pre-trained on domain-specific data, like a medical dataset, before fine-tuning to include images. This way, the system user could ask questions about an image or simply text-only questions. Therefore, the \gls{llm} could be used as a multimodal personal assistant in a domain-specific setting. 
 
     % It does not answer the questions using natural language.
     The Alpaca-VQA model used in this work is trained to output only the predicted answer to a question to facilitate evaluation. However, this does not use the ability of \gls{llm} to construct sentences in natural language. Because the model is pre-trained on instructions-following tasks, it can still generate longer responses. Techniques such as self-instruct, also used when generating data for the Stanford Alpaca model, can make datasets with natural language answers. Future work can use these methods to create a dataset containing descriptive information in natural language based on factually correct information. 
 
     % Step-by-step reasoning
-    Interesting results were investigated in previous work by asking \glspl{llm} to answer step-by-step, also called chain-of-thought \cite{lievinCanLargeLanguage2023, weiChainofThoughtPromptingElicits2023}. This prompt engineering causes the model to output its thought process, allowing users to follow their reasoning. The Alpaca-VQA did not respond to this prompt, most likely due to its relatively few parameters compared to other \glspl{llm}. However, it has been found that by training with more data, \gls{llama} models achieve comparable results to larger models \cite{touvronLLaMAOpenEfficient2023}. Future research on step-by-step prompting in multimodal models could provide valuable insights into how \glspl{llm} works.
+    % Interesting results were investigated in previous work by asking \glspl{llm} to answer step-by-step, also called chain-of-thought \cite{lievinCanLargeLanguage2023, weiChainofThoughtPromptingElicits2023}. This prompt engineering causes the model to output its thought process, allowing users to follow their reasoning. The Alpaca-VQA did not respond to this prompt, most likely due to its relatively few parameters compared to other \glspl{llm}. However, it has been found that by training with more data, \gls{llama} models achieve comparable results to larger models \cite{touvronLLaMAOpenEfficient2023}. Future research on step-by-step prompting in multimodal models could provide valuable insights into how \glspl{llm} works.
     
 
 \subsection{Explainable Methods}
@@ -164,11 +142,14 @@ As the scope of this project limits what can be explored in this work, not every
     One of these is that the visualization of transition scores and self-attention are unreliable sources of insight into how the model works. 
     Some previous works have investigated how attention may not be an interpretable nor accurate method to explain methods based on attention \cite{serranoAttentionInterpretable2019, jainAttentionNotExplanation2019}. 
     As presented in this work, these features can still bring valuable insights into how the model work and interprets the data. 
-    A future experiment worth investigating would therefore be a larger user study, asking end users whether attention or transition scores make a model more intuitive.
+    Therefore, a future experiment worth investigating would be a larger user study, asking end users whether attention or transition scores make a model more intuitive.
     
     % The proxy model is not transparent to the underlying LLM
     The proxy model used in this work had the limitation that it was not transparent how the Alpaca-VQA worked. It was designed to simulate the behavior of the \gls{llm} instead of giving direct insight into how the underlying model functioned. Yet, during experimentation, it provided valuable insights that helped discover bias in the Alpaca-VQA model. 
-    As more complex models get higher accuracies at the cost of transparency, future work is needed to develop models with intrinsic explainability or methods that can be attached to a larger model post-hoc.
+    As more complex models get higher accuracies at the cost of transparency, future work is needed to develop models with intrinsic explainability or methods that can be attached to a larger model post-hoc.\newline
 
     % Some smart end sentence here
 
+    
+    In summary, this thesis has explored powerful \gls{ai} methods on the \gls{vqa} task using \glspl{cnn} and \glspl{llm}, highlighting the inherent challenges in comprehending their underlying reasoning. This work has made noteworthy progress by investigating various techniques for increased transparency. 
+    However, it is important to acknowledge that there is still much more to be done in the field of \gls{xai} as research strives towards achieving a deeper understanding of these complex systems.

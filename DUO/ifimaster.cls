@@ -26,7 +26,7 @@
 %\addtolength{\evensidemargin}{-5mm}  % Compensate for binding
 %\addtolength{\oddsidemargin}{5mm}
 
-\linespread{1.0} % regulate line spacing
+\linespread{1.2} % regulate line spacing
 
 \pretolerance = 2000
 \tolerance = 5000   

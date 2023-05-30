@@ -93,6 +93,22 @@
   file = {/Users/emilchri/Zotero/storage/R9FRPMUJ/index.html}
 }
 
+@online{amodeiConcreteProblemsAI2016,
+  title = {Concrete {{Problems}} in {{AI Safety}}},
+  author = {Amodei, Dario and Olah, Chris and Steinhardt, Jacob and Christiano, Paul and Schulman, John and Mané, Dan},
+  date = {2016-07-25},
+  eprint = {1606.06565},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1606.06565},
+  url = {http://arxiv.org/abs/1606.06565},
+  urldate = {2023-05-27},
+  abstract = {Rapid progress in machine learning and artificial intelligence (AI) has brought increasing attention to the potential impacts of AI technologies on society. In this paper we discuss one such potential impact: the problem of accidents in machine learning systems, defined as unintended and harmful behavior that may emerge from poor design of real-world AI systems. We present a list of five practical research problems related to accident risk, categorized according to whether the problem originates from having the wrong objective function ("avoiding side effects" and "avoiding reward hacking"), an objective function that is too expensive to evaluate frequently ("scalable supervision"), or undesirable behavior during the learning process ("safe exploration" and "distributional shift"). We review previous work in these areas as well as suggesting research directions with a focus on relevance to cutting-edge AI systems. Finally, we consider the high-level question of how to think most productively about the safety of forward-looking applications of AI.},
+  pubstate = {preprint},
+  keywords = {ai,alignment,Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/Users/emilchri/Zotero/storage/HSNKVZJM/Amodei et al. - 2016 - Concrete Problems in AI Safety.pdf;/Users/emilchri/Zotero/storage/EESPAEJD/1606.html}
+}
+
 @article{andresenJohnMcCarthyFather2002,
   title = {John {{McCarthy}}: Father of {{AI}}},
   shorttitle = {John {{McCarthy}}},
@@ -238,6 +254,20 @@
   file = {/Users/emilchri/Zotero/storage/FHAZGIG9/Ben-younes et al. - 2017 - MUTAN Multimodal Tucker Fusion for Visual Questio.pdf;/Users/emilchri/Zotero/storage/P28EPNS6/Ben-younes et al. - 2017 - MUTAN Multimodal Tucker Fusion for Visual Questio.pdf;/Users/emilchri/Zotero/storage/DM7CVQUP/1705.html}
 }
 
+@inproceedings{berthelotMixMatchHolisticApproach2019,
+  title = {{{MixMatch}}: {{A Holistic Approach}} to {{Semi-Supervised Learning}}},
+  shorttitle = {{{MixMatch}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Berthelot, David and Carlini, Nicholas and Goodfellow, Ian and Papernot, Nicolas and Oliver, Avital and Raffel, Colin A},
+  date = {2019},
+  volume = {32},
+  publisher = {{Curran Associates, Inc.}},
+  url = {https://proceedings.neurips.cc/paper/2019/hash/1cd138d0499a68f4bb72bee04bbec2d7-Abstract.html},
+  urldate = {2023-05-27},
+  abstract = {Semi-supervised learning has proven to be a powerful paradigm for leveraging unlabeled data to mitigate the reliance on large labeled datasets. In this work, we unify the current dominant approaches for semi-supervised learning to produce a new algorithm, MixMatch, that guesses low-entropy labels for data-augmented unlabeled examples and mixes labeled and unlabeled data using MixUp. MixMatch obtains state-of-the-art results by a large margin across many datasets and labeled data amounts. For example, on CIFAR-10 with 250 labels, we reduce error rate by a factor of 4 (from 38\% to 11\%) and by a factor of 2 on STL-10. We also demonstrate how MixMatch can help achieve a dramatically better accuracy-privacy trade-off for differential privacy. Finally, we perform an ablation study to tease apart which components of MixMatch are most important for its success. Code is attached.},
+  file = {/Users/emilchri/Zotero/storage/YZU92WTM/Berthelot et al. - 2019 - MixMatch A Holistic Approach to Semi-Supervised L.pdf}
+}
+
 @article{bianchiniComplexityNeuralNetwork2014,
   title = {On the {{Complexity}} of {{Neural Network Classifiers}}: {{A Comparison Between Shallow}} and {{Deep Architectures}}},
   shorttitle = {On the {{Complexity}} of {{Neural Network Classifiers}}},
@@ -356,6 +386,19 @@
   abstract = {We demonstrate that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even becoming competitive with prior state-of-the-art fine-tuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting.  For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model.  GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks. We also identify some datasets where GPT-3's few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora.},
   keywords = {gpt,gpt-3,nlp,openai,transformer},
   file = {/Users/emilchri/Zotero/storage/DUDHTMLC/Brown et al. - 2020 - Language Models are Few-Shot Learners.pdf}
+}
+
+@inproceedings{byunBenchmarkingDataAnalysis2017,
+  title = {Benchmarking Data Analysis and Machine Learning Applications on the {{Intel KNL}} Many-Core Processor},
+  booktitle = {2017 {{IEEE High Performance Extreme Computing Conference}} ({{HPEC}})},
+  author = {Byun, Chansup and Kepner, Jeremy and Arcand, William and Bestor, David and Bergeron, Bill and Gadepally, Vijay and Houle, Michael and Hubbell, Matthew and Jones, Michael and Klein, Anna and Michaleas, Peter and Milechin, Lauren and Mullen, Julie and Prout, Andrew and Rosa, Antonio and Samsi, Siddharth and Yee, Charles and Reuther, Albert},
+  date = {2017-09},
+  pages = {1--6},
+  doi = {10.1109/HPEC.2017.8091067},
+  abstract = {Knights Landing (KNL) is the code name for the second-generation Intel Xeon Phi product family. KNL has generated significant interest in the data analysis and machine learning communities because its new many-core architecture targets both of these workloads. The KNL many-core vector processor design enables it to exploit much higher levels of parallelism. At the Lincoln Laboratory Supercomputing Center (LLSC), the majority of users are running data analysis applications such as MATLAB and Octave. More recently, machine learning applications, such as the UC Berkeley Caffe deep learning framework, have become increasingly important to LLSC users. Thus, the performance of these applications on KNL systems is of high interest to LLSC users and the broader data analysis and machine learning communities. Our data analysis benchmarks of these application on the Intel KNL processor indicate that single-core double-precision generalized matrix multiply (DGEMM) performance on KNL systems has improved by ∼3.5× compared to prior Intel Xeon technologies. Our data analysis applications also achieved ∼60\% of the theoretical peak performance. Also a performance comparison of a machine learning application, Caffe, between the two different Intel CPUs, Xeon E5 v3 and Xeon Phi 7210, demonstrated a 2.7× improvement on a KNL node.},
+  eventtitle = {2017 {{IEEE High Performance Extreme Computing Conference}} ({{HPEC}})},
+  keywords = {Benchmark,Benchmark testing,Caffe,Computer architecture,Data analysis,DGEMM,Haswell,Knights Landing,Libraries,machine learning,Matlab,MATLAB,Octave,performance,Servers,throughput,Workstations},
+  file = {/Users/emilchri/Zotero/storage/S2RUZQUK/Byun et al. - 2017 - Benchmarking data analysis and machine learning ap.pdf;/Users/emilchri/Zotero/storage/6W9VZT7K/8091067.html}
 }
 
 @online{CaffeDeepLearning,
@@ -696,6 +739,40 @@
   file = {/Users/emilchri/Zotero/storage/ITQBVGJG/Das og Rad - 2020 - Opportunities and Challenges in Explainable Artifi.pdf;/Users/emilchri/Zotero/storage/5ELL3ACG/2006.html}
 }
 
+@online{dasOpportunitiesChallengesExplainable2020a,
+  title = {Opportunities and {{Challenges}} in {{Explainable Artificial Intelligence}} ({{XAI}}): {{A Survey}}},
+  shorttitle = {Opportunities and {{Challenges}} in {{Explainable Artificial Intelligence}} ({{XAI}})},
+  author = {Das, Arun and Rad, Paul},
+  date = {2020-06-22},
+  eprint = {2006.11371},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2006.11371},
+  url = {http://arxiv.org/abs/2006.11371},
+  urldate = {2023-05-29},
+  abstract = {Nowadays, deep neural networks are widely used in mission critical systems such as healthcare, self-driving vehicles, and military which have direct impact on human lives. However, the black-box nature of deep neural networks challenges its use in mission critical applications, raising ethical and judicial concerns inducing lack of trust. Explainable Artificial Intelligence (XAI) is a field of Artificial Intelligence (AI) that promotes a set of tools, techniques, and algorithms that can generate high-quality interpretable, intuitive, human-understandable explanations of AI decisions. In addition to providing a holistic view of the current XAI landscape in deep learning, this paper provides mathematical summaries of seminal work. We start by proposing a taxonomy and categorizing the XAI techniques based on their scope of explanations, methodology behind the algorithms, and explanation level or usage which helps build trustworthy, interpretable, and self-explanatory deep learning models. We then describe the main principles used in XAI research and present the historical timeline for landmark studies in XAI from 2007 to 2020. After explaining each category of algorithms and approaches in detail, we then evaluate the explanation maps generated by eight XAI algorithms on image data, discuss the limitations of this approach, and provide potential future directions to improve XAI evaluation.},
+  pubstate = {preprint},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning},
+  file = {/Users/emilchri/Zotero/storage/6VKAIHDC/Das og Rad - 2020 - Opportunities and Challenges in Explainable Artifi.pdf;/Users/emilchri/Zotero/storage/DCNWZ2E4/2006.html}
+}
+
+@online{dattaAutomatedExperimentsAd2015,
+  title = {Automated {{Experiments}} on {{Ad Privacy Settings}}: {{A Tale}} of {{Opacity}}, {{Choice}}, and {{Discrimination}}},
+  shorttitle = {Automated {{Experiments}} on {{Ad Privacy Settings}}},
+  author = {Datta, Amit and Tschantz, Michael Carl and Datta, Anupam},
+  date = {2015-03-16},
+  eprint = {1408.6491},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1408.6491},
+  url = {http://arxiv.org/abs/1408.6491},
+  urldate = {2023-05-28},
+  abstract = {To partly address people's concerns over web tracking, Google has created the Ad Settings webpage to provide information about and some choice over the profiles Google creates on users. We present AdFisher, an automated tool that explores how user behaviors, Google's ads, and Ad Settings interact. AdFisher can run browser-based experiments and analyze data using machine learning and significance tests. Our tool uses a rigorous experimental design and statistical analysis to ensure the statistical soundness of our results. We use AdFisher to find that the Ad Settings was opaque about some features of a user's profile, that it does provide some choice on ads, and that these choices can lead to seemingly discriminatory ads. In particular, we found that visiting webpages associated with substance abuse changed the ads shown but not the settings page. We also found that setting the gender to female resulted in getting fewer instances of an ad related to high paying jobs than setting it to male. We cannot determine who caused these findings due to our limited visibility into the ad ecosystem, which includes Google, advertisers, websites, and users. Nevertheless, these results can form the starting point for deeper investigations by either the companies themselves or by regulatory bodies.},
+  pubstate = {preprint},
+  keywords = {Computer Science - Cryptography and Security},
+  file = {/Users/emilchri/Zotero/storage/SLZJUXBK/Datta et al. - 2015 - Automated Experiments on Ad Privacy Settings A Ta.pdf;/Users/emilchri/Zotero/storage/9FVL3AQ9/1408.html}
+}
+
 @article{dengImageNetLargeScaleHierarchical2009,
   title = {{{ImageNet}}: {{A Large-Scale Hierarchical Image Database}}},
   author = {Deng, Jia and Dong, Wei and Socher, Richard and Li, Li-Jia and Li, Kai and Fei-Fei, Li},
@@ -867,6 +944,22 @@
   file = {/Users/emilchri/Zotero/storage/JXKR5HJF/Dzindolet et al. - 2003 - The role of trust in automation reliance.pdf;/Users/emilchri/Zotero/storage/27YLM5KL/S1071581903000387.html}
 }
 
+@article{elsterNvidiaHopperGPU2022,
+  title = {Nvidia {{Hopper GPU}} and {{Grace CPU Highlights}}},
+  author = {Elster, Anne C. and Haugdahl, Tor A.},
+  date = {2022-03},
+  journaltitle = {Computing in Science \& Engineering},
+  volume = {24},
+  number = {2},
+  pages = {95--100},
+  issn = {1558-366X},
+  doi = {10.1109/MCSE.2022.3163817},
+  abstract = {At GTC 2022, Nvidia announced a new product family that aims to cover from small enterprise workloads through exascale high performance computing (HPC) and trillion-parameter AI models. This column highlights the most interesting features of their new Hopper graphical processing unit (GPU) and Grace central processing unit (CPU) computer chips and the Hopper product family. We also discuss some of the history behind Nvidia technologies and their most useful features for computational scientists, such as the Hopper DPX dynamic programming (DP) instruction set, increased number of SMs, and FP 8 tensor core availability. Also included are descriptions of the new Hopper Clustered SMs architecture and updated NVSwitch technologies that integrate their new ARM-based Grace CPU.},
+  eventtitle = {Computing in {{Science}} \& {{Engineering}}},
+  keywords = {Central processing units,Companies,Graphics processing units,Product design,Product development},
+  file = {/Users/emilchri/Zotero/storage/9WEI63NZ/Elster og Haugdahl - 2022 - Nvidia Hopper GPU and Grace CPU Highlights.pdf;/Users/emilchri/Zotero/storage/GUGEKW98/9789536.html}
+}
+
 @inproceedings{fagerengPolypConnectImageInpainting2022,
   title = {{{PolypConnect}}: {{Image}} Inpainting for Generating Realistic Gastrointestinal Tract Images with Polyps},
   shorttitle = {{{PolypConnect}}},
@@ -966,6 +1059,16 @@
   file = {/Users/emilchri/Zotero/storage/3HR5Y5HL/Fukushima - 1975 - Cognitron A self-organizing multilayered neural n.pdf}
 }
 
+@online{gageNewAlgorithmData1994,
+  title = {A {{New Algorithm}} for {{Data Compression}}},
+  author = {Gage, Philip},
+  date = {1994},
+  url = {http://www.pennelynn.com/Documents/CUJ/HTML/94HTML/19940045.HTM},
+  urldate = {2023-05-27},
+  keywords = {byte,encoding,pair,tokenization},
+  file = {/Users/emilchri/Zotero/storage/6EXD4JZP/19940045.html}
+}
+
 @online{gaoCompactBilinearPooling2016,
   title = {Compact {{Bilinear Pooling}}},
   author = {Gao, Yang and Beijbom, Oscar and Zhang, Ning and Darrell, Trevor},
@@ -1013,6 +1116,22 @@
   langid = {english},
   keywords = {ai,symbolic},
   file = {/Users/emilchri/Zotero/storage/SR7JRKHE/Garnelo og Shanahan - 2019 - Reconciling deep learning with symbolic artificial.pdf;/Users/emilchri/Zotero/storage/JQTLYXAM/S2352154618301943.html}
+}
+
+@article{gemanVisualTuringTest2015,
+  title = {Visual {{Turing}} Test for Computer Vision Systems},
+  author = {Geman, Donald and Geman, Stuart and Hallonquist, Neil and Younes, Laurent},
+  date = {2015-03-24},
+  journaltitle = {Proceedings of the National Academy of Sciences},
+  volume = {112},
+  number = {12},
+  pages = {3618--3623},
+  publisher = {{Proceedings of the National Academy of Sciences}},
+  doi = {10.1073/pnas.1422953112},
+  url = {https://www.pnas.org/doi/abs/10.1073/pnas.1422953112},
+  urldate = {2023-05-28},
+  abstract = {Today, computer vision systems are tested by their accuracy in detecting and localizing instances of objects. As an alternative, and motivated by the ability of humans to provide far richer descriptions and even tell a story about an image, we construct a “visual Turing test”: an operator-assisted device that produces a stochastic sequence of binary questions from a given test image. The query engine proposes a question; the operator either provides the correct answer or rejects the question as ambiguous; the engine proposes the next question (“just-in-time truthing”). The test is then administered to the computer-vision system, one question at a time. After the system’s answer is recorded, the system is provided the correct answer and the next question. Parsing is trivial and deterministic; the system being tested requires no natural language processing. The query engine employs statistical constraints, learned from a training set, to produce questions with essentially unpredictable answers—the answer to a question, given the history of questions and their correct answers, is nearly equally likely to be positive or negative. In this sense, the test is only about vision. The system is designed to produce streams of questions that follow natural story lines, from the instantiation of a unique object, through an exploration of its properties, and on to its relationships with other uniquely instantiated objects.},
+  file = {/Users/emilchri/Zotero/storage/XXSP2A5A/Geman et al. - 2015 - Visual Turing test for computer vision systems.pdf}
 }
 
 @inproceedings{ghorbaniAutomaticConceptbasedExplanations2019,
@@ -1625,6 +1744,22 @@
   file = {/Users/emilchri/Zotero/storage/FPECNRA4/Joshi et al. - 2021 - A Review on Explainability in Multimodal Deep Neur.pdf;/Users/emilchri/Zotero/storage/2JKRCZZR/9391727.html}
 }
 
+@article{jouppiMotivationEvaluationFirst2018,
+  title = {Motivation for and {{Evaluation}} of the {{First Tensor Processing Unit}}},
+  author = {Jouppi, Norman and Young, Cliff and Patil, Nishant and Patterson, David},
+  date = {2018-05},
+  journaltitle = {IEEE Micro},
+  volume = {38},
+  number = {3},
+  pages = {10--19},
+  issn = {1937-4143},
+  doi = {10.1109/MM.2018.032271057},
+  abstract = {The first-generation tensor processing unit (TPU) runs deep neural network (DNN) inference 15-30 times faster with 30-80 times better energy efficiency than contemporary CPUs and GPUs in similar semiconductor technologies. This domain-specific architecture (DSA) is a custom chip that has been deployed in Google datacenters since 2015, where it serves billions of people.},
+  eventtitle = {{{IEEE Micro}}},
+  keywords = {Central Processing Unit,Data centers,deep neural network,Energy efficiency,GPU,Graphics processing units,hardware,machine learning,microprocessor,Microprocessors,Neural networks,Semiconductor devices,Tensile stress,tensor processing unit,tpu},
+  file = {/Users/emilchri/Zotero/storage/YDN4VCUI/Jouppi et al. - 2018 - Motivation for and Evaluation of the First Tensor .pdf;/Users/emilchri/Zotero/storage/GUY2KCGX/8358031.html}
+}
+
 @inproceedings{jungBetterExplanationsClass2021,
   title = {Towards {{Better Explanations}} of {{Class Activation Mapping}}},
   booktitle = {2021 {{IEEE}}/{{CVF International Conference}} on {{Computer Vision}} ({{ICCV}})},
@@ -1665,6 +1800,26 @@
   abstract = {We present a model that generates natural language descriptions of images and their regions. Our approach leverages datasets of images and their sentence descriptions to learn about the inter-modal correspondences between language and visual data. Our alignment model is based on a novel combination of Convolutional Neural Networks over image regions, bidirectional Recurrent Neural Networks over sentences, and a structured objective that aligns the two modalities through a multimodal embedding. We then describe a Multimodal Recurrent Neural Network architecture that uses the inferred alignments to learn to generate novel descriptions of image regions. We demonstrate that our alignment model produces state of the art results in retrieval experiments on Flickr8K, Flickr30K and MSCOCO datasets. We then show that the generated descriptions significantly outperform retrieval baselines on both full images and on a new dataset of region-level annotations.},
   langid = {english},
   file = {/Users/emilchri/Zotero/storage/25EKPTCR/Karpathy og Fei-Fei - 2015 - Deep Visual-Semantic Alignments for Generating Ima.pdf;/Users/emilchri/Zotero/storage/MLBXHUIK/Karpathy og Fei-Fei - Deep Visual-Semantic Alignments for Generating Ima.pdf;/Users/emilchri/Zotero/storage/3KYLYNIG/Karpathy_Deep_Visual-Semantic_Alignments_2015_CVPR_paper.html}
+}
+
+@article{kasperekComparisonUsabilityApple2022,
+  title = {Comparison of the {{Usability}} of {{Apple M1 Processors}} for {{Various Machine Learning Tasks}}},
+  author = {Kasperek, David and Podpora, Michal and Kawala-Sterniuk, Aleksandra},
+  date = {2022-01},
+  journaltitle = {Sensors},
+  volume = {22},
+  number = {20},
+  pages = {8005},
+  publisher = {{Multidisciplinary Digital Publishing Institute}},
+  issn = {1424-8220},
+  doi = {10.3390/s22208005},
+  url = {https://www.mdpi.com/1424-8220/22/20/8005},
+  urldate = {2023-05-28},
+  abstract = {In this paper, the authors have compared all of the currently available Apple MacBook Pro laptops, in terms of their usability for basic machine learning research applications (text-based, vision-based, tabular). The paper presents four tests/benchmarks, comparing four Apple Macbook Pro laptop versions: Intel based (i5) and three Apple based (M1, M1 Pro and M1 Max). A script in the Swift programming language was prepared, whose goal was to conduct the training and evaluation process for four machine learning (ML) models. It used the Create ML framework—Apple’s solution dedicated to ML model creation on macOS devices. The training and evaluation processes were performed three times. While running, the script performed measurements of their performance, including the time results. The results were compared with each other in tables, which allowed to compare and discuss the performance of individual devices and the benefits of the specificity of their hardware architectures.},
+  issue = {20},
+  langid = {english},
+  keywords = {Apple M1,CoreML,deep learning,machine learning,Neural Engine,neural processing cores,neural processing unit,NPU benchmark,processor architectures},
+  file = {/Users/emilchri/Zotero/storage/VGZQ2UUI/Kasperek et al. - 2022 - Comparison of the Usability of Apple M1 Processors.pdf}
 }
 
 @inproceedings{kimInterpretabilityFeatureAttribution2018,
@@ -1781,6 +1936,23 @@
   abstract = {After uncovering a mysterious artifact buried beneath the Lunar surface, a spacecraft is sent to Jupiter to find its origins - a spacecraft manned by two men and the supercomputer H.A.L. 9000.},
   keywords = {computer,famous line,human versus computer,monolith,star child},
   annotation = {Translated title: 2001: En romodyssé IMDb ID: tt0062622 event-location: United Kingdom, United States}
+}
+
+@online{kudoSentencePieceSimpleLanguage2018,
+  title = {{{SentencePiece}}: {{A}} Simple and Language Independent Subword Tokenizer and Detokenizer for {{Neural Text Processing}}},
+  shorttitle = {{{SentencePiece}}},
+  author = {Kudo, Taku and Richardson, John},
+  date = {2018-08-19},
+  eprint = {1808.06226},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1808.06226},
+  url = {http://arxiv.org/abs/1808.06226},
+  urldate = {2023-05-27},
+  abstract = {This paper describes SentencePiece, a language-independent subword tokenizer and detokenizer designed for Neural-based text processing, including Neural Machine Translation. It provides open-source C++ and Python implementations for subword units. While existing subword segmentation tools assume that the input is pre-tokenized into word sequences, SentencePiece can train subword models directly from raw sentences, which allows us to make a purely end-to-end and language independent system. We perform a validation experiment of NMT on English-Japanese machine translation, and find that it is possible to achieve comparable accuracy to direct subword training from raw sentences. We also compare the performance of subword training and segmentation with various configurations. SentencePiece is available under the Apache 2 license at https://github.com/google/sentencepiece.},
+  pubstate = {preprint},
+  keywords = {Computer Science - Computation and Language,tokenizer},
+  file = {/Users/emilchri/Zotero/storage/YVMIGA8X/Kudo og Richardson - 2018 - SentencePiece A simple and language independent s.pdf;/Users/emilchri/Zotero/storage/FT3HJDUH/1808.html}
 }
 
 @article{lancasterAutomatedLabelingHuman1997,
@@ -2332,6 +2504,22 @@
   file = {/Users/emilchri/Zotero/storage/C2ISR7T8/Nakkiran et al. - 2021 - Deep double descent where bigger models and more .pdf}
 }
 
+@online{ngoAlignmentProblemDeep2023,
+  title = {The Alignment Problem from a Deep Learning Perspective},
+  author = {Ngo, Richard and Chan, Lawrence and Mindermann, Sören},
+  date = {2023-02-22},
+  eprint = {2209.00626},
+  eprinttype = {arxiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2209.00626},
+  url = {http://arxiv.org/abs/2209.00626},
+  urldate = {2023-05-27},
+  abstract = {Within the coming decades, artificial general intelligence (AGI) may surpass human capabilities at a wide range of important tasks. We outline a case for expecting that, without substantial effort to prevent it, AGIs could learn to pursue goals which are undesirable (i.e. misaligned) from a human perspective. We argue that if AGIs are trained in ways similar to today's most capable models, they could learn to act deceptively to receive higher reward, learn internally-represented goals which generalize beyond their training distributions, and pursue those goals using power-seeking strategies. We outline how the deployment of misaligned AGIs might irreversibly undermine human control over the world, and briefly review research directions aimed at preventing this outcome.},
+  pubstate = {preprint},
+  keywords = {ai,alignment,Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/Users/emilchri/Zotero/storage/W8YMZ5KY/Ngo et al. - 2023 - The alignment problem from a deep learning perspec.pdf;/Users/emilchri/Zotero/storage/MISEFK57/2209.html}
+}
+
 @online{nguyenExplainingMachineLearning2022,
   title = {Explaining {{Machine Learning Models}} in {{Natural Conversations}}: {{Towards}} a {{Conversational XAI Agent}}},
   shorttitle = {Explaining {{Machine Learning Models}} in {{Natural Conversations}}},
@@ -2347,6 +2535,31 @@
   pubstate = {preprint},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,llm,xai},
   file = {/Users/emilchri/Zotero/storage/IPZ4WS2D/Nguyen et al. - 2022 - Explaining Machine Learning Models in Natural Conv.pdf;/Users/emilchri/Zotero/storage/5YG6LN6W/2209.html}
+}
+
+@article{ntoutsiBiasDatadrivenArtificial2020,
+  title = {Bias in Data-Driven Artificial Intelligence Systems—{{An}} Introductory Survey},
+  author = {Ntoutsi, Eirini and Fafalios, Pavlos and Gadiraju, Ujwal and Iosifidis, Vasileios and Nejdl, Wolfgang and Vidal, Maria-Esther and Ruggieri, Salvatore and Turini, Franco and Papadopoulos, Symeon and Krasanakis, Emmanouil and Kompatsiaris, Ioannis and Kinder-Kurlanda, Katharina and Wagner, Claudia and Karimi, Fariba and Fernandez, Miriam and Alani, Harith and Berendt, Bettina and Kruegel, Tina and Heinze, Christian and Broelemann, Klaus and Kasneci, Gjergji and Tiropanis, Thanassis and Staab, Steffen},
+  date = {2020},
+  journaltitle = {WIREs Data Mining and Knowledge Discovery},
+  volume = {10},
+  number = {3},
+  pages = {e1356},
+  issn = {1942-4795},
+  doi = {10.1002/widm.1356},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/widm.1356},
+  urldate = {2023-05-28},
+  abstract = {Artificial Intelligence (AI)-based systems are widely employed nowadays to make decisions that have far-reaching impact on individuals and society. Their decisions might affect everyone, everywhere, and anytime, entailing concerns about potential human rights issues. Therefore, it is necessary to move beyond traditional AI algorithms optimized for predictive performance and embed ethical and legal principles in their design, training, and deployment to ensure social good while still benefiting from the huge potential of the AI technology. The goal of this survey is to provide a broad multidisciplinary overview of the area of bias in AI systems, focusing on technical challenges and solutions as well as to suggest new research directions towards approaches well-grounded in a legal frame. In this survey, we focus on data-driven AI, as a large part of AI is powered nowadays by (big) data and powerful machine learning algorithms. If otherwise not specified, we use the general term bias to describe problems related to the gathering or processing of data that might result in prejudiced decisions on the bases of demographic features such as race, sex, and so forth. This article is categorized under: Commercial, Legal, and Ethical Issues {$>$} Fairness in Data Mining Commercial, Legal, and Ethical Issues {$>$} Ethical Considerations Commercial, Legal, and Ethical Issues {$>$} Legal Issues},
+  langid = {english},
+  keywords = {fairness,fairness-aware AI,fairness-aware machine learning,interpretability,responsible AI},
+  file = {/Users/emilchri/Zotero/storage/JVIRQVLV/Ntoutsi et al. - 2020 - Bias in data-driven artificial intelligence system.pdf;/Users/emilchri/Zotero/storage/ELYZ46V5/widm.html}
+}
+
+@online{Nvidiaa100datasheet,
+  title = {Nvidia-A100-Datasheet},
+  url = {https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf},
+  urldate = {2023-05-27},
+  file = {/Users/emilchri/Zotero/storage/JYXA2KU8/nvidia-a100-datasheet.pdf}
 }
 
 @online{OpenAIAPI,
@@ -2389,6 +2602,17 @@
   eventtitle = {{{IEEE Access}}},
   keywords = {Artificial intelligence,Data models,Face recognition,FAI,fairness,Knowledge discovery,Predictive models,Task analysis,visual question answering,Visualization,VQA},
   file = {/Users/emilchri/Zotero/storage/K5S465UT/Park et al. - 2020 - Fair-VQA Fairness-Aware Visual Question Answering.pdf;/Users/emilchri/Zotero/storage/7QJRTPNI/9274341.html}
+}
+
+@online{PauseGiantAI,
+  title = {Pause {{Giant AI Experiments}}: {{An Open Letter}}},
+  shorttitle = {Pause {{Giant AI Experiments}}},
+  url = {https://futureoflife.org/open-letter/pause-giant-ai-experiments/},
+  urldate = {2023-05-27},
+  abstract = {We call on all AI labs to immediately pause for at least 6 months the training of AI systems more powerful than GPT-4.},
+  langid = {american},
+  organization = {{Future of Life Institute}},
+  file = {/Users/emilchri/Zotero/storage/WL6KWVT6/pause-giant-ai-experiments.html}
 }
 
 @online{PeronaLabCUB2002011,
@@ -2527,6 +2751,20 @@
   file = {/Users/emilchri/Zotero/storage/FUGC4N8V/Rasouli og Yu - 2020 - EXPLAN Explaining Black-box Classifiers using Ada.pdf;/Users/emilchri/Zotero/storage/Y6K8436R/9206710.html}
 }
 
+@article{reddySemisupervisedLearningBrief2018,
+  title = {Semi-Supervised Learning: A Brief Review},
+  shorttitle = {Semi-Supervised Learning},
+  author = {Reddy, Y and Pulabaigari, Viswanath and B, Eswara},
+  date = {2018-02-09},
+  journaltitle = {International Journal of Engineering \& Technology},
+  shortjournal = {International Journal of Engineering \& Technology},
+  volume = {7},
+  pages = {81},
+  doi = {10.14419/ijet.v7i1.8.9977},
+  abstract = {Most of the application domain suffers from not having sufficient labeled data whereas unlabeled data is available cheaply. To get labeled instances, it is very difficult because experienced domain experts are required to label the unlabeled data patterns. Semi-supervised learning addresses this problem and act as a half way between supervised and unsupervised learning. This paper addresses few techniques of Semi-supervised learning (SSL) such as self-training, co-training, multi-view learning, TSVMs methods. Traditionally SSL is classified in to Semi-supervised Classification and Semi-supervised Clustering which achieves better accuracy than traditional supervised and unsupervised learning techniques. The paper also addresses the issue of scalability and applications of Semi-supervised learning.},
+  file = {/Users/emilchri/Zotero/storage/ZJUPQBQ6/Reddy et al. - 2018 - Semi-supervised learning a brief review.pdf}
+}
+
 @online{redmonYOLO9000BetterFaster2016,
   title = {{{YOLO9000}}: {{Better}}, {{Faster}}, {{Stronger}}},
   shorttitle = {{{YOLO9000}}},
@@ -2572,6 +2810,14 @@
   eventtitle = {Proceedings of the {{IEEE Conference}} on {{Computer Vision}} and {{Pattern Recognition}}},
   keywords = {object detection,yolo},
   file = {/Users/emilchri/Zotero/storage/U9GZQFRC/Redmon et al. - 2016 - You Only Look Once Unified, Real-Time Object Dete.pdf;/Users/emilchri/Zotero/storage/M526BS3A/Redmon_You_Only_Look_CVPR_2016_paper.html}
+}
+
+@online{REGULATIONEUROPEANPARLIAMENT2021,
+  title = {{{REGULATION OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL}}},
+  date = {2021-04-21},
+  url = {https://eur-lex.europa.eu/resource.html?uri=cellar:e0649735-a372-11eb-9585-01aa75ed71a1.0001.02/DOC_1&format=PDF},
+  urldate = {2023-05-27},
+  file = {/Users/emilchri/Zotero/storage/K9P55ZMJ/resource.pdf}
 }
 
 @article{reiterStructuredReviewValidity2018,
@@ -2775,6 +3021,22 @@
   file = {/Users/emilchri/Zotero/storage/XMKTRQ4A/Selvaraju et al. - 2020 - Grad-CAM Visual Explanations from Deep Networks v.pdf;/Users/emilchri/Zotero/storage/NZ2RIN7L/1610.html}
 }
 
+@inproceedings{sennrichNeuralMachineTranslation2016,
+  title = {Neural {{Machine Translation}} of {{Rare Words}} with {{Subword Units}}},
+  booktitle = {Proceedings of the 54th {{Annual Meeting}} of the {{Association}} for {{Computational Linguistics}} ({{Volume}} 1: {{Long Papers}})},
+  author = {Sennrich, Rico and Haddow, Barry and Birch, Alexandra},
+  date = {2016-08},
+  pages = {1715--1725},
+  publisher = {{Association for Computational Linguistics}},
+  location = {{Berlin, Germany}},
+  doi = {10.18653/v1/P16-1162},
+  url = {https://aclanthology.org/P16-1162},
+  urldate = {2023-05-27},
+  eventtitle = {{{ACL}} 2016},
+  keywords = {byte,pair,tokenizer},
+  file = {/Users/emilchri/Zotero/storage/VJ55P7N8/Sennrich et al. - 2016 - Neural Machine Translation of Rare Words with Subw.pdf}
+}
+
 @online{Sentencepiece,
   title = {Sentencepiece},
   url = {https://github.com/google/sentencepiece},
@@ -2831,6 +3093,23 @@
   langid = {english},
   keywords = {Shapley},
   file = {/Users/emilchri/Zotero/storage/AEEQN3ZS/Shapley - A value for i-person games.pdf}
+}
+
+@incollection{shapleyValueNpersonGames1988,
+  title = {A Value for N-Person Games},
+  booktitle = {The {{Shapley Value}}: {{Essays}} in {{Honor}} of {{Lloyd S}}. {{Shapley}}},
+  author = {Shapley, Lloyd S.},
+  editor = {Roth, Alvin E.},
+  date = {1988},
+  pages = {31--40},
+  publisher = {{Cambridge University Press}},
+  location = {{Cambridge}},
+  doi = {10.1017/CBO9780511528446.003},
+  url = {https://www.cambridge.org/core/books/shapley-value/value-for-nperson-games/1AA9D343DE7A87A97F69E999D329B57A},
+  urldate = {2023-05-27},
+  abstract = {IntroductionAt the foundation of the theory of games is the assumption that the players of a game can evaluate, in their utility scales, every “prospect” that might arise as a result of a play. In attempting to apply the theory to any field, one would normally expect to be permitted to include, in the class of “prospects,” the prospect of having to play a game. The possibility of evaluating games is therefore of critical importance. So long as the theory is unable to assign values to the games typically found in application, only relatively simple situations—where games do not depend on other games—will be susceptible to analysis and solution.In the finite theory of von Neumann and Morgenstern difficulty in evaluation persists for the “essential” games, and for only those. In this note we deduce a value for the “essential” case and examine a number of its elementary properties. We proceed from a set of three axioms, having simple intuitive interpretations, which suffice to determine the value uniquely.Our present work, though mathematically self-contained, is founded conceptually on the von Neumann—Morgenstern theory up to their introduction of characteristic functions. We thereby inherit certain important underlying assumptions: (a) that utility is objective and transferable; (b) that games are cooperative affairs; (c) that games, granting (a) and (b), are adequately represented by their characteristic functions.},
+  isbn = {978-0-521-36177-4},
+  file = {/Users/emilchri/Zotero/storage/BMKQ76RK/Shapley - 1988 - A value for n-person games.pdf;/Users/emilchri/Zotero/storage/JXUIZDTT/1AA9D343DE7A87A97F69E999D329B57A.html}
 }
 
 @article{sharmaImageCaptioningImproved2022,
@@ -3092,6 +3371,25 @@
   organization = {{Alpaca: A Strong, Replicable Instruction-Following Model}},
   keywords = {Alpaca,llm,Stanford},
   file = {/Users/emilchri/Zotero/storage/VC8848IT/alpaca.html}
+}
+
+@article{taylorClozeProcedureNew1953,
+  title = {“{{Cloze Procedure}}”: {{A New Tool}} for {{Measuring Readability}}},
+  shorttitle = {“{{Cloze Procedure}}”},
+  author = {Taylor, Wilson L.},
+  date = {1953-09-01},
+  journaltitle = {Journalism Quarterly},
+  volume = {30},
+  number = {4},
+  pages = {415--433},
+  publisher = {{SAGE Publications}},
+  issn = {0022-5533},
+  doi = {10.1177/107769905303000401},
+  url = {https://doi.org/10.1177/107769905303000401},
+  urldate = {2023-05-27},
+  abstract = {Here is the first comprehensive statement of a research method and its theory which were introduced briefly during a workshop at the 1953 AEJ convention. Included are findings from three pilot studies and two experiments in which “cloze procedure” results are compared with those of two readability formulas.},
+  langid = {english},
+  file = {/Users/emilchri/Zotero/storage/UDFQG3GV/Taylor - 1953 - “Cloze Procedure” A New Tool for Measuring Readab.pdf}
 }
 
 @online{teneyTipsTricksVisual2017,

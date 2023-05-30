@@ -1,15 +1,35 @@
 \label{sec:abstract}
 
 \begin{comment}
-The abstract is often the first text the reader looks at. Thus, it should be very well written, concise and to-the-point - with the focus of SELLING your work. It is therefore often written at the very end, when you have all details of your work. Usually, we recommend something like this: i) A sentence or three about the background of the challenge you are addressing, which then leads to your “problem statement” (written as just a sentence); ii) Some text describing what you have done in your research, what have you developed, etc.; iii) A small overview of your main results and conclusions - what are the main take-aways from your thesis.
+The abstract is often the first text the reader looks at. Thus, it should be very well written, concise and to-the-point - with the focus of SELLING your work. It is therefore often written at the very end, when you have all details of your work. Usually, we recommend something like this: i) A sentence or three about the background of the challenge you are addressing, which then leads to your "problem statement" (written as just a sentence); ii) Some text describing what you have done in your research, what have you developed, etc.; iii) A small overview of your main results and conclusions - what are the main takeaways from your thesis.
 
-Note also that the abstract is a teaser, and it should therefore not be too long: Fast to read, fast to get to the point. We often recommend keeping it on one page.
+Note also that the abstract is a teaser and should therefore, not be too long: Fast to read, fast to get to the point. We often recommend keeping it on one page.
 \end{comment}
 
 
 % More complex models
-With the increase in accuracy and usability of deep neural networks, there has been a big demand for using these neural networks in different domains to increase productivity, create new industries, and improve people's lives. 
-However, these networks are often large and complex, which does not give insight into the prediction process done by the model. 
-In order to make the models more functional and be able to improve them, humans need to understand how they reason. 
 
-This thesis will explore image captioning systems that are locally faithful to the underlying method using gradient activations in the network combined with a language model trained on open-ended questions and answers.
+
+% What is the reason for writing the thesis?
+With the increase in accuracy and usability of \gls{ai}, especially deep neural networks, there has been a big demand for these networks. These methods are implemented in various domains to increase productivity, create new industries, and enhance people's lives. 
+% What are the current approaches and gaps in the literature?
+However, these networks are often large and complex, which does not give insight into the prediction process. 
+In order to make the models more functional and be able to improve them, humans need to understand how they reason. 
+% What are your research questions and aims?
+This work studies explanatory models and how they can bring value and insight into how the underlying fully developed model interprets data.
+%The experiments investigate to what extent a \gls{vqa} model with explanatory models in different domains provides additional insights into the underlying data.
+The experiments specifically examine how \gls{vqa} models can be explained in both the visual and linguistic domains.
+
+
+% Which methodology have you used?
+Two distinct methods are proposed to bridge the gap between models with high accuracy and interpretability.
+The first model combines the task of \gls{vqa} with the \gls{xai} method \gls{flex}. 
+The second method encodes extracted image features into the text prompt of a \gls{llm}.
+Quantitative experiments are used to find the insights necessary. The experiments are conducted using the language model, which is explained using visualizations of the model's transition score, and a proxy model explained by \gls{lime}.
+% What are the main findings?
+The main finding of this research is that larger and more complex models, like an \gls{llm}, can be explained by smaller methods added after the primary model has completed training.
+% What are the main conclusions and implications?
+These models can combine complex methods with layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
+
+
+% The key finding of this research is that larger and more complex models, like an \gls{llm}, can be explained by smaller methods added after the primary model has completed training. These additional models add no significant resources use or compute time during inference but provide valuable insights into the model. In addition, these supplementary models do not change how the larger, more complex model works. Therefore, these models can combine complex methods with layers of explanation that bring valuable insights with no cost to the accuracy of the primary model.
